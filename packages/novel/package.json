@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@formatjs/intl-localematcher": "0.5.6",
+    "negotiator": "1.0.0",
+    "classnames": "2.5.1",
+    "date-fns": "4.1.0",
+    "dotenv": "16.4.5",
+    "lucide-react": "0.447.0",
+    "next": "15.0.1",
+    "openapi-fetch": "0.12.2",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "socket.io-client": "4.8.0",
+    "store2": "2.14.3"
+  },
+  "devDependencies": {
+    "@headlessui/tailwindcss": "0.2.1",
+    "@tailwindcss/forms": "0.5.9",
+    "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
+    "@tailwindcss/typography": "0.5.15",
+    "postcss-import": "16.1.0"
+  },
+  "engines": {
+    "node": ">=22.9",
+    "npm": ">=10.8"
+  },
+  "license": "see LICENSE",
+  "private": true,
+  "version": "1.0.0",
+  "name": "novel"
+}

@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import withNovelConfig from 'novel/next/next.config';
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default withNovelConfig({
+	/**
+	 * Add your custom Next.js configuration here
+	 */
+});

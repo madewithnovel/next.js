@@ -1,8 +1,7 @@
-/** @type {import('postcss-load-config').Config} */
-const config = {
-  plugins: {
-    tailwindcss: {},
-  },
-};
+import withNovelPostCSSDefaults from 'novel/next/postcss.config';
 
-export default config;
+export default withNovelPostCSSDefaults({
+  /**
+   * Add your custom PostCSS configuration here
+   */
+});
