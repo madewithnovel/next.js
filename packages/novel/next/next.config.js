@@ -1,5 +1,8 @@
 'use strict';
 
+// process.env.SENTRY_SUPPRESS_TURBOPACK_WARNING = 1;
+// const { withSentryConfig } = require('@sentry/nextjs');
+
 const path = require('path');
 const fs = require('fs');
 
@@ -51,6 +54,15 @@ if (process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_API_HOST?.i
 	process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 }
 
+const SentryConfig = {
+	silent: !process.env.CI,
+	widenClientFileUpload: true,
+	// tunnelRoute: "/monitoring",
+	hideSourceMaps: true,
+	disableLogger: true,
+	automaticVercelMonitors: false,
+};
+
 /**
  * @param overrides {import('next').NextConfig}
  * @returns {import('next').NextConfig}
@@ -63,4 +75,5 @@ module.exports = (overrides) => {
 	// we want to pass i18n into middleware
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 	return { ...rest, ...nextConfig };
+	// return withSentryConfig({ ...rest, ...nextConfig }, SentryConfig);
 };

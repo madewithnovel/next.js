@@ -18,6 +18,6 @@ export default withNovelConfig({
 	},
 	i18n,
 	/**
-	 * Add your custom Next.js configuration here
-	 */
+	* Add your custom Next.js configuration here
+	*/
 });

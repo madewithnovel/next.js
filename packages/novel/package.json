@@ -3,6 +3,7 @@
     "@headlessui/react": "2.2.0",
     "@stripe/react-stripe-js": "2.8.1",
     "@stripe/stripe-js": "4.9.0",
+    "@sentry/nextjs": "8.35.0",
     "class-variance-authority": "0.7.0",
     "classnames": "2.5.1",
     "clsx": "2.1.1",
