@@ -3,10 +3,8 @@
 - [x] move dependencies to packages/novel
 - [ ] login with social
 - [ ] usesession hook
+- [ ] load openapi
 - [ ] sdk
-- [ ] i18n support
-- [ ] convert text to t()
-- [ ] localization test
 
 UI
 - [ ] medusa UI https://medusajs.com/recap/
@@ -45,6 +43,9 @@ UI
 - [ ] upload / attach file
 - [ ] make modal do overflow
 - [ ] api keys
+- [ ] i18n support
+- [ ] convert text to t()
+- [ ] localization test
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
 - [ ] playwright

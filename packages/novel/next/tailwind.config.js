@@ -4,7 +4,7 @@
  */
 module.exports = function withTailwindDefaults (overrides) {
 	return {
-		darkMode: ["class"],
+		darkMode: ['class'],
 		content: [
 			'app/**/*.{js,jsx,ts,tsx}',
 			'components/**/*.{js,jsx,ts,tsx}',
@@ -14,7 +14,7 @@ module.exports = function withTailwindDefaults (overrides) {
 		],
 		theme: overrides?.theme ?? {},
 		plugins: [
-			require("tailwindcss-animate"),
+			require('tailwindcss-animate'),
 			require('@tailwindcss/forms'),
 			require('@tailwindcss/typography'),
 			require('@headlessui/tailwindcss')({ prefix: 'ui' }),

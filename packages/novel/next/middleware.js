@@ -1,14 +1,13 @@
-import { NextResponse } from "next/server";
-import { match } from '@formatjs/intl-localematcher'
-import Negotiator from 'negotiator'
-import store from 'novel/store';
+import { NextResponse } from 'next/server';
+import { match } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
 
 function getLocale (request) {
-	let headers = { 'accept-language': 'en-US,en;q=0.5' }
-	let languages = new Negotiator({ headers }).languages()
-	let locales = ['en-US', 'nl-NL', 'nl']
-	let defaultLocale = 'en-US'
-	return match(languages, locales, defaultLocale) // -> 'en-US'
+	const headers = { 'accept-language': 'en-US,en;q=0.5' };
+	const languages = new Negotiator({ headers }).languages();
+	const locales = ['en-US', 'nl-NL', 'nl'];
+	const defaultLocale = 'en-US';
+	return match(languages, locales, defaultLocale); // -> 'en-US'
 }
 
 export default function middleware (middleware) {
@@ -17,12 +16,12 @@ export default function middleware (middleware) {
 		// script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
 		// style-src 'self' 'nonce-${nonce}';
 		// add localhost:7634 to bucket as cors
-		const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+		const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 		let cspHeader = `
 		    default-src 'self';
             script-src 'self' 'nonce-${nonce}' 'unsafe-eval' js.stripe.com https: http: ${
-				process.env.NODE_ENV === "production" ? "" : `'unsafe-eval'`
-			};
+	process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''
+};
 		    style-src 'self' 'unsafe-inline';
 		    connect-src 'self' *.r2.cloudflarestorage.com ${process.env.NEXT_PUBLIC_API_HOST};
 		    frame-src js.stripe.com;
@@ -33,7 +32,7 @@ export default function middleware (middleware) {
 		    form-action 'self';
 		    frame-ancestors 'none';
 		    block-all-mixed-content;
-		`
+		`;
 
 		if (process.env.NODE_ENV !== 'development') {
 			cspHeader += ' upgrade-insecure-requests;';
@@ -41,11 +40,11 @@ export default function middleware (middleware) {
 
 		const contentSecurityPolicyHeaderValue = cspHeader
 			.replace(/\s{2,}/g, ' ')
-			.trim()
+			.trim();
 
-		const requestHeaders = new Headers(request.headers)
-		requestHeaders.set('x-nonce', nonce)
-		requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
+		const requestHeaders = new Headers(request.headers);
+		requestHeaders.set('x-nonce', nonce);
+		requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
 
 		const locales = process.env.NEXT_PUBLIC_LOCALES ? JSON.parse(process.env.NEXT_PUBLIC_LOCALES) : {};
 		const { pathname } = request.nextUrl;
@@ -57,14 +56,14 @@ export default function middleware (middleware) {
 		if (matched) {
 			const url = request.nextUrl.clone();
 			url.pathname = matched[2] || '/';
-			response = NextResponse.rewrite(url, { request: { headers: requestHeaders }});
+			response = NextResponse.rewrite(url, { request: { headers: requestHeaders } });
 			locale = matched[1];
 		} else {
-			response = NextResponse.next({ request: { headers: requestHeaders }})
+			response = NextResponse.next({ request: { headers: requestHeaders } });
 			locale = defaultLocale;
 		}
 		response.headers.set('x-locale', locale);
-		response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
+		response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
 
 		// run the userland middleware
 		const returned = await middleware(request, response);

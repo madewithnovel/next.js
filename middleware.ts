@@ -1,4 +1,4 @@
-import type { NextRequest, NextResponse } from "next/server";
+import type { NextRequest, NextResponse } from 'next/server';
 import novelMiddleware from 'novel/next/middleware';
 
 export const config = {
@@ -13,5 +13,5 @@ export default novelMiddleware(
 	 */
 	async (request: NextRequest, response: NextResponse) => {
 		return response;
-	}
+	},
 );
