@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @param overrides {import('tailwindcss').Config}
  * @returns {import('tailwindcss').Config}

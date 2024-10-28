@@ -11,6 +11,9 @@ module.exports = {
 	plugins: [
 		'json',
 		'unicorn',
+		'jsx-a11y',
+		'react',
+		'react-hooks',
 	],
 	env: {
 		node: true,
@@ -30,5 +33,34 @@ module.exports = {
 		'object-curly-newline': ['off'],
 		'import/no-extraneous-dependencies': ['off'],
 		'@typescript-eslint/no-require-imports': ['off'],
+	},
+	overrides: [
+		{
+			files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+			parserOptions: {
+				ecmaFeatures: {
+					jsx: true,
+				},
+				ecmaVersion: 12,
+				sourceType: 'module',
+			},
+			plugins: ['import'],
+			extends: ['next'],
+			rules: {
+				'@typescript-eslint/no-var-requires': ['off'],
+				'react/jsx-indent': ['error', 'tab'],
+				'react/jsx-indent-props': ['error', 'tab'],
+				'import/prefer-default-export': ['off'],
+				'react/jsx-props-no-spreading': ['off'],
+				'react/no-array-index-key': ['warn'],
+				'react/no-unescaped-entities': ['warn'],
+				'@next/next/no-html-link-for-pages': ['off'],
+			},
+		},
+	],
+	settings: {
+		next: {
+			rootDir: '/',
+		},
 	},
 };

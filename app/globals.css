@@ -74,5 +74,13 @@
 }
 
 /**
- * Add your custom global CSS below
+ * Add your custom CSS shared across your marketing and dashboard here.
+ *
+ * https://tailwindcss.com/docs/functions-and-directives#theme
+ *
+ * .btn-blue {
+ *   // from tailwind.config.js:15
+ *   background-color: theme(colors.primary);
+ *   @apply text-primary
+ * }
  */

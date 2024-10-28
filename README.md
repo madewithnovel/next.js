@@ -62,3 +62,11 @@ Devtools
 - [ ] mails sent
 - [ ] auth/session info
 - [ ] utilization
+
+
+non react 19
+- @stripe/react-stripe-js
+- react-dropzone
+- react-hook-form
+- react-hot-toast
+- react-tooltip

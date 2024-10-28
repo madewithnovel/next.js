@@ -1,10 +1,10 @@
 import store from 'novel/store';
-import * as novel from 'novel/sdk';
 
+// for api endpoints and pages that require authentication
 export function useSession () {
 	if (typeof window !== 'undefined') {
 		return store.get('session');
 	} else {
-		return novel.app.session();
+
 	}
 }

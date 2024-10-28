@@ -53,34 +53,14 @@ if (process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_API_HOST?.i
 
 /**
  * @param overrides {import('next').NextConfig}
- * @returns {NextConfig}
+ * @returns {import('next').NextConfig}
  */
 module.exports = (overrides) => {
 	if (process.env.NODE_ENV !== 'production') {
 		process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
 	}
-
 	const { novel, i18n, ...rest } = overrides;
-
 	// we want to pass i18n into middleware
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
-
-	// Check if the API server is available
-	// if (process.env.NEXT_PUBLIC_API_HOST) {
-	// 	(async () => {
-	// 		try {
-	// 			const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/v1/csrf`, { method: 'GET' });
-	// 			if (response.ok) {
-	// 				console.info('Novel Server is running');
-	// 			} else {
-	// 				throw new Error('Novel Server is not running');
-	// 			}
-	// 		} catch (error) {
-	// 			process.env.NEXT_PUBLIC_ERR_API_NOT_RUNNING = true;
-	// 			console.error(error.message);
-	// 		}
-	// 	})();
-	// }
-
 	return { ...rest, ...nextConfig };
 };
