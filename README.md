@@ -1,13 +1,12 @@
 - [x] integrate shadcn workflow
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
-- [ ] i18n support
-- [ ] convert text to t()
-- [ ] localization test
 - [ ] login with social
 - [ ] usesession hook
 - [ ] sdk
-
+- [ ] i18n support
+- [ ] convert text to t()
+- [ ] localization test
 
 UI
 - [ ] medusa UI https://medusajs.com/recap/

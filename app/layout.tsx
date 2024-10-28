@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { getI18n } from "novel/i18n/provider";
-import {I18nProvider} from "novel/i18n/translation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,15 +11,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const manifest = await getI18n();
   return (
     <html lang="en" className="dark">
       <body
         className={`antialiased`}
       >
-          <I18nProvider manifest={manifest}>
             {children}
-          </I18nProvider>
       </body>
     </html>
   );

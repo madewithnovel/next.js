@@ -1,4 +1,3 @@
-import {getI18n} from "novel/i18n/provider";
 import { NextResponse } from "next/server";
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
@@ -60,16 +59,11 @@ export default function middleware (middleware) {
 			url.pathname = matched[2] || '/';
 			response = NextResponse.rewrite(url, { request: { headers: requestHeaders }});
 			locale = matched[1];
-			response.headers.set('x-locale', locale);
 		} else {
 			response = NextResponse.next({ request: { headers: requestHeaders }})
 			locale = defaultLocale;
-			response.headers.set('x-locale', defaultLocale);
 		}
-		const manifest = await getI18n(locale);
-		console.log(1, manifest);
-		store.set('i18n', manifest);
-
+		response.headers.set('x-locale', locale);
 		response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
 
 		// run the userland middleware
