@@ -24,12 +24,10 @@ const nextConfig = {
 			},
 		],
 	},
-	// async rewrites () {
-	// },
 	async headers () {
 		return [
 			{
-				source: '/sw.js',
+				source: '/service-worker.js',
 				headers: [
 					{
 						key: 'Content-Type',
@@ -62,6 +60,11 @@ module.exports = (overrides) => {
 		process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
 	}
 
+	const { novel, i18n, ...rest} = overrides;
+
+	// we want to pass i18n into middleware
+	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
+
 	// Check if the API server is available
 	// if (process.env.NEXT_PUBLIC_API_HOST) {
 	// 	(async () => {
@@ -79,5 +82,5 @@ module.exports = (overrides) => {
 	// 	})();
 	// }
 
-	return { ...overrides, ...nextConfig };
+	return { ...rest, ...nextConfig };
 };
