@@ -1,12 +1,13 @@
 'use client';
 
-import Toggle from 'components/toggle';
+import Toggle from 'components/elements/toggle';
 import { CheckIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
 import * as novel from 'novel/sdk';
 import { useEffect, useState } from 'react';
 
-export default function PricingTableStandard ({ plans: hydratedPlans }) {
+export default function PricingTableStandard (props) {
+	const { plans: hydratedPlans } = props;
 	const [plans, setPlans] = useState(hydratedPlans);
 	const [yearly, setMonthly] = useState(true);
 	const currency = 'USD';
@@ -22,14 +23,14 @@ export default function PricingTableStandard ({ plans: hydratedPlans }) {
 	}, []);
 
 	return (
-		<div className="container mx-auto px-10">
+		<div className="container mx-auto px-5 md:px-10">
 			<div className="flex items-center justify-center gap-5 py-5">
 				<div>Monthly</div>
 				<Toggle checked={yearly} onChange={(e) => setMonthly(e.target.value)}/>
 				<div>Yearly</div>
 			</div>
-			<div className="grid grid-cols-3 gap-1">
-				<div className="bg-stone-100 rounded-l-xl flex flex-col divide-y divide-stone-200">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-1" style={{ minHeight: 583 }}>
+				<div className="bg-stone-100 rounded-xl md:rounded-none md:rounded-l-xl flex flex-col divide-y divide-stone-200">
 					<div className="p-10 flex flex-col gap-10">
 						<div>
 							<div className="text-4xl font-medium">{plans?.[0].name}</div>
@@ -67,7 +68,7 @@ export default function PricingTableStandard ({ plans: hydratedPlans }) {
 						</div>
 					</div>
 				</div>
-				<div className="bg-stone-100 flex flex-col divide-y divide-stone-200">
+				<div className="bg-stone-100 rounded-xl md:rounded-none  flex flex-col divide-y divide-stone-200">
 					<div className="p-10 flex flex-col gap-10">
 						<div>
 							<div className="text-4xl font-medium">{plans?.[1].name}</div>
@@ -80,7 +81,7 @@ export default function PricingTableStandard ({ plans: hydratedPlans }) {
 							</div>
 							<div className="text-sm text-stone-600">{yearly ? `Billed $${plans?.[1].yearly[currency]} yearly. Saves $${(plans?.[1].monthly[currency] * 12) - plans?.[1].yearly[currency]}` : `Total of $${plans?.[1].monthly[currency] * 12} in a year`}</div>
 						</div>
-						<Link href={`/start?plan=${plans?.[1].id}`} className="button w-full">Try for free</Link>
+						<Link href={`/start?plan=${plans?.[1].id}`} className="button action w-full">Try for free</Link>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">
@@ -104,7 +105,7 @@ export default function PricingTableStandard ({ plans: hydratedPlans }) {
 						</div>
 					</div>
 				</div>
-				<div className="bg-stone-900 text-white rounded-r-xl flex flex-col divide-y divide-stone-200">
+				<div className="bg-stone-700 text-white rounded-xl md:rounded-none md:rounded-r-xl  flex flex-col divide-y divide-stone-200">
 					<div className="p-10 flex flex-col gap-10">
 						<div>
 							<div className="text-4xl font-medium">{plans?.[2].name}</div>
@@ -117,7 +118,7 @@ export default function PricingTableStandard ({ plans: hydratedPlans }) {
 							<div className="text-sm text-stone-300">Contact sales for more information
 							</div>
 						</div>
-						<Link href={`/enterprise?plan=${plans?.[2].id}`} className="button w-full">Set up a demo</Link>
+						<Link href={`/enterprise?plan=${plans?.[2].id}`} className="button action w-full">Set up a demo</Link>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">

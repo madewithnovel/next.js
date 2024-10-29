@@ -9,9 +9,7 @@ export default function middleware (middleware) {
 		const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 		let cspHeader = `
 		    default-src 'self';
-            script-src 'self' 'nonce-${nonce}' 'unsafe-eval' js.stripe.com https: http: ${
-	process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''
-};
+            script-src 'self' 'nonce-${nonce}' 'unsafe-eval' js.stripe.com https: http: ${process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''};
 		    style-src 'self' 'unsafe-inline';
 		    connect-src 'self' *.r2.cloudflarestorage.com ${process.env.NEXT_PUBLIC_API_HOST};
 		    frame-src js.stripe.com;

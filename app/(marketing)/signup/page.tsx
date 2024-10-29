@@ -33,3 +33,10 @@ export default async function Page () {
 		</main>
 	);
 }
+
+/**
+ * Remove this if you want to use SSG for this page.
+ *
+ * We are keeping this in the marketing pages to ensure that they are always static.
+ */
+export const dynamic = 'force-static';

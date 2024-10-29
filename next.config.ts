@@ -16,8 +16,17 @@ export default withNovelConfig({
 		title: 'Novel',
 		description: 'Delightful and Secure SaaS Starter Kit',
 	},
+	eslint: {
+		/**
+		 * WARNING
+		 *
+		 * Dangerously allow production builds to successfully complete even
+		 * if your project has type errors.
+ 		 */
+		ignoreDuringBuilds: true,
+	},
 	i18n,
 	/**
-	* Add your custom Next.js configuration here
-	*/
+	 * Add your custom Next.js configuration here
+	 */
 });

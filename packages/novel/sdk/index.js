@@ -2,6 +2,8 @@ import Request from '../request';
 
 const operations = {};
 
+export * as request from '../request';
+
 export async function rpc (operationId, body, options) {
 	if (operations?.[operationId]) {
 		const { method, url } = operations[operationId];

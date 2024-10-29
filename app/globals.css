@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 /**
- * NOTE:
- * Paste the theme you have copied from the shadcn themes page here
+ * Paste the theme you have copied from the shadcn themes page here.
  *
  * Generate new ones here -> https://ui.shadcn.com/themes
  */
@@ -84,3 +83,13 @@
  *   @apply text-primary
  * }
  */
+html {
+  @apply antialiased cursor-default;
+  font-family: 'SF Pro Display', 'SF Pro Icons', Inter, 'Helvetica Neue', 'Helvetica', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Inter var', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}

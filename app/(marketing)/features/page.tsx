@@ -1,8 +1,6 @@
-import CallToActionWithPreview from 'components/call-to-action/with-preview';
-import Faqs from 'components/faqs';
-import FeaturesHighlights from 'components/features/highlights';
-import FeaturesIntegrations from 'components/features/integrations';
-import FeaturesTabbed from 'components/features/tabbed';
+import CallToActionEnding from 'components/marketing/call-to-action/ending';
+import FeatureFocus from 'components/marketing/features/focus';
+import FeatureIntegrations from 'components/marketing/features/integrations';
 
 import Footer from '../footer';
 import Header from '../header';
@@ -11,14 +9,19 @@ export default async function Page () {
 	return (
 		<>
 			<Header/>
-			<main className="flex flex-col gap-20 py-10 mt-40">
-				<FeaturesTabbed/>
-				<FeaturesIntegrations/>
-				<FeaturesHighlights/>
-				<Faqs/>
-				<CallToActionWithPreview/>
+			<main className="flex flex-col gap-10 md:gap-20">
+				<FeatureFocus/>
+				<FeatureIntegrations/>
+				<CallToActionEnding/>
 			</main>
 			<Footer/>
 		</>
 	);
 }
+
+/**
+ * Remove this if you want to use SSG for this page.
+ *
+ * We are keeping this in the marketing pages to ensure that they are always static.
+ */
+export const dynamic = 'force-static';

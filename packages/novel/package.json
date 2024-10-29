@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "@headlessui/react": "2.2.0",
+    "@sentry/nextjs": "8.35.0",
     "@stripe/react-stripe-js": "2.8.1",
     "@stripe/stripe-js": "4.9.0",
-    "@sentry/nextjs": "8.35.0",
     "class-variance-authority": "0.7.0",
     "classnames": "2.5.1",
     "clsx": "2.1.1",
@@ -39,6 +39,7 @@
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.2",
     "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-unicorn": "56.0.0",
     "postcss": "8.4.47",
     "postcss-import": "16.1.0",

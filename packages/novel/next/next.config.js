@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 require('dotenv').config();
+
 if (fs.existsSync(path.resolve(process.cwd(), '.env'))) {
 	require('dotenv').config({ path: path.resolve(process.cwd(), '.env') });
 }
@@ -16,9 +17,6 @@ const nextConfig = {
 	poweredByHeader: false,
 	trailingSlash: false,
 	transpilePackages: ['novel'],
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
 	images: {
 		remotePatterns: [
 			{
@@ -72,8 +70,9 @@ module.exports = (overrides) => {
 		process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
 	}
 	const { novel, i18n, ...rest } = overrides;
-	// we want to pass i18n into middleware
+	// we want to pass novel and i18n into middleware
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
+	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
 	return { ...rest, ...nextConfig };
 	// return withSentryConfig({ ...rest, ...nextConfig }, SentryConfig);
 };

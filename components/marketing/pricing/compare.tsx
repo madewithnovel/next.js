@@ -2,7 +2,7 @@ import { CheckIcon, MinusIcon } from 'lucide-react';
 
 export default function PricingComparison () {
 	return (
-		<div className="container flex flex-col mx-auto p-10">
+		<div className="container flex flex-col mx-auto py-10 px-5 md:px-32">
 			<div className="grid grid-cols-5 gap-5 text-lg">
 				<div className="col-span-2 py-5">
 					<div className="text-xl font-medium">Compare Plans</div>

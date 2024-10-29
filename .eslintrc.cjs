@@ -14,6 +14,8 @@ module.exports = {
 		'jsx-a11y',
 		'react',
 		'react-hooks',
+		'simple-import-sort',
+		'import',
 	],
 	env: {
 		node: true,
@@ -31,8 +33,14 @@ module.exports = {
 		'unicorn/filename-case': ['error', { case: 'kebabCase' }],
 		'no-inner-declarations': ['off'],
 		'object-curly-newline': ['off'],
+		'import/prefer-default-export': ['off'],
 		'import/no-extraneous-dependencies': ['off'],
+		'import/first': 'error',
+		'import/newline-after-import': 'error',
+		'import/no-duplicates': 'error',
+		'simple-import-sort/imports': ['error'],
 		'@typescript-eslint/no-require-imports': ['off'],
+		'@typescript-eslint/no-var-requires': ['off'],
 	},
 	overrides: [
 		{
@@ -44,13 +52,11 @@ module.exports = {
 				ecmaVersion: 12,
 				sourceType: 'module',
 			},
-			plugins: ['import'],
+			plugins: [],
 			extends: ['next'],
 			rules: {
-				'@typescript-eslint/no-var-requires': ['off'],
 				'react/jsx-indent': ['error', 'tab'],
 				'react/jsx-indent-props': ['error', 'tab'],
-				'import/prefer-default-export': ['off'],
 				'react/jsx-props-no-spreading': ['off'],
 				'react/no-array-index-key': ['warn'],
 				'react/no-unescaped-entities': ['warn'],

@@ -1,25 +1,25 @@
-import { BoxIcon } from 'lucide-react';
+import { LibraryBigIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer () {
 	return (
 		<footer className="py-10 flex flex-col gap-10 mt-10 mb-20 footer">
-			<div className="container flex gap-10 mx-auto px-10">
-				<div className="w-1/4">
+			<div className="container flex gap-10 mx-auto px-10 md:px-20">
+				<div className="w-1/4 hidden md:block">
 					<Link href="/" className="flex items-center gap-2 text-xl font-medium">
-						<BoxIcon/>
+						<LibraryBigIcon/>
 						Novel
 					</Link>
 					<p className="text-stone-600 mt-5">
-						With Novel, you’ve got all the flexibility to work when, where and how it’s best for you.
+						With Novel, you’ve got all the flexibility to get the best out of your business.
 					</p>
 				</div>
-				<div className="grid grid-cols-4 flex-1 gap-10">
+				<div className="grid grid-cols-2 md:grid-cols-4 flex-1 gap-10">
 					<div>
 						<div className="font-medium mb-5">Product</div>
 						<div>
 							<div className="flex flex-col gap-2">
-								<Link href="/">Chat</Link>
+								<Link href="/">CRM</Link>
 								<Link href="/">Workspaces</Link>
 								<Link href="/">Pricing</Link>
 								<Link href="/">API Docs</Link>
@@ -29,12 +29,11 @@ export default function Footer () {
 					<div>
 						<div className="font-medium mb-5">Features</div>
 						<div className="flex flex-col gap-2">
-							<Link href="/">Messaging</Link>
 							<Link href="/">Billing</Link>
 							<Link href="/">Files</Link>
-							<Link href="/">Collaboration</Link>
-							<Link href="/">Video Calls</Link>
 							<Link href="/">Workspaces</Link>
+							<Link href="/">Payment Gateway</Link>
+							<Link href="/">Collaboration</Link>
 						</div>
 					</div>
 					<div>
@@ -57,18 +56,18 @@ export default function Footer () {
 					</div>
 				</div>
 			</div>
-			<hr/>
-			<div className="container flex gap-10 mx-auto px-10 text-sm">
+			<hr className="hidden md:block"/>
+			<div className="hidden md:flex container gap-10 mx-auto px-20 text-sm">
 				<div className="flex-1">
 					<p className="text-stone-600">
-						Copyright &copy; 2024 Novel by Marathon Digital
+						Copyright &copy; 2025 Novel by Marathon Digital
 					</p>
 				</div>
 				<div className="flex divide-x divide-stone-200">
-					<Link href="/legal/privacy" className="text-stone-600 px-10">Privacy</Link>
-					<Link href="/legal/terms" className="text-stone-600 px-10">Terms</Link>
-					<Link href="/legal/license" className="text-stone-600 px-10">License</Link>
-					<Link href="/legal/cookies" className="text-stone-600 pl-10">Cookies</Link>
+					<Link href="/legal/privacy" className="px-5">Privacy</Link>
+					<Link href="/legal/terms" className="px-5">Terms</Link>
+					<Link href="/legal/license" className="px-5">License</Link>
+					<Link href="/legal/cookies" className="px-5">Cookies</Link>
 				</div>
 			</div>
 		</footer>

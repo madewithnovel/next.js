@@ -1,15 +1,7 @@
 .announcement {
-    @apply bg-stone-900 p-5 text-stone-300 text-center fixed w-full z-30;
-
-    & ~ header, & ~ main {
-        @apply mt-16;
-    }
-
-    & ~ header ~ main, & ~ header ~ div {
-        @apply mt-40;
-    }
+    @apply bg-zinc-900 p-2 text-sm text-zinc-300 text-center w-full z-30 cursor-default;
 
     a {
-        @apply text-stone-300 hover:text-white font-semibold;
+        @apply text-zinc-300 hover:text-white underline underline-offset-2;
     }
 }

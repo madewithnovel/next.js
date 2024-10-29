@@ -1,6 +1,7 @@
 - [x] integrate shadcn workflow
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
+- [ ] marketing pages
 - [ ] login with social
 - [ ] usesession hook
 - [ ] load openapi
@@ -16,6 +17,7 @@ UI
 - [ ] https://magicui.design/
 - [ ] dashboard structure
 - [ ] upfront payment UI flow
+- [ ] analytics
 - [ ] feature gate middleware instance.feature(['feature1', 'feature2']) via session.permissions
 - [ ] frontpage remove app/context
 - [ ] pricing page

@@ -1,14 +1,10 @@
-import CallToActionWithPreview from 'components/marketing/call-to-action/with-preview';
-import Faqs from 'components/marketing/faqs';
-// import PricingTableStandard from 'components/marketing/pricing-table/standard';
-import FeaturesFocus from 'components/marketing/features/focus';
-import FeaturesHighlights from 'components/marketing/features/highlights';
-import FeaturesIntegrations from 'components/marketing/features/integrations';
-import FeaturesMetrics from 'components/marketing/features/metrics';
-import FeaturesTabbed from 'components/marketing/features/tabbed';
-import Hero from 'components/marketing/hero';
+import CallToActionEnding from 'components/marketing/call-to-action/ending';
+import FaqsAccordion from 'components/marketing/faqs/accordion';
+import FeatureFocus from 'components/marketing/features/focus';
+import FeatureIntegrations from 'components/marketing/features/integrations';
+import HeroCenter from 'components/marketing/hero/center';
+import PricingTableStandard from 'components/marketing/pricing/table';
 import TestimonialMasonry from 'components/marketing/testimonial/masonry';
-import TrustHorizontal from 'components/marketing/trust/horizontal';
 
 import Footer from './footer';
 import Header from './header';
@@ -23,19 +19,23 @@ export default function Home () {
 	return (
 		<>
 			<Header/>
-			<main className="flex flex-col gap-20 py-10 mt-20">
-				<Hero/>
-				<FeaturesHighlights/>
-				<TrustHorizontal/>
-				<FeaturesTabbed/>
-				<FeaturesMetrics/>
-				<FeaturesIntegrations/>
-				<FeaturesFocus/>
-				<TestimonialMasonry/>
-				<Faqs/>
-				<CallToActionWithPreview/>
+			<main className="flex flex-col gap-10 md:gap-20">
+				<HeroCenter />
+				<FeatureFocus />
+				<FeatureIntegrations />
+				<PricingTableStandard />
+				<TestimonialMasonry />
+				<FaqsAccordion/>
+				<CallToActionEnding />
 			</main>
 			<Footer/>
 		</>
 	);
 }
+
+/**
+ * Remove this if you want to use SSG for this page.
+ *
+ * We are keeping this in the marketing pages to ensure that they are always static.
+ */
+export const dynamic = 'force-static';

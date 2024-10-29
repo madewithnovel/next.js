@@ -4,7 +4,7 @@ const HISTORY_LIMIT = 20;
 const passthrough = { headers: {} };
 
 const isClient = typeof window !== 'undefined';
-const agent = isClient ? undefined : new require('https').Agent({ rejectUnauthorized: false });
+const agent = isClient ? undefined : (await import('https')).Agent({ rejectUnauthorized: false });
 
 const history = [];
 
