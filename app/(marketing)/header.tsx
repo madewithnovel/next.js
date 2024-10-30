@@ -1,14 +1,24 @@
+'use client';
+
 import AnnouncementBanner from 'components/marketing/announcement/banner';
 import { ChevronDownIcon, LibraryBigIcon, MenuIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Header () {
+	const [mobileNavOpen, toggle] = useState(false);
+
+	function toggleNav (state) {
+		document.documentElement.style.overflow = state === true ? 'hidden' : 'auto';
+		toggle(state);
+	}
+
 	return (
 		<>
 			<AnnouncementBanner>
 				Novel 2025 &middot; Amsterdam and Berlin from June 7 – 9 to <Link href="/">see what’s coming next →</Link>
 			</AnnouncementBanner>
-			<header className="block sticky top-0 md:hidden z-20 w-full bg-white">
+			<header className="block sticky top-0 md:hidden z-20 w-full bg-white relative">
 				<div className="p-5 flex items-center justify-between">
 					<div>
 						<Link href="/" className="flex items-center gap-2 text-xl">
@@ -17,11 +27,49 @@ export default function Header () {
 						</Link>
 					</div>
 					<div>
-						<button className="button">
-							<MenuIcon />
+						<button className="button" onClick={() => toggleNav(!mobileNavOpen)}>
+							<MenuIcon/>
 						</button>
 					</div>
 				</div>
+				{mobileNavOpen && (
+					<div className="absolute h-screen w-full z-30 bg-white/80 backdrop-blur">
+						<nav className="flex flex-col *:w-full items-center p-5" onClick={() => toggleNav(!mobileNavOpen)}>
+							<Link href="/features" className="p-5">Features</Link>
+							<Link href="/pricing" className="p-5">Pricing</Link>
+							<div className="group py-5">
+								<Link href="/features" className="p-5 text-nowrap flex-nowrap ">
+									Resources <ChevronDownIcon className="inline-flex"/>
+								</Link>
+								<div className="mt-5">
+									<div className="col-span-2 grid grid-cols-3">
+										<div className="flex flex-col">
+											<div className="font-medium px-5 py-2">Team</div>
+											<Link href="/" className="px-5 py-1">Marketing</Link>
+											<Link href="/" className="px-5 py-1">Leaders</Link>
+											<Link href="/" className="px-5 py-1">IT</Link>
+										</div>
+										<div className="flex flex-col">
+											<div className="font-medium px-5 py-2">Learn more</div>
+											<Link href="/" className="px-5 py-1">Blog</Link>
+											<Link href="/" className="px-5 py-1">Events and webinars</Link>
+											<Link href="/" className="px-5 py-1">Guides</Link>
+											<Link href="/" className="px-5 py-1">Customer stories</Link>
+										</div>
+										<div className="flex flex-col">
+											<div className="font-medium px-5 py-2">Get help</div>
+											<Link href="/" className="px-5 py-1">Developer Resources</Link>
+											<Link href="/" className="px-5 py-1">Help Center</Link>
+											<Link href="/" className="px-5 py-1">Community</Link>
+										</div>
+									</div>
+								</div>
+							</div>
+							<Link href="/login" className="button">Sign-in</Link>
+							<Link href="/signup" className="button action">Get Started</Link>
+						</nav>
+					</div>
+				)}
 			</header>
 			<header className="hidden md:block px-20 bg-white sticky top-0 w-full z-20">
 				<div className="container py-1 px-20 mx-auto flex items-center justify-between gap-10">
@@ -73,7 +121,7 @@ export default function Header () {
 						<Link href="/login" className="button">Sign-in</Link>
 					</nav>
 					<div>
-						<Link href="/" className="button action">Get Started</Link>
+						<Link href="/signup" className="button action">Get Started</Link>
 					</div>
 				</div>
 			</header>
