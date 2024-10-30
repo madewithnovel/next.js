@@ -1,4 +1,4 @@
-export async function setup () {
+export async function setup (exportedOutside) {
 	const operations = {};
 	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
 		try {
@@ -28,8 +28,8 @@ export async function setup () {
 						}
 					});
 				}
-				Object.entries(paths).forEach(([url, methods]) => {
-					Object.entries(methods).forEach(async ([method, op]) => {
+				for (const [url, methods] of Object.entries(paths)) {
+					for (const [method, op] of Object.entries(methods)) {
 						if (op?.requestBody?.content?.['application/json']?.schema) {
 							const schema = op.requestBody.content['application/json'].schema;
 							if (typeof window === 'undefined') {
@@ -41,16 +41,18 @@ export async function setup () {
 								fs.writeFileSync(path.join(process.cwd(), 'app/api/requests', `${op.operationId.replace(/_/g, '-')}.ts`), compiledZod);
 							}
 						}
-						operations[op.operationId] = {
-							url,
-							method,
-							...op,
-						};
-						operations[op.operationId.toLowerCase()] = operations[op.operationId];
-						operations[op.operationId.replace(method, '')] = operations[op.operationId];
-						operations[op.operationId.replace(method, '').toLowerCase()] = operations[op.operationId];
-					});
-				});
+						if (!url.includes('/webhook')) {
+							operations[op.operationId] = {
+								url,
+								method,
+								...op,
+							};
+							operations[op.operationId.toLowerCase()] = operations[op.operationId];
+							operations[op.operationId.replace(method, '')] = operations[op.operationId];
+							operations[op.operationId.replace(method, '').toLowerCase()] = operations[op.operationId];
+						}
+					}
+				}
 			} else {
 				console.error('[DEVELOPMENT] Failed to fetch from Server. Please turn on the Novel server and try again. Else you will not be able to get the latest API operations from development.');
 			}
@@ -59,9 +61,7 @@ export async function setup () {
 			console.error(error);
 		}
 	} else {
-		const data = await import('app/api/schema.json');
-		// ON NPM RUN BUILD await import('app/api/schema.json', {with: {type: 'json'}});
-		const { paths } = data.default || data;
+		const { paths } = exportedOutside ?? {};
 		Object.entries(paths).forEach(([url, methods]) => {
 			Object.entries(methods).forEach(async ([method, op]) => {
 				if (!url.includes('/webhook')) {

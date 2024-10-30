@@ -3,16 +3,11 @@ import Request from '../request';
 let operations = {};
 
 // run this here for SSR
-require('./setup').setup().then((ops) => (operations = ops));
+operations = await require('./setup').setup(require('app/api/schema.json'));
 
 export * as request from '../request';
 
 async function rpcHandler (operationId, ...rest) {
-	if (Object.keys(operations).length === 0 && process.env.NODE_ENV === 'development') {
-		/// we are in client and only in development
-		operations = await require('./setup').setup();
-		// store these in local storage if possible
-	}
 	let body;
 	let options;
 	if (rest.length === 1) {

@@ -6,7 +6,7 @@
 - [x] sdk
 - [x] sdk with zod validation
 - [x] remove webhook and unstable from sdk
-- [ ] npm run build
+- [x] npm run build
 - [ ] header navigation
 - [x] pricing hydrate
 - [ ] login with social

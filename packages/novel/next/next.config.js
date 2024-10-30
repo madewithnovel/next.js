@@ -73,7 +73,7 @@ module.exports = (overrides) => {
 	// we want to pass novel and i18n into middleware
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
-	require('../sdk/setup').setup().then();
+	require('../sdk/setup').setup(require('app/api/schema.json')).then();
 	return { ...rest, ...nextConfig };
 	// return withSentryConfig({ ...rest, ...nextConfig }, SentryConfig);
 };
