@@ -1,0 +1,41 @@
+.input {
+	@apply relative z-0 border-zinc-200 focus:ring-violet-600 inline-flex rounded-sm shadow-sm px-3 py-2 text-zinc-900 placeholder:text-zinc-400 focus:ring-2 focus:ring-inset;
+
+	&.md {
+		@apply px-3 py-1.5;
+	}
+
+	&:is(select) {
+		@apply text-left pr-10 font-medium text-zinc-700 cursor-pointer;
+
+		&.md {
+			@apply pr-8;
+		}
+	}
+
+	/* COMBO BOX */
+
+	&:is(div) {
+		@apply border border-zinc-200 focus:ring-violet-600 whitespace-normal;
+
+		&.combo {
+			@apply flex items-center gap-1 flex-wrap px-1.5;
+
+			.item {
+				@apply inline-flex items-center bg-zinc-200 rounded-full text-sm px-2 py-0.5;
+			}
+		}
+
+		& > input {
+			@apply inline-flex border-none outline-none focus:ring-0 px-2 py-0;
+
+			&:disabled {
+				@apply hidden;
+			}
+		}
+	}
+
+	&.error {
+		@apply border-red-500 focus:ring-2 focus:ring-red-600;
+	}
+}

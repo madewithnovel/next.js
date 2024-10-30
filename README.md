@@ -1,37 +1,42 @@
-- [x] integrate shadcn workflow
+- [x] integrate shadcn workflow https://magicui.design/
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
 - [x] marketing pages
+- [x] responsive marketing
 - [x] load openapi
 - [x] sdk
 - [x] sdk with zod validation
 - [x] remove webhook and unstable from sdk
 - [x] npm run build
 - [x] header navigation
-- [x] pricing hydrate
-- [ ] login with social
-- [ ] login with password
+- [x] pricing page with hydration
+- [x] login with social
+- [x] login with password
+- [x] login with passwordless
+- [x] forget password
+- [x] reset password
+- [x] verify email
+- [x] login error flow
+- [x] login require registration error flow
 - [ ] sign up with password
+- [ ] sign up with upfront payment
+- [ ] sign up with social
+- [ ] sign up with specific plan
+- [ ] integrate shadcn button to button
+- [ ] integrate shadcn button to input
+- [ ] create theme - typography, color rule, spacing, border, shadow on medusa
 - [ ] useSession hook
+- [ ] useAuthorized hook
+- [ ] useFeature hook
 
 UI
-- [ ] medusa UI https://medusajs.com/recap/
-- [ ] responsive marketing
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
 - [ ] 500
-- [ ] https://magicui.design/
 - [ ] dashboard structure
-- [ ] upfront payment UI flow
-- [ ] analytics
 - [ ] feature gate middleware instance.feature(['feature1', 'feature2']) via session.permissions
-- [ ] frontpage remove app/context
-- [ ] pricing page
-- [ ] login with UI flow
-- [ ] login with social UI flow
-- [ ] signup UI flow
-- [ ] forget password
+- [x] frontpage remove app/context
 - [ ] projects list
 - [ ] projects create
 - [ ] projects update
@@ -43,12 +48,8 @@ UI
 - [ ] organizations invite
 - [ ] member manage
 - [ ] member revoke
-- [ ] signup UI flow for social
-- [ ] login error flow
-- [ ] login require registration error flow
 - [ ] make modal work
 - [ ] dropdown component
-- [ ] button component
 - [ ] upload / attach file
 - [ ] make modal do overflow
 - [ ] api keys
@@ -57,6 +58,7 @@ UI
 - [ ] localization test
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
+- [ ] analytics
 - [ ] playwright
 
 Devtools
@@ -78,6 +80,7 @@ v1.1
 - [ ] more feature components
 - [ ] infer rpc route types
 - [ ] new dynamic page, auto hook data with server/api/web/* route
+- [ ] /login/confirm - resend confirmation email if not received
 
 
 non react 19

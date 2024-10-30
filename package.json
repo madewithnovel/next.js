@@ -7,14 +7,9 @@
     "app"
   ],
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev --turbo -p 7630",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },
-  "dependencies": {
-    "@radix-ui/react-alert-dialog": "^1.1.2",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-tooltip": "^1.1.3"
   }
 }

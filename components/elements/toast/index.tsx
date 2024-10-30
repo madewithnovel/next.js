@@ -8,7 +8,13 @@ import toast, { Toaster } from 'react-hot-toast';
 
 export const dismiss = () => toast.dismiss();
 
-export const notify = (type, title, message, options = null) => toast.custom((t) => {
+export const ok = (message, title = null, options = null) => notify('ok', message, title, options);
+
+export const warn = (message, title = null, options = null) => notify('warn', message, title, options);
+
+export const error = (message, title = null, options = null) => notify('error', message, title, options);
+
+export const notify = (type, message, title = null, options = null) => toast.custom((t) => {
 	if (type && !title && !message) { // allow shorthand
 		message = type;
 	}

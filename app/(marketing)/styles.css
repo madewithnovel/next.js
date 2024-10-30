@@ -12,3 +12,12 @@
 .container {
 	max-width: 1280px;
 }
+
+a {
+	@apply text-blue-600 hover:text-blue-800;
+
+	/* not button */
+	&:not(.button) {
+		@apply active:text-purple-500;
+	}
+}

@@ -7,15 +7,35 @@ operations = await require('./setup').setup(require('app/api/schema.json'));
 
 export * as request from '../request';
 
+export function path (pathname = '/') {
+	const url = new URL(process.env.NEXT_PUBLIC_API_HOST + pathname);
+	return url.toString();
+}
+
 async function rpcHandler (operationId, ...rest) {
+	let params = rest?.params ?? [];
+	let options = {};
 	let body;
-	let options;
 	if (rest.length === 1) {
-		options = rest[0];
-	}
-	if (rest.length > 1) {
 		body = rest[0];
-		options = rest[1];
+	}
+	if (rest.length === 2) {
+		if (Array.isArray(rest[0]) || typeof rest[0] !== 'object') {
+			params = rest[0];
+			body = rest[1];
+		} else {
+			params = [];
+			body = rest[0];
+			options = rest[1];
+		}
+	}
+	if (rest.length === 3) {
+		params = rest[0];
+		body = rest[1];
+		options = rest[2];
+	}
+	if (!Array.isArray(params)) {
+		params = [params];
 	}
 	if (operations?.[operationId]) {
 		const { method, url } = operations[operationId];
@@ -28,7 +48,15 @@ async function rpcHandler (operationId, ...rest) {
 				}
 				body = data;
 			}
-			return Request(url, { method: method.toUpperCase(), body, ...options });
+			let urlWithParams = url;
+			let touched = 0;
+			url.split('/').forEach((part) => {
+				if (part.startsWith('{') && part.endsWith('}')) {
+					urlWithParams = urlWithParams.replace(part, params[touched]);
+					touched++;
+				}
+			});
+			return Request(urlWithParams, { method: method.toUpperCase(), body, ...options });
 		} catch (error) {
 			console.error(`RPC error for ${operationId}`, error);
 			throw error;
