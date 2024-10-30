@@ -1,15 +1,15 @@
 'use client';
 
+import { redirect } from 'next/navigation';
 import * as novel from 'novel/sdk';
-import {useForm} from 'react-hook-form';
-import {redirect} from 'next/navigation';
+import { useForm } from 'react-hook-form';
 
-export default function Form() {
-	const {register, handleSubmit} = useForm();
+export default function Form () {
+	const { register, handleSubmit } = useForm();
 
-	async function submit(data) {
-		const {email} = data;
-		await novel.auth.passwordless({email});
+	async function submit (data) {
+		const { email } = data;
+		await novel.rpc.AuthPasswordless({ email });
 		redirect('/login/passwordless/ok');
 	}
 

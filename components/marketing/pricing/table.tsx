@@ -6,7 +6,7 @@ import Link from 'next/link';
 import * as novel from 'novel/sdk';
 import { useEffect, useState } from 'react';
 
-export default function PricingTableStandard (props) {
+export default function PricingTable (props) {
 	const { plans: hydratedPlans } = props;
 	const [plans, setPlans] = useState(hydratedPlans);
 	const [yearly, setMonthly] = useState(true);
@@ -15,7 +15,7 @@ export default function PricingTableStandard (props) {
 	useEffect(() => {
 		(async () => {
 			if (!plans) {
-				const response = await novel.request.get('/api/v1/plans');
+				const response = await novel.rpc.SubscriptionsPlans();
 				const { plans } = await response.json();
 				setPlans(plans);
 			}
@@ -44,7 +44,7 @@ export default function PricingTableStandard (props) {
 							<div
 								className="text-sm text-stone-600">{yearly ? `Billed $${plans?.[0].yearly[currency]} yearly. Saves $${(plans?.[0].monthly[currency] * 12) - plans?.[0].yearly[currency]}` : `Total of $${plans?.[0].monthly[currency] * 12} in a year`}</div>
 						</div>
-						<Link href={`/start?plan=${plans?.[0].id}`} className="button action w-full">Try for free</Link>
+						<Link href={`/signup?plan=${plans?.[0].id}`} className="button action w-full">Try for free</Link>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">
@@ -81,7 +81,7 @@ export default function PricingTableStandard (props) {
 							</div>
 							<div className="text-sm text-stone-600">{yearly ? `Billed $${plans?.[1].yearly[currency]} yearly. Saves $${(plans?.[1].monthly[currency] * 12) - plans?.[1].yearly[currency]}` : `Total of $${plans?.[1].monthly[currency] * 12} in a year`}</div>
 						</div>
-						<Link href={`/start?plan=${plans?.[1].id}`} className="button action w-full">Try for free</Link>
+						<Link href={`/signup?plan=${plans?.[1].id}`} className="button action w-full">Try for free</Link>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">
@@ -118,7 +118,7 @@ export default function PricingTableStandard (props) {
 							<div className="text-sm text-stone-300">Contact sales for more information
 							</div>
 						</div>
-						<Link href={`/enterprise?plan=${plans?.[2].id}`} className="button action w-full">Set up a demo</Link>
+						<Link href={`/signup?plan=${plans?.[2].id}`} className="button action w-full">Set up a demo</Link>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">

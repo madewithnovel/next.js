@@ -1,5 +1,7 @@
 'use client';
 
+import 'novel/sdk';
+
 import store from 'novel/store';
 import { useEffect } from 'react';
 

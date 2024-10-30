@@ -95,7 +95,7 @@ export default async function Page () {
 
 							<p>
 								If you have any questions or suggestions regarding this License, please contact us at
-								license@madewithnovel.com.
+								license@novel.dev.
 							</p>
 
 							<p className="text-lg text-zinc-400">Last updated at January 24, 2024</p>

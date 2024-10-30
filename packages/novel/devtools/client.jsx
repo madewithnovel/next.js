@@ -38,7 +38,7 @@ export default function Index ({ requests }) {
 
 	return <div
 		onClick={() => open(!isOpen)}
-		className="hidden sm:fixed z-50 bottom-0 left-0 w-full bg-white text-xs border-t border-stone-200">
+		className="hidden md:block fixed z-50 bottom-0 left-0 w-full bg-white text-xs border-t border-stone-200">
 		<div className="px-5 flex items-center justify-between">
 			<div className="p-2">Requests</div>
 			<div className="p-2">Jobs</div>

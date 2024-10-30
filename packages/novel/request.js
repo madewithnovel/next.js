@@ -4,7 +4,6 @@ const HISTORY_LIMIT = 20;
 const passthrough = { headers: {} };
 
 const isClient = typeof window !== 'undefined';
-const agent = isClient ? undefined : (await import('https')).Agent({ rejectUnauthorized: false });
 
 const history = [];
 
@@ -27,6 +26,7 @@ function setRequestContext ({ headers, cookies }) {
 }
 
 async function request (path, { method = 'GET', headers, body, next, ...overrides } = {}) {
+	const agent = isClient ? undefined : (await import('https')).Agent({ rejectUnauthorized: false });
 	if (!isClient) {
 		const { headers: scopedHeaders, cookies } = require('next/headers');
 		setRequestContext({ headers: scopedHeaders(), cookies: cookies() });

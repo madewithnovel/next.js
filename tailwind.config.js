@@ -1,6 +1,8 @@
-import withNovelTailwindDefaults from 'novel/next/tailwind.config';
+'use strict';
 
-export default withNovelTailwindDefaults({
+const withNovelTailwindDefaults = require('novel/next/tailwind.config');
+
+module.exports = withNovelTailwindDefaults({
 	/**
 	 * Add your custom Tailwind configuration here.
 	 *

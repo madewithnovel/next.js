@@ -1,13 +1,13 @@
-import AnnouncementFullwidth from 'components/marketing/announcement/fullwidth';
+import AnnouncementBanner from 'components/marketing/announcement/banner';
 import { ChevronDownIcon, LibraryBigIcon, MenuIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Header () {
 	return (
 		<>
-			<AnnouncementFullwidth>
+			<AnnouncementBanner>
 				Novel 2025 &middot; Amsterdam and Berlin from June 7 – 9 to <Link href="/">see what’s coming next →</Link>
-			</AnnouncementFullwidth>
+			</AnnouncementBanner>
 			<header className="block sticky top-0 md:hidden z-20 w-full bg-white">
 				<div className="p-5 flex items-center justify-between">
 					<div>

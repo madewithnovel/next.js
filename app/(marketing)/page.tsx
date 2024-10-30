@@ -2,9 +2,10 @@ import CallToActionEnding from 'components/marketing/call-to-action/ending';
 import FaqsAccordion from 'components/marketing/faqs/accordion';
 import FeatureFocus from 'components/marketing/features/focus';
 import FeatureIntegrations from 'components/marketing/features/integrations';
-import HeroCenter from 'components/marketing/hero/center';
-import PricingTableStandard from 'components/marketing/pricing/table';
+import HeroCenterVariant from 'components/marketing/hero/center';
+import PricingTable from 'components/marketing/pricing/table';
 import TestimonialMasonry from 'components/marketing/testimonial/masonry';
+import * as novel from 'novel/sdk';
 
 import Footer from './footer';
 import Header from './header';
@@ -15,15 +16,16 @@ import Header from './header';
  * Always be careful adding dynamic data to your marketing pages. This can lead to these
  * pages being opted out of SSG which can lead to performance issues with lighthouse scores.
  */
-export default function Home () {
+export default async function Home () {
+	const plans = await getPage();
 	return (
 		<>
 			<Header/>
 			<main className="flex flex-col gap-10 md:gap-20">
-				<HeroCenter />
+				<HeroCenterVariant />
 				<FeatureFocus />
 				<FeatureIntegrations />
-				<PricingTableStandard />
+				<PricingTable plans={plans} />
 				<TestimonialMasonry />
 				<FaqsAccordion/>
 				<CallToActionEnding />
@@ -31,6 +33,17 @@ export default function Home () {
 			<Footer/>
 		</>
 	);
+}
+
+/**
+ * This is an example of adding a hydration function to the marketing page
+ */
+async function getPage () {
+	const response = await novel.rpc.SubscriptionsPlans();
+	if (response.ok) {
+		const { plans } = await response.json();
+		return plans;
+	}
 }
 
 /**

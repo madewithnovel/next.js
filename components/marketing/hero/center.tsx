@@ -1,14 +1,14 @@
-import AnnouncementPill from 'components/marketing/announcement/pill';
+import AnnouncementSmall from 'components/marketing/announcement/small';
 import TestimonialLogos from 'components/marketing/testimonial/logos';
 import Link from 'next/link';
 
-export default function HeroCenter () {
+export default function HeroCenterVariant () {
 	return (
 		<div className="py-10 md:py-20 bg-zinc-50 border-b border-zinc-200">
 			<div className="container px-5 md:px-20 mx-auto flex flex-col gap-5 items-start md:items-center text-left md:text-center">
-				<AnnouncementPill href="/">
+				<AnnouncementSmall href="/">
 					Announcing our next round of funding. Read more →
-				</AnnouncementPill>
+				</AnnouncementSmall>
 
 				<h1 className="text-4xl md:text-5xl font-medium">
 					Modern, Secure, and Reliable <br className="hidden md:block"/>

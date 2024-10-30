@@ -1,11 +1,18 @@
 - [x] integrate shadcn workflow
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
-- [ ] marketing pages
+- [x] marketing pages
+- [x] load openapi
+- [x] sdk
+- [x] sdk with zod validation
+- [x] remove webhook and unstable from sdk
+- [ ] npm run build
+- [ ] header navigation
+- [x] pricing hydrate
 - [ ] login with social
-- [ ] usesession hook
-- [ ] load openapi
-- [ ] sdk
+- [ ] login with password
+- [ ] sign up with password
+- [ ] useSession hook
 
 UI
 - [ ] medusa UI https://medusajs.com/recap/
@@ -65,6 +72,13 @@ Devtools
 - [ ] auth/session info
 - [ ] utilization
 
+v1.1
+- [ ] contact page
+- [ ] newsletter subscription
+- [ ] more feature components
+- [ ] infer rpc route types
+- [ ] new dynamic page, auto hook data with server/api/web/* route
+
 
 non react 19
 - @stripe/react-stripe-js
@@ -72,3 +86,7 @@ non react 19
 - react-hook-form
 - react-hot-toast
 - react-tooltip
+
+
+caveats
+- need to restart both server and client to get new schemas

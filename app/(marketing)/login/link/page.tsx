@@ -20,7 +20,7 @@ export default async function Page () {
 				<hr/>
 				<div>
 					If you don’t see your login link be sure to check your spam filter for an email from
-					noreply@madewithnovel.com
+					noreply@novel.dev
 				</div>
 			</div>
 		</div>
