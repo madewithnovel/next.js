@@ -1,7 +1,6 @@
 'use client';
 
 import cx from 'classnames';
-import AlertInfo from 'components/elements/alerts/info';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import { TriangleAlertIcon } from 'lucide-react';
@@ -57,9 +56,17 @@ export default function Form () {
 				</>
 			)}
 			{submitted && (
-				<AlertInfo title="Check your email for your reset link">
-					<p>We’ve sent a link to {watch('email')} that works only for this browser. The link expires shortly, so please click on it soon.</p>
-				</AlertInfo>
+				<div className="bg-white flex flex-col items-center justify-center">
+					<div className="max-w-md w-full space-y-8">
+						<div className="space-y-2">
+							<h1 className="text-3xl font-medium tracking-tight text-black">Check your email for your reset link.</h1>
+						</div>
+						<hr/>
+						<p className="text-zinc-600">
+							We’ve sent a link to {watch('email')} that works only for this browser. The link expires shortly, so please click on it soon.
+						</p>
+					</div>
+				</div>
 			)}
 		</>
 	);

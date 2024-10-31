@@ -1,22 +1,18 @@
-- [x] integrate shadcn elements input
-- [x] integrate shadcn elements button
-- [x] mobile web login
-- [ ] marketing page needs to be cleaner and smaller?
-- [ ] customize the theme
-- [ ] sign up with password
-- [ ] sign up with upfront payment
-- [ ] sign up with social
-- [ ] sign up with specific plan
-- [ ] integrate shadcn button to button
-- [ ] integrate shadcn button to input
-- [ ] create theme - typography, color rule, spacing, border, shadow on medusa
+- [x] sign up with password
+- [x] welcome page
+- [x] sign up with upfront payment
+- [x] sign up with social
+- [ ] plan selector in upfront payment
+- [ ] card design
+- [ ] sign up with specific plan with trial
+- [ ] sign up with specific plan with upfront payment
 - [ ] useSession hook
 - [ ] useAuthorized hook
 - [ ] useFeature hook
-- [ ] build dashboard using shadcn conponents
+- [ ] build dashboard using shadcn components
 
 UI
-- [x] integrate shadcn workflow https://magicui.design/
+- [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
 - [x] marketing pages
@@ -37,6 +33,9 @@ UI
 - [x] login error flow
 - [x] login require registration error flow
 - [x] frontpage remove app/context
+- [x] integrate shadcn button to button
+- [x] integrate shadcn button to input
+- [x] mobile web login
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
@@ -66,6 +65,8 @@ UI
 - [ ] test csp
 - [ ] analytics
 - [ ] playwright
+- [ ] customize the theme
+- [ ] create theme - typography, color rule, spacing, border, shadow on medusa
 
 Devtools
 - [ ] request list client/server
@@ -81,6 +82,7 @@ Devtools
 - [ ] utilization
 
 v1.1
+- [ ] test dark mode
 - [ ] contact page
 - [ ] newsletter subscription
 - [ ] more feature components

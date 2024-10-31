@@ -56,9 +56,16 @@ export default function Form () {
 				</>
 			)}
 			{submitted && (
-				<div className="flex flex-col gap-2">
-					<h4 className="text-xl font-medium">Check your email for your magic link.</h4>
-					<p>We’ve sent an authentication link to {watch('email')} that works only for this browser. The link expires shortly, so please click on it soon.</p>
+				<div className="bg-white flex flex-col items-center justify-center">
+					<div className="max-w-md w-full space-y-8">
+						<div className="space-y-2">
+							<h1 className="text-3xl font-medium tracking-tight text-black">Check your email for your magic link.</h1>
+						</div>
+						<hr/>
+						<p className="text-zinc-600">
+							We’ve sent an authentication link to {watch('email')} that works only for this browser. The link expires shortly, so please click on it soon.
+						</p>
+					</div>
 				</div>
 			)}
 		</>

@@ -80,7 +80,7 @@ export default function Form () {
 				Password
 				<Link href="/login/forget">Forgot your password?</Link>
 			</div>
-			<Input type="password" className={cx({ error: !!errors.email || !!errors.password })} {...register('password')} />
+			<Input type="password" className={cx({ error: !!errors.email || !!errors.password })} {...register('password', { required: true })} />
 			{errors.email && (
 				<div className="text-red-500 text-sm flex gap-2">
 					<TriangleAlertIcon className="shrink-0 mt-0.5" size={20}/>

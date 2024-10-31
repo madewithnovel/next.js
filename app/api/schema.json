@@ -5933,6 +5933,20 @@
         }
       }
     },
+    "/signup/intent": {
+      "post": {
+        "operationId": "postAuthPaymentIntent",
+        "summary": "AuthPaymentIntent",
+        "tags": [
+          "app"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
     "/auth/reset": {
       "post": {
         "operationId": "postAuthReset",

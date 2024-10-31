@@ -19,7 +19,7 @@ export default function Header () {
 				Novel 2025 &middot; Amsterdam and Berlin from June 7 – 9 to <Link href="/">see what’s coming next →</Link>
 			</AnnouncementBanner>
 			<header className="block sticky top-0 md:hidden z-20 w-full bg-white relative">
-				<div className="p-5 flex items-center justify-between">
+				<div className="py-5 px-5 md:px-10 flex items-center justify-between">
 					<div>
 						<Link href="/" className="flex items-center gap-2 text-xl">
 							<LibraryBigIcon/>
@@ -72,7 +72,7 @@ export default function Header () {
 				)}
 			</header>
 			<header className="hidden md:block px-20 bg-white sticky top-0 w-full z-20">
-				<div className="container py-1 px-20 mx-auto flex items-center justify-between gap-10">
+				<div className="container py-1 px-14 mx-auto flex items-center justify-between gap-10">
 					<div>
 						<Link href="/" className="flex items-center gap-2 text-xl">
 							<LibraryBigIcon/>
