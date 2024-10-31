@@ -1,3 +1,21 @@
+- [x] integrate shadcn elements input
+- [x] integrate shadcn elements button
+- [x] mobile web login
+- [ ] marketing page needs to be cleaner and smaller?
+- [ ] customize the theme
+- [ ] sign up with password
+- [ ] sign up with upfront payment
+- [ ] sign up with social
+- [ ] sign up with specific plan
+- [ ] integrate shadcn button to button
+- [ ] integrate shadcn button to input
+- [ ] create theme - typography, color rule, spacing, border, shadow on medusa
+- [ ] useSession hook
+- [ ] useAuthorized hook
+- [ ] useFeature hook
+- [ ] build dashboard using shadcn conponents
+
+UI
 - [x] integrate shadcn workflow https://magicui.design/
 - [x] fix postcss/tailwind no-conf flow
 - [x] move dependencies to packages/novel
@@ -18,25 +36,13 @@
 - [x] verify email
 - [x] login error flow
 - [x] login require registration error flow
-- [ ] sign up with password
-- [ ] sign up with upfront payment
-- [ ] sign up with social
-- [ ] sign up with specific plan
-- [ ] integrate shadcn button to button
-- [ ] integrate shadcn button to input
-- [ ] create theme - typography, color rule, spacing, border, shadow on medusa
-- [ ] useSession hook
-- [ ] useAuthorized hook
-- [ ] useFeature hook
-
-UI
+- [x] frontpage remove app/context
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
 - [ ] 500
 - [ ] dashboard structure
 - [ ] feature gate middleware instance.feature(['feature1', 'feature2']) via session.permissions
-- [x] frontpage remove app/context
 - [ ] projects list
 - [ ] projects create
 - [ ] projects update
@@ -93,3 +99,7 @@ non react 19
 
 caveats
 - need to restart both server and client to get new schemas
+
+why
+- shadcn? need a design system that can build a foundation on, and shadcn has 
+  good enough DX to create that design system.

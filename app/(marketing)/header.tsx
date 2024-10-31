@@ -65,8 +65,8 @@ export default function Header () {
 									</div>
 								</div>
 							</div>
-							<Link href="/login" className="button">Sign-in</Link>
-							<Link href="/signup" className="button action">Get Started</Link>
+							<Link href="/login" className="button secondary mb-5">Sign-in</Link>
+							<Link href="/signup" className="button">Get Started</Link>
 						</nav>
 					</div>
 				)}
@@ -118,10 +118,10 @@ export default function Header () {
 							</div>
 						</div>
 						<Link href="/pricing" className="p-5">Pricing</Link>
-						<Link href="/login" className="button">Sign-in</Link>
+						<Link href="/login" className="button secondary">Sign-in</Link>
 					</nav>
 					<div>
-						<Link href="/signup" className="button action">Get Started</Link>
+						<Link href="/signup" className="button">Get Started</Link>
 					</div>
 				</div>
 			</header>

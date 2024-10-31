@@ -11,7 +11,7 @@ export default function middleware (middleware) {
 		    default-src 'self';
             script-src 'self' 'nonce-${nonce}' 'unsafe-eval' js.stripe.com https: http: ${process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''};
 		    style-src 'self' 'unsafe-inline';
-		    connect-src 'self' *.r2.cloudflarestorage.com ${process.env.NEXT_PUBLIC_API_HOST};
+		    connect-src 'self' *.r2.cloudflarestorage.com github.com ${process.env.NEXT_PUBLIC_API_HOST};
 		    frame-src js.stripe.com;
 		    img-src 'self' *.r2.dev blob: data:;
 		    font-src 'self';

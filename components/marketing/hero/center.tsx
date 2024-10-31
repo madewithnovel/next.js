@@ -21,7 +21,7 @@ export default function HeroCenterVariant () {
 				</p>
 
 				<div>
-					<Link href="/signup" className="button action wide">Get started</Link>
+					<Link href="/signup" className="button wide">Get started</Link>
 				</div>
 
 				<div className="flex items-center gap-2">

@@ -2,8 +2,7 @@ import CallToActionEnding from 'components/marketing/call-to-action/ending';
 import FaqsAccordion from 'components/marketing/faqs/accordion';
 import PricingComparison from 'components/marketing/pricing/comparison';
 import PricingTable from 'components/marketing/pricing/table';
-
-import * as novel from '@/packages/novel/sdk';
+import * as novel from 'packages/novel/sdk';
 
 import Footer from '../footer';
 import Header from '../header';

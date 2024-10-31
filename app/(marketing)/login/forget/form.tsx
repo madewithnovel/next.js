@@ -3,6 +3,7 @@
 import cx from 'classnames';
 import AlertInfo from 'components/elements/alerts/info';
 import Button from 'components/elements/button';
+import Input from 'components/elements/input';
 import { TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import * as novel from 'novel/sdk';
@@ -37,14 +38,15 @@ export default function Form () {
 					</div>
 					<form action={handleSubmit(submit)} className="flex flex-col gap-5">
 						<div>Email</div>
-						<input type="email" className={cx('input md', { error: !!errors.email })} {...register('email')} />
+						<Input type="email" className={cx({ error: !!errors.email })} {...register('email', { required: true })} />
 						{errors.email && (
 							<div className="text-red-500 text-sm flex gap-2">
-								<TriangleAlertIcon className="shrink-0 mt-1" size={20}/>
+								<TriangleAlertIcon className="shrink-0 mt-0.5" size={20}/>
+								{errors.email.type === 'required' ? 'Email address is required' : ''}
 								{errors.email.message}
 							</div>
 						)}
-						<Button working={working} className="button action" type="submit">Reset your Password</Button>
+						<Button working={working} type="submit">Reset your Password</Button>
 					</form>
 					<div>Have an account? <Link href="/login">Sign in with your email</Link></div>
 					<hr/>

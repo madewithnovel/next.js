@@ -3,7 +3,7 @@ export default function CallToActionEnding () {
 		<div className="container grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto px-5 md:px-10">
 			<div className="bg-zinc-100 rounded-xl p-10">
 				<div className="text-3xl md:text-6xl font-medium mb-5">See all you can accomplish with Novel</div>
-				<button className="button action wide">Try for free</button>
+				<button className="button wide">Try for free</button>
 			</div>
 			<div className="bg-zinc-100 rounded-xl">
 				<div className="pt-20 flex flex-col items-center justify-end">

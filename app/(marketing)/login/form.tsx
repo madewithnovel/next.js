@@ -2,15 +2,15 @@
 
 import cx from 'classnames';
 import AlertOk from 'components/elements/alerts/ok';
+import AlertWarning from 'components/elements/alerts/warning';
 import Button from 'components/elements/button';
+import Input from 'components/elements/input';
 import { GithubIcon, TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-import AlertWarning from '@/components/elements/alerts/warning';
 
 export default function Form () {
 	const query = useSearchParams();
@@ -53,7 +53,7 @@ export default function Form () {
 					{(() => {
 						switch (query.get('error')) {
 						case 'REGISTRATION_REQUIRED':
-							return 'You need to have an account before you can login with your social account.';
+							return 'You need to have a registered account before you can login with your external social profile.';
 						case 'AUTH_ATTEMPT_EXPIRED':
 							return 'Something went wrong while trying to log you in. Please try again.';
 						}
@@ -63,7 +63,7 @@ export default function Form () {
 			<div>
 				<Link
 					href={novel.path('/auth/github')}
-					className="border border-stone-200 px-3 py-2 block text-center flex items-center justify-center gap-2"
+					className="button secondary w-full"
 				>
 					<GithubIcon size={20}/>
 					Continue with Github
@@ -75,19 +75,20 @@ export default function Form () {
 				<hr className="w-full"/>
 			</div>
 			<div>Email</div>
-			<input type="email" className={cx('input md', { error: !!errors.email || !!errors.password })} {...register('email')} />
+			<Input type="email" className={cx({ error: !!errors.email || !!errors.password })} {...register('email', { required: true })} />
 			<div className="flex items-center justify-between">
 				Password
 				<Link href="/login/forget">Forgot your password?</Link>
 			</div>
-			<input type="password" className={cx('input md', { error: !!errors.email || !!errors.password })} {...register('password')} />
+			<Input type="password" className={cx({ error: !!errors.email || !!errors.password })} {...register('password')} />
 			{errors.email && (
 				<div className="text-red-500 text-sm flex gap-2">
-					<TriangleAlertIcon className="shrink-0 mt-1" size={20}/>
+					<TriangleAlertIcon className="shrink-0 mt-0.5" size={20}/>
+					{errors.email.type === 'required' ? 'Email address is required' : ''}
 					{errors.email.message}
 				</div>
 			)}
-			<Button working={working} className="button action" type="submit">Continue</Button>
+			<Button working={working} type="submit">Continue</Button>
 		</form>
 	);
 }

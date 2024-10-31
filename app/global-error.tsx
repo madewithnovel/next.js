@@ -15,7 +15,7 @@ export default function GlobalErrorPage ({ error, reset }) {
 				<h1 className="text-4xl font-medium">Uh oh! Something's wrong</h1>
 				<p className="text-lg">There was an error that the application could not recognize. This will be reported to our administrators. In the meantime, you can try to reset this page by clicking the button below.</p>
 				<div>
-					<button onClick={() => reset()} className="button action">Try again</button>
+					<button onClick={() => reset()} className="button">Try again</button>
 				</div>
 			</div>
 		</div>
