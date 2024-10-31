@@ -3,10 +3,13 @@
 - [x] sign up with upfront payment
 - [x] sign up with social
 - [x] sign up with specific plan with trial
-- [ ] plan selector in upfront payment
+- [x] plan selector in upfront payment
 - [ ] sign up with specific plan with upfront payment
 - [ ] sign up with specific plan with interval
-- [ ] card design
+- [x] card design
+- [ ] zod form validation
+- [ ] sign up card error flow
+- [ ] responsive sign up
 - [ ] useSession hook
 - [ ] useAuthorized hook
 - [ ] useFeature hook

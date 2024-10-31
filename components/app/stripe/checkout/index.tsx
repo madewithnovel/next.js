@@ -7,10 +7,16 @@ import * as novel from 'novel/sdk';
 export { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 const cardStyle = {
+	/**
+	 * WIP
+	 *
+	 * Design needs to be added here manually
+	 */
 	style: {
 		base: {
 			color: '#32325d',
-			fontSize: '15px',
+			borderColor: '#e4e4e7',
+			fontSize: '16px',
 			'::placeholder': {
 				color: 'rgb(168 162 158)',
 			},
@@ -28,11 +34,15 @@ export async function getCustomerIntent (plan, stripe, elements) {
 	const card = elements.getElement(CardElement);
 	try {
 		const confirm = await stripe.confirmCardSetup(setupIntent.intent.client_secret, { payment_method: { card } });
-		if (confirm?.error?.type === 'card_error') {
-		} else {
+		console.log(confirm);
+		if (confirm.error) {
+			return { error: confirm?.error };
+		} else if (confirm.setupIntent?.status === 'succeeded') {
 			return confirm.setupIntent.id;
 		}
+		return { error: { message: 'Something went wrong with your card' } };
 	} catch (error) {
+		return { error };
 	}
 }
 
@@ -45,7 +55,8 @@ export function StripeProvider ({ children }) {
 	);
 }
 
-export function Card ({ className, onChange, onLoadError }) {
+export function Card (props) {
+	const { className, onChange, onLoadError } = props;
 	// https://docs.stripe.com/payments/card-element
 	return (
 		<div className={className}>

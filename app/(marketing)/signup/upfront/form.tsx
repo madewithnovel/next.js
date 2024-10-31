@@ -1,9 +1,10 @@
 'use client';
 
 import cx from 'classnames';
-import { Card, CardElement, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/app/stripe/checkout';
+import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/app/stripe/checkout';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
+import Select from 'components/elements/select';
 import { TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -25,13 +26,29 @@ function FormSteps ({ plans }) {
 	const query = useSearchParams();
 	const [working, isWorking] = useState(false);
 	const [submitted, isSubmitted] = useState(false);
-	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm();
+
+	// this is required for select to work
+	const form = useForm({ defaultValues: { plan: plans[0].id } });
+	const { register, handleSubmit, setError, watch, setFocus, formState: { errors } } = form;
 
 	async function submit (data) {
 		isWorking(true);
 		const plan = 'business-2024';
 		const interval = 'month';
 		const intent = await getCustomerIntent(plan, stripe, elements);
+		if (intent.error) {
+			isWorking(false);
+			const error = intent.error;
+			if (error.type === 'card_error') {
+
+			} else if (error.type === 'invalid_request_error' && error.code === 'setup_intent_unexpected_state') {
+
+			} else {
+
+			}
+			console.error(error);
+			return;
+		}
 		const { email, password } = data;
 		if (password.length === 0) {
 			isWorking(false);
@@ -70,9 +87,18 @@ function FormSteps ({ plans }) {
 							<div>Password</div>
 							<Input type="password" className={cx({ error: !!errors.email || !!errors.password })} {...register('password')} />
 							<div>Select Plan</div>
+							<div>
+								<Select
+									form={form}
+									className="w-full"
+									defaultValue={plans[0].id}
+									options={plans.map((plan) => ({ value: plan.id, label: plan.name }))}
+									{...register('plan')}
+								/>
+							</div>
 							<div>Credit Card</div>
 							<div>
-								<Card className=""/>
+								<Card className="input"/>
 							</div>
 							{errors.email && (
 								<div className="text-red-500 text-sm flex gap-2">
@@ -81,7 +107,7 @@ function FormSteps ({ plans }) {
 									{errors.email.message}
 								</div>
 							)}
-							<Button working={working} type="submit">Subscribe for $56 per month</Button>
+							<Button working={working} type="submit">Subscribe</Button>
 						</form>
 					</div>
 					<div>
