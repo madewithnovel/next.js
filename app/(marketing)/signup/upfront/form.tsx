@@ -30,6 +30,7 @@ function FormSteps ({ plans }) {
 	async function submit (data) {
 		isWorking(true);
 		const plan = 'business-2024';
+		const interval = 'month';
 		const intent = await getCustomerIntent(plan, stripe, elements);
 		const { email, password } = data;
 		if (password.length === 0) {
@@ -38,7 +39,7 @@ function FormSteps ({ plans }) {
 			return setError('email', { type: 'manual', message: 'Please provide a memorable password.' });
 		}
 		const invitation_code = query.invite;
-		const response = await novel.rpc.AuthSignup({ email, password, intent, plan, invitation_code });
+		const response = await novel.rpc.AuthSignup({ email, password, interval, intent, plan, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();

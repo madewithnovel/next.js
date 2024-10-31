@@ -17,7 +17,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email } = data;
-		const response = await novel.rpc.postAuthStrategy('passwordless', { email });
+		const response = await novel.rpc.AuthStrategy('passwordless', { email });
 		if (!response.ok) {
 			const data = await response.json();
 			setError('email', { type: 'custom', message: data.error.message });

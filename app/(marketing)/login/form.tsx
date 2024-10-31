@@ -21,7 +21,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email, password } = data;
-		const response = await novel.rpc.postAuthStrategy('password', { email, password });
+		const response = await novel.rpc.AuthStrategy('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
 			if (data.redirect_to) {

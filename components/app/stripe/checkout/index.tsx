@@ -28,7 +28,6 @@ export async function getCustomerIntent (plan, stripe, elements) {
 	const card = elements.getElement(CardElement);
 	try {
 		const confirm = await stripe.confirmCardSetup(setupIntent.intent.client_secret, { payment_method: { card } });
-		console.log(confirm);
 		if (confirm?.error?.type === 'card_error') {
 		} else {
 			return confirm.setupIntent.id;

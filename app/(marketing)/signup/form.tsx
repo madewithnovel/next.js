@@ -25,7 +25,7 @@ export default function Form () {
 			return setError('email', { type: 'manual', message: 'Please provide a memorable password.' });
 		}
 		const invitation_code = query.invite;
-		const response = await novel.rpc.postAuthSignup({ email, password, invitation_code });
+		const response = await novel.rpc.AuthSignup({ email, password, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();

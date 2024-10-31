@@ -2,10 +2,11 @@
 - [x] welcome page
 - [x] sign up with upfront payment
 - [x] sign up with social
+- [x] sign up with specific plan with trial
 - [ ] plan selector in upfront payment
-- [ ] card design
-- [ ] sign up with specific plan with trial
 - [ ] sign up with specific plan with upfront payment
+- [ ] sign up with specific plan with interval
+- [ ] card design
 - [ ] useSession hook
 - [ ] useAuthorized hook
 - [ ] useFeature hook

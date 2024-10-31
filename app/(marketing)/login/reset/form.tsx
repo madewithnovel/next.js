@@ -33,7 +33,7 @@ export default function Form () {
 			return setError('email', { type: 'manual', message: 'There are required fields missing. Please enter everything needed for these form.' });
 		}
 		const { email, password } = data;
-		const response = await novel.rpc.postAuthReset({ email, password, token: searchParams.get('token') });
+		const response = await novel.rpc.AuthReset({ email, password, token: searchParams.get('token') });
 		isWorking(false);
 		if (response.ok) {
 			router.push('/login?reset');
