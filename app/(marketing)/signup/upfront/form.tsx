@@ -29,33 +29,39 @@ function FormSteps ({ plans }) {
 
 	// this is required for select to work
 	const form = useForm({ defaultValues: { plan: plans[0].id } });
-	const { register, handleSubmit, setError, watch, setFocus, formState: { errors } } = form;
+	const { register, handleSubmit, setError, setFocus, formState: { errors } } = form;
 
 	async function submit (data) {
 		isWorking(true);
-		const plan = 'business-2024';
+
+		/**
+		 * Handle the payment intent by creating a customer in the backend
+		 *
+		 * You can customize the interval to be available in the front end as well.
+		 */
+		const plan = data.plan ?? 'standard-2024';
 		const interval = 'month';
 		const intent = await getCustomerIntent(plan, stripe, elements);
 		if (intent.error) {
 			isWorking(false);
 			const error = intent.error;
-			if (error.type === 'card_error') {
-
-			} else if (error.type === 'invalid_request_error' && error.code === 'setup_intent_unexpected_state') {
-
-			} else {
-
-			}
-			console.error(error);
-			return;
+			return setError('email', { type: 'manual', message: error.message });
 		}
+
+		/**
+		 * Check the validity of the input, you can use zod here
+		 */
 		const { email, password } = data;
 		if (password.length === 0) {
 			isWorking(false);
 			setFocus('password');
 			return setError('email', { type: 'manual', message: 'Please provide a memorable password.' });
 		}
-		const invitation_code = query.invite;
+		const invitation_code = query.get('invite');
+
+		/**
+		 * Send the request to the backend
+		 */
 		const response = await novel.rpc.AuthSignup({ email, password, interval, intent, plan, invitation_code });
 		isWorking(false);
 		if (response.ok) {
@@ -86,7 +92,7 @@ function FormSteps ({ plans }) {
 							<Input type="text" className={cx({ error: !!errors.email || !!errors.password })} {...register('email', { required: true })} />
 							<div>Password</div>
 							<Input type="password" className={cx({ error: !!errors.email || !!errors.password })} {...register('password')} />
-							<div>Select Plan</div>
+							<div>Plan</div>
 							<div>
 								<Select
 									form={form}

@@ -12,7 +12,7 @@ export default async function Page () {
 	return (
 		<>
 			<Header/>
-			<main className="flex flex-col gap-10 md:gap-20">
+			<main className="flex flex-col gap-10 md:gap-20 pt-10">
 				<PricingTable plans={plans}/>
 				<PricingComparison/>
 				<FaqsAccordion/>

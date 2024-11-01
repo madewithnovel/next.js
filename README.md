@@ -4,12 +4,11 @@
 - [x] sign up with social
 - [x] sign up with specific plan with trial
 - [x] plan selector in upfront payment
-- [ ] sign up with specific plan with upfront payment
-- [ ] sign up with specific plan with interval
 - [x] card design
-- [ ] zod form validation
-- [ ] sign up card error flow
-- [ ] responsive sign up
+- [x] sign up with specific plan with upfront payment
+- [x] sign up card error flow
+- [x] sign up with specific plan with interval
+- [x] responsive sign up
 - [ ] useSession hook
 - [ ] useAuthorized hook
 - [ ] useFeature hook
@@ -63,6 +62,11 @@ UI
 - [ ] make modal do overflow
 - [ ] api keys
 - [ ] i18n support
+- [ ] sign in zod form validation
+- [ ] sign up zod form validation
+- [ ] reset zod form validation
+- [ ] forget zod form validation
+- [ ] magic link form validation
 - [ ] convert text to t()
 - [ ] localization test
 - [ ] translate to ES, CN, KR, JP

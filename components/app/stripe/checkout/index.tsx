@@ -14,11 +14,11 @@ const cardStyle = {
 	 */
 	style: {
 		base: {
-			color: '#32325d',
-			borderColor: '#e4e4e7',
+			color: 'color(--foreground)',
+			borderColor: 'color(--border)',
 			fontSize: '16px',
 			'::placeholder': {
-				color: 'rgb(168 162 158)',
+				color: 'color(--foreground)',
 			},
 		},
 		invalid: {

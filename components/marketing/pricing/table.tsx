@@ -24,11 +24,6 @@ export default function PricingTable (props) {
 
 	return (
 		<div className="container mx-auto px-5 md:px-10">
-			<div className="flex items-center justify-center gap-5 py-5">
-				<div>Monthly</div>
-				<Toggle checked={yearly} onChange={(e) => setMonthly(e.target.value)}/>
-				<div>Yearly</div>
-			</div>
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-1" style={{ minHeight: 583 }}>
 				<div className="bg-stone-100 rounded-xl md:rounded-none md:rounded-l-xl flex flex-col divide-y divide-stone-200">
 					<div className="p-10 flex flex-col gap-10">
@@ -44,7 +39,8 @@ export default function PricingTable (props) {
 							<div
 								className="text-sm text-stone-600">{yearly ? `Billed $${plans?.[0].yearly[currency]} yearly. Saves $${(plans?.[0].monthly[currency] * 12) - plans?.[0].yearly[currency]}` : `Total of $${plans?.[0].monthly[currency] * 12} in a year`}</div>
 						</div>
-						<Link href={`/signup?plan=${plans?.[0].id}`} className="button w-full">Try for free</Link>
+						<Link href={`/signup?plan=${plans?.[0].id}&interval=${yearly ? 'year' : 'month'}`} className="button w-full">Try for free</Link>
+						<div className="h-1"></div>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">
@@ -81,7 +77,14 @@ export default function PricingTable (props) {
 							</div>
 							<div className="text-sm text-stone-600">{yearly ? `Billed $${plans?.[1].yearly[currency]} yearly. Saves $${(plans?.[1].monthly[currency] * 12) - plans?.[1].yearly[currency]}` : `Total of $${plans?.[1].monthly[currency] * 12} in a year`}</div>
 						</div>
-						<Link href={`/signup?plan=${plans?.[1].id}`} className="button w-full">Try for free</Link>
+						<div>
+							<Link href={`/signup?plan=${plans?.[1].id}&interval=${yearly ? 'year' : 'month'}`} className="button w-full">Try for free</Link>
+							<div className="flex items-center gap-5 mt-5">
+								<div>Monthly</div>
+								<Toggle checked={yearly} onChange={(e) => setMonthly(e.target.value)}/>
+								<div>Yearly</div>
+							</div>
+						</div>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">
@@ -118,7 +121,8 @@ export default function PricingTable (props) {
 							<div className="text-sm text-stone-300">Contact sales for more information
 							</div>
 						</div>
-						<Link href={`/signup?plan=${plans?.[2].id}`} className="button w-full">Set up a demo</Link>
+						<Link href={`/signup?plan=${plans?.[2].id}&interval=${yearly ? 'year' : 'month'}`} className="button w-full">Set up a demo</Link>
+						<div className="h-1"></div>
 						<div className="flex flex-col gap-2">
 							<div className="font-medium">Users and Workspaces</div>
 							<div className="text-sm">

@@ -18,14 +18,29 @@ export default function Form () {
 
 	async function submit (data) {
 		isWorking(true);
+		/**
+		 * Handle the payment intent by creating a customer in the backend
+		 *
+		 * You can customize the interval to be available in the front end as well.
+		 */
+		const plan = query.get('plan') ?? 'standard-2024';
+		const interval = query.get('interval') ?? 'month';
+
+		/**
+		 * Check the validity of the input, you can use zod here
+		 */
 		const { email, password } = data;
 		if (password.length === 0) {
 			isWorking(false);
 			setFocus('password');
 			return setError('email', { type: 'manual', message: 'Please provide a memorable password.' });
 		}
-		const invitation_code = query.invite;
-		const response = await novel.rpc.AuthSignup({ email, password, invitation_code });
+		const invitation_code = query.get('invite');
+
+		/**
+		 * Send the request to the backend
+		 */
+		const response = await novel.rpc.AuthSignup({ email, password, plan, interval, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();
