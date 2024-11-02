@@ -1,6 +1,6 @@
 'use client';
 
-import cx from 'classnames';
+import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import { TriangleAlertIcon } from 'lucide-react';
@@ -17,7 +17,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email } = data;
-		const response = await novel.rpc.AuthStrategy('passwordless', { email });
+		const response = await novel.rpc.postAuthStrategy('passwordless', { email });
 		if (!response.ok) {
 			const data = await response.json();
 			setError('email', { type: 'custom', message: data.error.message });

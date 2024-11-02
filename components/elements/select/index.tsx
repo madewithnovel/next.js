@@ -1,4 +1,4 @@
-import cx from 'classnames';
+import cx from 'clsx';
 import { Form, FormControl, FormField, FormItem } from 'components/ui/form';
 import { Select as ShadcnSelect, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select';
 

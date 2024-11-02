@@ -1,18 +1,21 @@
-- [x] sign up with password
-- [x] welcome page
-- [x] sign up with upfront payment
-- [x] sign up with social
-- [x] sign up with specific plan with trial
-- [x] plan selector in upfront payment
-- [x] card design
-- [x] sign up with specific plan with upfront payment
-- [x] sign up card error flow
-- [x] sign up with specific plan with interval
-- [x] responsive sign up
-- [ ] useSession hook
-- [ ] useAuthorized hook
-- [ ] useFeature hook
+- [ ] navigation integration
 - [ ] build dashboard using shadcn components
+- [ ] dashboard template
+- [ ] dashboard structure
+- [ ] dropdown component
+- [ ] upload / attach file
+- [ ] api keys
+- [ ] projects list
+- [ ] projects create
+- [ ] projects update
+- [ ] projects detail
+- [ ] projects archive
+- [ ] organizations list
+- [ ] organizations create
+- [ ] organizations update
+- [ ] organizations invite
+- [ ] member manage
+- [ ] member revoke
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -39,28 +42,29 @@ UI
 - [x] integrate shadcn button to button
 - [x] integrate shadcn button to input
 - [x] mobile web login
+- [x] sign up with password
+- [x] welcome page
+- [x] sign up with upfront payment
+- [x] sign up with social
+- [x] sign up with specific plan with trial
+- [x] plan selector in upfront payment
+- [x] card design
+- [x] sign up with specific plan with upfront payment
+- [x] sign up card error flow
+- [x] sign up with specific plan with interval
+- [x] responsive sign up
+- [x] shadcn sidebar component
+- [x] app layout
+- [x] useSession hook
+- [x] useAuthorized hook
+- [x] useFeature hook from flags
+- [x] getSession redirect error
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
 - [ ] 500
-- [ ] dashboard structure
-- [ ] feature gate middleware instance.feature(['feature1', 'feature2']) via session.permissions
-- [ ] projects list
-- [ ] projects create
-- [ ] projects update
-- [ ] projects detail
-- [ ] projects archive
-- [ ] organizations list
-- [ ] organizations create
-- [ ] organizations update
-- [ ] organizations invite
-- [ ] member manage
-- [ ] member revoke
 - [ ] make modal work
-- [ ] dropdown component
-- [ ] upload / attach file
 - [ ] make modal do overflow
-- [ ] api keys
 - [ ] i18n support
 - [ ] sign in zod form validation
 - [ ] sign up zod form validation
@@ -71,10 +75,12 @@ UI
 - [ ] localization test
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
+- [ ] login mfa
 - [ ] analytics
 - [ ] playwright
 - [ ] customize the theme
 - [ ] create theme - typography, color rule, spacing, border, shadow on medusa
+- [ ] try to build marketing with shadcn magic components
 
 Devtools
 - [ ] request list client/server

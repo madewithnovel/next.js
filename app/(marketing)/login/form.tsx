@@ -1,6 +1,6 @@
 'use client';
 
-import cx from 'classnames';
+import cx from 'clsx';
 import AlertOk from 'components/elements/alerts/ok';
 import AlertWarning from 'components/elements/alerts/warning';
 import Button from 'components/elements/button';
@@ -21,7 +21,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email, password } = data;
-		const response = await novel.rpc.AuthStrategy('password', { email, password });
+		const response = await novel.rpc.postAuthStrategy('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
 			if (data.redirect_to) {
@@ -54,6 +54,8 @@ export default function Form () {
 						switch (query.get('error')) {
 						case 'REGISTRATION_REQUIRED':
 							return 'You need to have a registered account before you can login with your external social profile.';
+						case 'NO_SESSION':
+							return 'There was something wrong with your authorization so we have logged you out. Please log in again to continue.';
 						case 'AUTH_ATTEMPT_EXPIRED':
 							return 'Something went wrong while trying to log you in. Please try again.';
 						}

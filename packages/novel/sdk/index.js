@@ -38,7 +38,7 @@ async function rpcHandler (operationId, ...rest) {
 		params = [params];
 	}
 	if (operations?.[operationId]) {
-		const { method, url } = operations[operationId];
+		const { method, url, tags } = operations[operationId];
 		try {
 			if (!['GET', 'HEAD'].includes(method.toUpperCase()) && operations[operationId].z) {
 				const schema = require(`app/api/requests/${operationId.replace(/_/g, '-')}`);
@@ -56,7 +56,15 @@ async function rpcHandler (operationId, ...rest) {
 					touched++;
 				}
 			});
-			return Request(urlWithParams, { method: method.toUpperCase(), body, ...options });
+			return Request(urlWithParams, {
+				method: method.toUpperCase(),
+				body,
+				...options,
+				next: {
+					...options?.next,
+					tags: [...(options?.next?.tags ?? []), ...(tags ?? [])],
+				},
+			});
 		} catch (error) {
 			console.error(`RPC error for ${operationId}`, error);
 			throw error;

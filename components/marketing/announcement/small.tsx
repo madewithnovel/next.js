@@ -1,4 +1,4 @@
-import cx from 'classnames';
+import cx from 'clsx';
 import Link from 'next/link';
 
 export default function AnnouncementSmall ({ children, href, ...props }) {

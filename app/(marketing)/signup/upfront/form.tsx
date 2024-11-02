@@ -1,6 +1,6 @@
 'use client';
 
-import cx from 'classnames';
+import cx from 'clsx';
 import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/app/stripe/checkout';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';

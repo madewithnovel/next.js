@@ -1,7 +1,7 @@
 'use client';
 
 import { Switch } from '@headlessui/react';
-import cx from 'classnames';
+import cx from 'clsx';
 import { forwardRef, useState } from 'react';
 
 interface Props {

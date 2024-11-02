@@ -29,7 +29,7 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 	const agent = isClient ? undefined : (await import('https')).Agent({ rejectUnauthorized: false });
 	if (!isClient) {
 		const { headers: scopedHeaders, cookies } = require('next/headers');
-		setRequestContext({ headers: scopedHeaders(), cookies: cookies() });
+		setRequestContext({ headers: await scopedHeaders(), cookies: await cookies() });
 	}
 	history.push({ type: 'request', data: { url: process.env.NEXT_PUBLIC_API_HOST + path, method }, client: isClient });
 	const current = history.length - 1;

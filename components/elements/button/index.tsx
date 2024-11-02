@@ -2,7 +2,7 @@
 
 import './style.css';
 
-import cx from 'classnames';
+import cx from 'clsx';
 import { Button as ShadcnButton } from 'components/ui/button';
 import { Loader2Icon } from 'lucide-react';
 import { useRef } from 'react';

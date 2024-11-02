@@ -1,7 +1,7 @@
 'use client';
 
 import { Transition } from '@headlessui/react';
-import cx from 'classnames';
+import cx from 'clsx';
 import { AlertTriangleIcon, CheckCircle2Icon, XCircleIcon } from 'lucide-react';
 import { Fragment } from 'react';
 import toast, { Toaster } from 'react-hot-toast';

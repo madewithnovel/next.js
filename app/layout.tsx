@@ -18,7 +18,7 @@ export const metadata = {
 };
 
 export default async function RootLayout ({ children, params }) {
-	const theme = 'light';
+	const theme = 'dark';
 
 	/**
 	 * Modify below if you need to add global providers or a common layout across
