@@ -1,8 +1,9 @@
-- [ ] navigation integration
+- [x] navigation integration
 - [ ] build dashboard using shadcn components
 - [ ] dashboard template
 - [ ] dashboard structure
-- [ ] dropdown component
+- [x] dropdown component
+- [ ] org switcher integration
 - [ ] upload / attach file
 - [ ] api keys
 - [ ] projects list

@@ -28,7 +28,7 @@ const nextConfig = {
 	async headers () {
 		return [
 			{
-				source: '/service-worker.js',
+				source: '/sw.js',
 				headers: [
 					{
 						key: 'Content-Type',
