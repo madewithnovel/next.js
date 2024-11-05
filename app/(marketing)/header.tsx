@@ -1,9 +1,10 @@
 'use client';
 
-import AnnouncementBanner from 'components/marketing/announcement/banner';
 import { ChevronDownIcon, LibraryBigIcon, MenuIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
+
+import AnnouncementBanner from './components/announcement/banner';
 
 export default function Header () {
 	const [mobileNavOpen, toggle] = useState(false);
@@ -27,7 +28,7 @@ export default function Header () {
 						</Link>
 					</div>
 					<div>
-						<button className="button" onClick={() => toggleNav(!mobileNavOpen)}>
+						<button onClick={() => toggleNav(!mobileNavOpen)}>
 							<MenuIcon/>
 						</button>
 					</div>
@@ -66,7 +67,7 @@ export default function Header () {
 								</div>
 							</div>
 							<Link href="/login" className="button secondary mb-5">Sign-in</Link>
-							<Link href="/signup" className="button">Get Started</Link>
+							<Link href="/signup" className="button primary">Get Started</Link>
 						</nav>
 					</div>
 				)}
@@ -121,7 +122,7 @@ export default function Header () {
 						<Link href="/login" className="button secondary">Sign-in</Link>
 					</nav>
 					<div>
-						<Link href="/signup" className="button">Get Started</Link>
+						<Link href="/signup" className="button primary">Get Started</Link>
 					</div>
 				</div>
 			</header>

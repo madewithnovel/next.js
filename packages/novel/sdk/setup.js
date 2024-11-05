@@ -1,6 +1,7 @@
 export async function setup (exportedOutside) {
 	const operations = {};
 	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
+		// TODO: runs 3 times on dev server
 		try {
 			const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + '/docs/openapi/json');
 			if (response.ok) {

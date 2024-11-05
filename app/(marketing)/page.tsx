@@ -1,12 +1,12 @@
-import CallToActionEnding from 'components/marketing/call-to-action/ending';
-import FaqsAccordion from 'components/marketing/faqs/accordion';
-import FeatureFocus from 'components/marketing/features/focus';
-import FeatureIntegrations from 'components/marketing/features/integrations';
-import HeroCenterVariant from 'components/marketing/hero/center';
-import PricingTable from 'components/marketing/pricing/table';
-import TestimonialMasonry from 'components/marketing/testimonial/masonry';
 import * as novel from 'novel/sdk';
 
+import CallToActionEnding from './components/call-to-action/ending';
+import FaqsAccordion from './components/faqs/accordion';
+import FeatureFocus from './components/features/focus';
+import FeatureIntegrations from './components/features/integrations';
+import HeroCenterVariant from './components/hero/center';
+import PricingTable from './components/pricing/table';
+import TestimonialMasonry from './components/testimonial/masonry';
 import Footer from './footer';
 import Header from './header';
 

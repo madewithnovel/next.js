@@ -102,7 +102,7 @@ export default async function Page () {
 						</div>
 						<div className="relative">
 							<div className="bg-zinc-100 rounded-2xl p-10 sticky top-48">
-								<div className="font-semibold mb-3">Subscribe to updates</div>
+								<div className="font-medium mb-3">Subscribe to updates</div>
 								<div>
 									See how this document has changed over time or subscribe to updates on{' '}
 									<a href="#">GitHub →</a>

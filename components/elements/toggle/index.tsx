@@ -1,7 +1,7 @@
 'use client';
 
-import { Switch } from '@headlessui/react';
-import cx from 'clsx';
+import cx from 'classnames';
+import { Switch } from 'components/ui/switch';
 import { forwardRef, useState } from 'react';
 
 interface Props {
@@ -21,7 +21,7 @@ export default forwardRef(function Toggle (props: Props, ref) {
 			ref={ref}
 			checked={enabled}
 			disabled={props.disabled}
-			onChange={(value) => {
+			onCheckedChange={(value) => {
 				if (props.onChange) {
 					props.onChange({ target: { name: props.name, value } });
 				}
@@ -30,7 +30,6 @@ export default forwardRef(function Toggle (props: Props, ref) {
 			className={cx(
 				enabled ? 'bg-stone-600' : 'bg-stone-200',
 				props.disabled ? 'opacity-75 bg-stone-200' : 'cursor-pointer',
-				'relative inline-flex h-6 w-11 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-stone-600 focus:ring-offset-2',
 				props.className ? { ...props.className } : null,
 			)}
 		>

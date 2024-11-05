@@ -1,9 +1,8 @@
-import CallToActionEnding from 'components/marketing/call-to-action/ending';
-import FeatureFocus from 'components/marketing/features/focus';
-import FeatureIntegrations from 'components/marketing/features/integrations';
-
 import Footer from '../footer';
 import Header from '../header';
+import CallToActionEnding from './components/call-to-action/ending';
+import FeatureFocus from './components/features/focus';
+import FeatureIntegrations from './components/features/integrations';
 
 export default async function Page () {
 	return (

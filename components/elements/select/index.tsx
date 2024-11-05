@@ -2,7 +2,7 @@ import cx from 'clsx';
 import { Form, FormControl, FormField, FormItem } from 'components/ui/form';
 import { Select as ShadcnSelect, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select';
 
-export default function Select ({ options, className, form, name, ...props }) {
+export default function Select ({ options, className, form, defaultValue, name, ...props }) {
 	return (
 		<Form {...form}>
 			<FormField
@@ -10,7 +10,7 @@ export default function Select ({ options, className, form, name, ...props }) {
 				name={name}
 				render={({ field }) => (
 					<FormItem key={field.value} {...props} className="w-full">
-						<ShadcnSelect onValueChange={(value) => field.onChange(value)} value={field.value} name={field.name}>
+						<ShadcnSelect onValueChange={(value) => field.onChange(value)} value={field.value ?? defaultValue} name={field.name}>
 							<FormControl>
 								<SelectTrigger className={cx('select', className)}>
 									<SelectValue placeholder={options[0].label}/>

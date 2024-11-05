@@ -1,11 +1,11 @@
-import CallToActionEnding from 'components/marketing/call-to-action/ending';
-import FaqsAccordion from 'components/marketing/faqs/accordion';
-import PricingComparison from 'components/marketing/pricing/comparison';
-import PricingTable from 'components/marketing/pricing/table';
 import * as novel from 'packages/novel/sdk';
 
 import Footer from '../footer';
 import Header from '../header';
+import CallToActionEnding from './components/call-to-action/ending';
+import FaqsAccordion from './components/faqs/accordion';
+import PricingComparison from './components/pricing/comparison';
+import PricingTable from './components/pricing/table';
 
 export default async function Page () {
 	const plans = await getPage();

@@ -1,19 +1,26 @@
 import './styles.css';
 
 import Toaster from 'components/elements/toast';
-import { BookOpen, Settings2, SquareTerminal } from 'lucide-react';
+import getSession from 'components/hooks/get-session';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import Authenticated from './authenticated';
+import Client from './client';
 import WithSidebarLayout from './layouts/with-sidebar';
 
 export default async function Layout ({ children }) {
+	const cookiejar = await cookies();
+	if (!cookiejar.has('user')) {
+		return redirect('/login?error=NO_SESSION');
+	}
+
+	const session = await getSession();
 	return (
 		<>
-			<Authenticated>
-				<WithSidebarLayout>
-					{ children }
-				</WithSidebarLayout>
-			</Authenticated>
+			<Client session={session}/>
+			<WithSidebarLayout>
+				{ children }
+			</WithSidebarLayout>
 			<Toaster position="bottom-right" reverseOrder={false} gutter={8} toastOptions={{ duration: 10000 }}/>
 		</>
 	);

@@ -1,6 +1,6 @@
 .button {
     /* this is based on shadcn's button component */
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+    @apply inline-flex h-10 px-4 py-2 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
 
     &:disabled, &[disabled] {
         @apply pointer-events-none opacity-50 cursor-not-allowed;
@@ -18,17 +18,10 @@
         @apply px-8;
     }
 
-    &.action {
-        @apply border-zinc-900 bg-zinc-900 text-white hover:bg-zinc-600 hover:border-zinc-600;
-    }
-
-    &.danger {
-        @apply border-red-700 bg-red-700 text-white hover:bg-red-500 hover:border-red-500;
-    }
-
     /* shadcn button */
-    /* default */
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2;
+    &:not(.destructive, .outline, .secondary, .link) {
+        @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    }
 
     &.destructive {
         @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;

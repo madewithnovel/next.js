@@ -1,6 +1,7 @@
-import AnnouncementSmall from 'components/marketing/announcement/small';
-import TestimonialLogos from 'components/marketing/testimonial/logos';
 import Link from 'next/link';
+
+import AnnouncementSmall from '../announcement/small';
+import TestimonialLogos from '../testimonial/logos';
 
 export default function HeroCenterVariant () {
 	return (

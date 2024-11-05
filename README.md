@@ -1,22 +1,64 @@
 - [x] navigation integration
-- [ ] build dashboard using shadcn components
-- [ ] dashboard template
-- [ ] dashboard structure
+- [x] dashboard structure
 - [x] dropdown component
-- [ ] org switcher integration
-- [ ] upload / attach file
-- [ ] api keys
-- [ ] projects list
-- [ ] projects create
-- [ ] projects update
-- [ ] projects detail
-- [ ] projects archive
-- [ ] organizations list
-- [ ] organizations create
-- [ ] organizations update
-- [ ] organizations invite
+- [x] org switcher integration
+- [x] organizations name/email update
+- [x] account profile
+- [x] upload / attach file
+- [x] update notification / settings
+- [x] zod validations on existing forms
+- [x] errors
+
+wednesday
+- [ ] account security
+- [ ] update password
+- [ ] manage mfa
+- [ ] session management
+
+thursday
+- [ ] org list
+- [ ] organizations create modal
+- [ ] organization subscription
+- [ ] org manage quotas
+
+friday
+- [ ] org manage billing
+- [ ] org add payment method
+- [ ] org change subscription
+- [ ] org cancel subscription
+- [ ] org deactivate
+
+saturday
+- [ ] member invite
+- [ ] member invitation list
 - [ ] member manage
 - [ ] member revoke
+- [ ] account notifications
+- [ ] manage notifications
+- [ ] accept / reject invite
+
+sunday
+- [ ] overview page
+- [ ] logout
+
+monday
+- [ ] manage api keys
+- [ ] api key access history
+
+tuesday
+- [ ] activity page / org events
+- [ ] switch organizations
+- [ ] projects list
+
+wednesday
+- [ ] task manage
+- [ ] projects create
+- [ ] projects update
+- [ ] task detail
+- [ ] projects archive
+
+- [ ] modify marketing to look like mintlify
+- [ ] BUG: collapsed sidebar has no link
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -64,8 +106,8 @@ UI
 - [ ] dashboard 400 / 500
 - [ ] 404
 - [ ] 500
-- [ ] make modal work
-- [ ] make modal do overflow
+- [ ] robots.txt get all routes from app/(marketing)
+- [ ] manifest.json
 - [ ] i18n support
 - [ ] sign in zod form validation
 - [ ] sign up zod form validation
@@ -74,6 +116,7 @@ UI
 - [ ] magic link form validation
 - [ ] convert text to t()
 - [ ] localization test
+- [ ] deactivate account
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
 - [ ] login mfa
@@ -82,6 +125,8 @@ UI
 - [ ] customize the theme
 - [ ] create theme - typography, color rule, spacing, border, shadow on medusa
 - [ ] try to build marketing with shadcn magic components
+- [ ] test dark mode for marketing
+- [ ] https://github.com/hashicorp/nextjs-bundle-analysis?
 
 Devtools
 - [ ] request list client/server
@@ -97,13 +142,13 @@ Devtools
 - [ ] utilization
 
 v1.1
-- [ ] test dark mode
 - [ ] contact page
 - [ ] newsletter subscription
 - [ ] more feature components
 - [ ] infer rpc route types
-- [ ] new dynamic page, auto hook data with server/api/web/* route
-- [ ] /login/confirm - resend confirmation email if not received
+- [ ] new dynamic page, auto hook data/actions with server/api/web/* route
+- [ ] /login/confirm - resend confirmation email screen if not received
+- [ ] public profile / platform profile like public github accounts
 
 
 non react 19

@@ -40,14 +40,14 @@ async function rpcHandler (operationId, ...rest) {
 	if (operations?.[operationId]) {
 		const { method, url, tags } = operations[operationId];
 		try {
-			if (!['GET', 'HEAD'].includes(method.toUpperCase()) && operations[operationId].z) {
-				const schema = require(`app/api/requests/${operationId.replace(/_/g, '-')}`);
-				const { data, error } = schema[operationId].safeParse(body);
-				if (error) {
-					throw new Error(`Payload validation for ${operationId} failed.`, { cause: error });
-				}
-				body = data;
-			}
+			// if (!['GET', 'HEAD'].includes(method.toUpperCase()) && operations[operationId].requestBody) {
+			// 	const schema = require(`app/api/requests/${operationId.replace(/_/g, '-')}`);
+			// 	const { data, error } = schema[operationId].safeParse(body);
+			// 	if (error) {
+			// 		throw new Error(`Payload validation for ${operationId} failed.`, { cause: error });
+			// 	}
+			// 	body = data;
+			// }
 			let urlWithParams = url;
 			let touched = 0;
 			url.split('/').forEach((part) => {
@@ -75,6 +75,8 @@ async function rpcHandler (operationId, ...rest) {
 
 export const rpc = new Proxy(rpcHandler, {
 	get: function (_, prop) {
-		return (...params) => rpcHandler(prop, ...params);
+		const similar = operations ? Object.keys(operations).find((key) => key.includes(prop)) : null;
+		// NOTE: this is used because we have shorthands for non method operationIds
+		return (...params) => rpcHandler(similar, ...params);
 	},
 });
