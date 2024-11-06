@@ -7,8 +7,8 @@ export default function Deactivate () {
 	return (
 		<section className="section">
 			<header>
-				<h3 className="font-medium">Delete Organization</h3>
-				<p className="text-zinc-500">Permanently delete this organization. This action cannot be undone.</p>
+				<h3 className="font-medium">Deactivate Account</h3>
+				<p className="text-muted-foreground">Permanently delete this account. This action cannot be undone.</p>
 			</header>
 			<div className="flex items-center gap-2">
 				<Dialog>
@@ -17,9 +17,9 @@ export default function Deactivate () {
 					</DialogTrigger>
 					<DialogContent className="sm:max-w-[520px]">
 						<DialogHeader>
-							<DialogTitle>Are you sure you want to deactivate this organization?</DialogTitle>
+							<DialogTitle>Are you sure you want to deactivate this account?</DialogTitle>
 							<DialogDescription>
-								You are about to deactivate this organization. This action cannot be undone.
+								You are about to deactivate this account. All your private information and details will be deleted. This action cannot be undone.
 							</DialogDescription>
 						</DialogHeader>
 						<DialogFooter>

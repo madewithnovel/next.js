@@ -1,9 +1,9 @@
+import schema from 'app/api/schema.json';
+
 import Request from '../request';
+import { loadOperations } from './setup';
 
 let operations = {};
-
-// run this here for SSR
-operations = await require('./setup').setup(require('app/api/schema.json'));
 
 export * as request from '../request';
 
@@ -73,6 +73,7 @@ async function rpcHandler (operationId, ...rest) {
 	console.warn(`RPC operation ${operationId} not found`);
 }
 
+// WHY IS THIS NULL SOMETIMES
 export const rpc = new Proxy(rpcHandler, {
 	get: function (_, prop) {
 		const similar = operations ? Object.keys(operations).find((key) => key.includes(prop)) : null;
@@ -80,3 +81,11 @@ export const rpc = new Proxy(rpcHandler, {
 		return (...params) => rpcHandler(similar, ...params);
 	},
 });
+
+if (typeof window === 'undefined') {
+	// run this here for SSR
+	operations = await require('./setup').setup(schema);
+} else {
+	operations = loadOperations(schema);
+	console.log(operations);
+}

@@ -10,10 +10,10 @@
 - [x] errors
 
 wednesday
-- [ ] account security
-- [ ] update password
-- [ ] manage mfa
-- [ ] session management
+- [x] account security
+- [x] update password
+- [x] manage mfa
+- [x] session management
 
 thursday
 - [ ] org list
@@ -40,8 +40,10 @@ saturday
 sunday
 - [ ] overview page
 - [ ] logout
+- [ ] add logout screen
 
 monday
+- [ ] fix the rpc undefined problem
 - [ ] manage api keys
 - [ ] api key access history
 
@@ -57,8 +59,10 @@ wednesday
 - [ ] task detail
 - [ ] projects archive
 
+thursday
 - [ ] modify marketing to look like mintlify
 - [ ] BUG: collapsed sidebar has no link
+- [ ] clean up overwhelming code in forms
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -149,6 +153,8 @@ v1.1
 - [ ] new dynamic page, auto hook data/actions with server/api/web/* route
 - [ ] /login/confirm - resend confirmation email screen if not received
 - [ ] public profile / platform profile like public github accounts
+- [ ] standardize select to be ...registerable
+- [ ] standardize toggle to be ...registerable
 
 
 non react 19

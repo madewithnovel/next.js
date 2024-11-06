@@ -3,19 +3,24 @@ import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
-import Form from './form';
+import LanguageSection from './components/language';
+import NameSection from './components/name';
+import NotificationSection from './components/notifications';
+import PictureSection from './components/picture';
+import ThemeSection from './components/theme';
+import TimezoneSection from './components/timezone';
+import WebsiteSection from './components/website';
 import Tabs from './tabs';
 
 async function getPage () {
 	const response = await novel.rpc.AccountProfile();
 	if (response.ok) {
-		const data = await response.json();
-		return data;
+		return response.json();
 	}
 }
 
 export default async function Page () {
-	const account = await getPage();
+	const { profile, settings } = await getPage();
 	return (
 		<main className="flex flex-1 flex-col gap-4 p-4 pt-0">
 			<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -42,7 +47,16 @@ export default async function Page () {
 					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Account</h1>
 					<Tabs selected="account"/>
 				</header>
-				<Form profile={account.profile} settings={account.settings} />
+				<div className="flex flex-col gap-10">
+					<NameSection profile={profile}/>
+					<PictureSection profile={profile}/>
+					<WebsiteSection profile={profile}/>
+					<ThemeSection settings={settings}/>
+					<TimezoneSection settings={settings}/>
+					<LanguageSection settings={settings}/>
+					<hr/>
+					<NotificationSection settings={settings}/>
+				</div>
 			</div>
 		</main>
 	);

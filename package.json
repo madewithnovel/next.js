@@ -26,6 +26,7 @@
     "@types/canvas-confetti": "1.6.4",
     "canvas-confetti": "1.9.3",
     "class-variance-authority": "0.7.0",
-    "cmdk": "^1.0.0"
+    "cmdk": "^1.0.0",
+    "input-otp": "^1.4.1"
   }
 }

@@ -1,9 +1,12 @@
+import Copybox from 'components/elements/copybox';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
-import Form from './form';
+import DeactivateSection from './components/deactivate';
+import EmailSection from './components/email';
+import NameSection from './components/name';
 import Tabs from './tabs';
 
 async function getPage () {
@@ -42,7 +45,23 @@ export default async function Page () {
 					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Organization</h1>
 					<Tabs selected="organization"/>
 				</header>
-				<Form org={org}/>
+				<div className="flex flex-col gap-10">
+					<section className="section">
+						<header>
+							<h3 className="font-medium">Organization ID</h3>
+							<p className="text-zinc-500">This is the public name you can see to distinguish your organization.</p>
+						</header>
+						<div>
+							<div className="flex items-center gap-2 w-full md:w-72">
+								<Copybox className="font-mono">{org.id}</Copybox>
+							</div>
+						</div>
+					</section>
+					<NameSection org={org}/>
+					<EmailSection org={org}/>
+					<hr/>
+					<DeactivateSection/>
+				</div>
 			</div>
 		</main>
 	);

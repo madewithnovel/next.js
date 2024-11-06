@@ -1,5 +1,26 @@
-export async function setup (exportedOutside) {
+export function loadOperations (exportedOutside) {
 	const operations = {};
+	const { paths } = exportedOutside ?? {};
+	Object.entries(paths).forEach(([url, methods]) => {
+		Object.entries(methods).forEach(async ([method, op]) => {
+			if (!url.includes('/webhook')) {
+				operations[op.operationId] = {
+					url,
+					method,
+					...op,
+				};
+				operations[op.operationId.toLowerCase()] = operations[op.operationId];
+				operations[op.operationId.replace(method, '')] = operations[op.operationId];
+				operations[op.operationId.replace(method, '').toLowerCase()] = operations[op.operationId];
+			}
+		});
+	});
+	return operations;
+}
+
+// can be ran in server/client
+export async function setup (exportedOutside) {
+	let operations = {};
 	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
 		// TODO: runs 3 times on dev server
 		try {
@@ -62,21 +83,7 @@ export async function setup (exportedOutside) {
 			console.error(error);
 		}
 	} else {
-		const { paths } = exportedOutside ?? {};
-		Object.entries(paths).forEach(([url, methods]) => {
-			Object.entries(methods).forEach(async ([method, op]) => {
-				if (!url.includes('/webhook')) {
-					operations[op.operationId] = {
-						url,
-						method,
-						...op,
-					};
-					operations[op.operationId.toLowerCase()] = operations[op.operationId];
-					operations[op.operationId.replace(method, '')] = operations[op.operationId];
-					operations[op.operationId.replace(method, '').toLowerCase()] = operations[op.operationId];
-				}
-			});
-		});
+		operations = loadOperations(exportedOutside);
 	}
 	return operations;
 }

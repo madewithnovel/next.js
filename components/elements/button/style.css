@@ -19,7 +19,7 @@
     }
 
     /* shadcn button */
-    &:not(.destructive, .outline, .secondary, .link) {
+    &:not(.destructive, .ghost, .outline, .secondary, .link) {
         @apply bg-primary text-primary-foreground hover:bg-primary/90;
     }
 
@@ -49,6 +49,10 @@
 
     &.lg {
         @apply h-11 rounded-md px-8;
+    }
+
+    &.xs {
+        @apply h-8 rounded-md px-3;
     }
 
     &.icon {

@@ -46,7 +46,7 @@ export default function Email ({ org }) {
 		<section className="section">
 			<header>
 				<h3 className="font-medium">Organization Email</h3>
-				<p className="text-zinc-500">Organization email that can be used for support and marketing purposes.</p>
+				<p className="text-muted-foreground">Organization email that can be used for support and marketing purposes.</p>
 			</header>
 			<div>
 				<div className="flex items-center gap-2 w-full md:w-72">

@@ -2,12 +2,11 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
+import InlineNotify from 'components/elements/inline-notify';
 import Toggle from 'components/elements/toggle';
 import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-import InlineNotify from '@/components/elements/inline-notify';
 
 const schema = patchAccountSettingsUpdate.pick({ marketing: true, newsletter: true });
 
