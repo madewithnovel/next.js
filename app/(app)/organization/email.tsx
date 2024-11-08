@@ -45,11 +45,11 @@ export default function Email ({ org }) {
 	return (
 		<section className="section">
 			<header>
-				<h3 className="font-medium">Organization Email</h3>
-				<p className="text-muted-foreground">Organization email that can be used for support and marketing purposes.</p>
+				<h3 className="font-medium">Billing Email</h3>
+				<p className="text-muted-foreground">Organization email that can be used for support and billing purposes.</p>
 			</header>
 			<div>
-				<div className="flex items-center gap-2 w-full md:w-72">
+				<div className="flex items-center gap-2 w-full md:w-96">
 					<Input type="email" {...register(key)} onKeyDown={(e) => e.key === 'Enter' && handleSubmit(submit(key))(e)}/>
 					{dirtyFields[key] && <Button variant="outline" working={isWorking} onClick={handleSubmit(submit(key))}>Save</Button>}
 					<InlineNotify saved={saved} leave={() => save(false)} duration={6000}/>

@@ -4,9 +4,9 @@ import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
-import DeactivateSection from './components/deactivate';
-import EmailSection from './components/email';
-import NameSection from './components/name';
+import DeactivateSection from './deactivate';
+import EmailSection from './email';
+import NameSection from './name';
 import Tabs from './tabs';
 
 async function getPage () {

@@ -5,6 +5,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const merge = require('lodash.merge');
 
 require('dotenv').config();
 
@@ -61,6 +62,8 @@ const SentryConfig = {
 	automaticVercelMonitors: false,
 };
 
+// TODO: lodash merge
+
 /**
  * @param overrides {import('next').NextConfig}
  * @returns {import('next').NextConfig}
@@ -74,6 +77,6 @@ module.exports = (overrides) => {
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
 	require('../sdk/setup').setup(require('app/api/schema.json')).then();
-	return { ...rest, ...nextConfig };
+	return merge(nextConfig, rest);
 	// return withSentryConfig({ ...rest, ...nextConfig }, SentryConfig);
 };

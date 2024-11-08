@@ -3,14 +3,14 @@ import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
-import LanguageSection from './components/language';
-import NameSection from './components/name';
-import NotificationSection from './components/notifications';
-import PictureSection from './components/picture';
-import ThemeSection from './components/theme';
-import TimezoneSection from './components/timezone';
-import WebsiteSection from './components/website';
+import LanguageSection from './language';
+import NameSection from './name';
+import NotificationSection from './notifications';
+import PictureSection from './picture';
 import Tabs from './tabs';
+import ThemeSection from './theme';
+import TimezoneSection from './timezone';
+import WebsiteSection from './website';
 
 async function getPage () {
 	const response = await novel.rpc.AccountProfile();

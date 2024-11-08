@@ -1,16 +1,32 @@
 'use client';
 
+import getSession from 'components/hooks/get-session';
 import useSession from 'components/hooks/use-session';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from 'components/ui/sidebar';
 import { ChevronsUpDown, Plus } from 'lucide-react';
+import * as novel from 'novel/sdk';
+import store from 'novel/store';
 import { useState } from 'react';
 
+import { NewOrganization } from '../../account/organizations/organizations';
+
 export function OrgSwitcher () {
+	const [open, toggleModal] = useState(false);
 	const { isMobile } = useSidebar();
 	const session = useSession();
 	const teams = session.organizations;
-	const [activeTeam, setActiveTeam] = useState(teams[0]);
+	const [activeTeam, setActiveTeam] = useState(session.organization);
+
+	async function switchTo (team) {
+		const response = await novel.rpc.SessionSwitch({ org_id: team.id });
+		if (response.ok) {
+			const session = await getSession();
+			store.set('session', session);
+			setActiveTeam(team);
+			window.location.href = '/dashboard';
+		}
+	}
 
 	return (
 		<SidebarMenu>
@@ -44,8 +60,8 @@ export function OrgSwitcher () {
 						</DropdownMenuLabel>
 						{teams.map((team) => (
 							<DropdownMenuItem
-								key={team.name}
-								onClick={() => setActiveTeam(team)}
+								key={team.id}
+								onClick={() => switchTo(team)}
 								className="gap-2 p-2"
 							>
 								<div className="flex size-6 items-center justify-center rounded-sm text-xs border">
@@ -55,14 +71,15 @@ export function OrgSwitcher () {
 							</DropdownMenuItem>
 						))}
 						<DropdownMenuSeparator />
-						<DropdownMenuItem className="gap-2 p-2">
+						<DropdownMenuItem className="gap-2 p-2" onClick={() => toggleModal(true)}>
 							<div className="flex size-6 items-center justify-center rounded-md border bg-background">
-								<Plus className="size-4" />
+								<Plus className="size-4"/>
 							</div>
 							<div className="font-medium text-muted-foreground">Add team</div>
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
+				<NewOrganization open={open} onOpenChange={toggleModal}/>
 			</SidebarMenuItem>
 		</SidebarMenu>
 	);

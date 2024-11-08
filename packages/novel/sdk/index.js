@@ -56,6 +56,9 @@ async function rpcHandler (operationId, ...rest) {
 					touched++;
 				}
 			});
+			if (!['GET', 'HEAD'].includes(method.toUpperCase()) && (!body || Object.keys(body).length === 0)) {
+				body = {};
+			}
 			return Request(urlWithParams, {
 				method: method.toUpperCase(),
 				body,
@@ -82,10 +85,10 @@ export const rpc = new Proxy(rpcHandler, {
 	},
 });
 
-if (typeof window === 'undefined') {
-	// run this here for SSR
-	operations = await require('./setup').setup(schema);
-} else {
-	operations = loadOperations(schema);
-	console.log(operations);
-}
+// if (typeof window === 'undefined') {
+// 	// run this here for SSR
+// 	operations = await require('./setup').setup(schema);
+// } else {
+// 	operations = loadOperations(schema);
+// }
+operations = loadOperations(schema);

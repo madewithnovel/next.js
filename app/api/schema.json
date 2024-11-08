@@ -962,6 +962,18 @@
             "index": true,
             "unique": true
           },
+          "invoice_number": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 32,
+            "nullable": true,
+            "index": true
+          },
+          "invoice_permalink": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
           "subscriber_id": {
             "type": "string",
             "field": "string",
@@ -3652,6 +3664,18 @@
             "index": true,
             "unique": true
           },
+          "invoice_number": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 32,
+            "nullable": true,
+            "index": true
+          },
+          "invoice_permalink": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
           "subscriber_id": {
             "type": "string",
             "field": "string",
@@ -6318,6 +6342,36 @@
           "app",
           "organization"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "email"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 6,
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Default Response"

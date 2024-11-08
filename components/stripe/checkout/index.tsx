@@ -28,17 +28,16 @@ const cardStyle = {
 	},
 };
 
-export async function getCustomerIntent (plan, stripe, elements) {
-	const response = await novel.rpc.AuthPaymentIntent({ plan });
+export async function getCustomerIntent (plan, stripe, elements, org_id = null) {
+	const response = await novel.rpc.AuthPaymentIntent({ plan, org_id });
 	const setupIntent = await response.json();
 	const card = elements.getElement(CardElement);
 	try {
 		const confirm = await stripe.confirmCardSetup(setupIntent.intent.client_secret, { payment_method: { card } });
-		console.log(confirm);
 		if (confirm.error) {
 			return { error: confirm?.error };
 		} else if (confirm.setupIntent?.status === 'succeeded') {
-			return confirm.setupIntent.id;
+			return confirm.setupIntent;
 		}
 		return { error: { message: 'Something went wrong with your card' } };
 	} catch (error) {

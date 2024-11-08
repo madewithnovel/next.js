@@ -3,18 +3,21 @@ import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
+import Email from '@/app/(app)/organization/email';
+
 import Tabs from '../tabs';
+import CurrentSection from './current';
+import InvoiceSection from './invoice';
 
 async function getPage () {
-	const response = await novel.rpc.OrganizationMembers();
+	const response = await novel.rpc.SubscriptionsCurrent();
 	if (response.ok) {
-		const data = await response.json();
-		return data.members;
+		return response.json();
 	}
 }
 
 export default async function Page () {
-	const members = await getPage();
+	const current = await getPage();
 	return (
 		<main className="flex flex-1 flex-col gap-4 p-4 pt-0">
 			<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -41,12 +44,10 @@ export default async function Page () {
 					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Organization</h1>
 					<Tabs selected="subscription"/>
 				</header>
-				- current period
-				- subscription
-				- upgrade
-				- billing email
-				- cancel
-				- add payment method
+				<CurrentSection current={current} />
+				<Email org={current.organization}/>
+				<hr/>
+				<InvoiceSection charges={current.charges} />
 			</div>
 		</main>
 	);

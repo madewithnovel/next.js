@@ -5,20 +5,16 @@ import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSetting
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Select from 'components/elements/select';
-import timezones from 'novel/constants/timezones.json';
+import locales from 'novel/constants/locales.json';
 import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const key = 'timezone';
-const utcd = new Set();
-timezones.forEach(timezone => {
-	timezone.utc.forEach(utc => utcd.add(utc));
-});
+const key = 'language';
 
 const schema = patchAccountSettingsUpdate.pick({ [key]: true });
 
-export default function Timezone ({ settings }) {
+export default function Language ({ settings }) {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
 	const form = useForm({ defaultValues: settings, resolver: zodResolver(schema) });
@@ -41,22 +37,21 @@ export default function Timezone ({ settings }) {
 	return (
 		<section className="section">
 			<header>
-				<h3 className="font-medium">Timezone</h3>
-				<p className="text-zinc-500">Graphs and Reports will follow the timezone setting.</p>
+				<h3 className="font-medium">Language</h3>
 			</header>
 			<div>
-				<div className="flex items-center gap-2 w-full md:w-72">
+				<div className="flex items-center gap-2 w-full md:w-64">
 					<Select
 						form={form}
 						className="w-full"
 						defaultValue={settings[key] ?? 'en'}
-						options={Array.from(utcd).map(locale => ({ value: locale, label: locale }))}
+						options={locales.map(locale => ({ value: locale.code, label: locale.name }))}
 						{...register(key)}
 					/>
 					{dirtyFields[key] && <Button variant="outline" working={isWorking} onClick={handleSubmit(submit(key))}>Save</Button>}
 					<InlineNotify saved={saved} leave={() => save(false)} duration={6000}/>
 				</div>
-				{errors[key] && <div className="mt-2 text-destructive text-sm">Something happened while saving your organization name. Please try again.</div>}
+				{errors[key] && <div className="mt-2 text-destructive text-sm">{errors[key].message}</div>}
 			</div>
 		</section>
 	);

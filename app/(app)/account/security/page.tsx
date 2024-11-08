@@ -4,11 +4,11 @@ import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
-import Deactivate from '../components/deactivate';
-import MfaSection from '../components/mfa';
-import PasswordSection from '../components/password';
-import SessionsSection from '../components/sessions';
 import Tabs from '../tabs';
+import Deactivate from './deactivate';
+import MfaSection from './mfa';
+import PasswordSection from './password';
+import SessionsSection from './sessions';
 
 async function getPage () {
 	const response = await novel.rpc.AccountSecurity();

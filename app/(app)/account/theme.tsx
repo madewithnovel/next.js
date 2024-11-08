@@ -56,7 +56,7 @@ export default function Theme ({ settings }) {
 					{dirtyFields[key] && <Button variant="outline" working={isWorking} onClick={handleSubmit(submit(key))}>Save</Button>}
 					<InlineNotify saved={saved} leave={() => save(false)} duration={6000}/>
 				</div>
-				{errors[key] && <div className="mt-2 text-destructive text-sm">Something happened while saving your organization name. Please try again.</div>}
+				{errors[key] && <div className="mt-2 text-destructive text-sm">{errors[key].message}</div>}
 			</div>
 		</section>
 	);

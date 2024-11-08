@@ -1,49 +1,24 @@
-- [x] navigation integration
-- [x] dashboard structure
-- [x] dropdown component
-- [x] org switcher integration
-- [x] organizations name/email update
-- [x] account profile
-- [x] upload / attach file
-- [x] update notification / settings
-- [x] zod validations on existing forms
-- [x] errors
-
-wednesday
-- [x] account security
-- [x] update password
-- [x] manage mfa
-- [x] session management
-
-thursday
-- [ ] org list
-- [ ] organizations create modal
-- [ ] organization subscription
-- [ ] org manage quotas
-
 friday
-- [ ] org manage billing
-- [ ] org add payment method
-- [ ] org change subscription
-- [ ] org cancel subscription
-- [ ] org deactivate
+- [x] org manage billing
+- [x] charges list
+- [x] org cancel subscription
+- [x] org change subscription
 
 saturday
 - [ ] member invite
 - [ ] member invitation list
 - [ ] member manage
 - [ ] member revoke
+
+sunday
 - [ ] account notifications
 - [ ] manage notifications
 - [ ] accept / reject invite
 
-sunday
+monday
 - [ ] overview page
 - [ ] logout
 - [ ] add logout screen
-
-monday
-- [ ] fix the rpc undefined problem
 - [ ] manage api keys
 - [ ] api key access history
 
@@ -51,6 +26,10 @@ tuesday
 - [ ] activity page / org events
 - [ ] switch organizations
 - [ ] projects list
+
+wednesday
+- [ ] organization activity list
+- [ ] account activity list
 
 wednesday
 - [ ] task manage
@@ -63,6 +42,10 @@ thursday
 - [ ] modify marketing to look like mintlify
 - [ ] BUG: collapsed sidebar has no link
 - [ ] clean up overwhelming code in forms
+- [ ] fix the rpc undefined problem
+- [ ] deactivate organization
+- [ ] deactivate account
+- [ ] login with mfa
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -106,6 +89,24 @@ UI
 - [x] useAuthorized hook
 - [x] useFeature hook from flags
 - [x] getSession redirect error
+- [x] navigation integration
+- [x] dashboard structure
+- [x] dropdown component
+- [x] org switcher integration
+- [x] organizations name/email update
+- [x] account profile
+- [x] upload / attach file
+- [x] update notification / settings
+- [x] zod validations on existing forms
+- [x] errors
+- [x] account security
+- [x] update password
+- [x] manage mfa
+- [x] session management
+- [x] org list
+- [x] organizations create modal
+- [x] organization subscription
+- [x] org view quotas
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
@@ -123,7 +124,6 @@ UI
 - [ ] deactivate account
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
-- [ ] login mfa
 - [ ] analytics
 - [ ] playwright
 - [ ] customize the theme
@@ -155,7 +155,8 @@ v1.1
 - [ ] public profile / platform profile like public github accounts
 - [ ] standardize select to be ...registerable
 - [ ] standardize toggle to be ...registerable
-
+- [ ] leave organization
+- [ ] org add payment method
 
 non react 19
 - @stripe/react-stripe-js

@@ -1,10 +1,10 @@
 'use client';
 
 import cx from 'clsx';
-import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/app/stripe/checkout';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import Select from 'components/elements/select';
+import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/stripe/checkout';
 import { TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -41,11 +41,15 @@ function FormSteps ({ plans }) {
 		 */
 		const plan = data.plan ?? 'standard-2024';
 		const interval = 'month';
-		const intent = await getCustomerIntent(plan, stripe, elements);
+		let method;
+		let intent = await getCustomerIntent(plan, stripe, elements);
 		if (intent.error) {
 			isWorking(false);
 			const error = intent.error;
 			return setError('email', { type: 'manual', message: error.message });
+		} else {
+			method = intent.payment_method;
+			intent = intent.id;
 		}
 
 		/**
@@ -62,7 +66,7 @@ function FormSteps ({ plans }) {
 		/**
 		 * Send the request to the backend
 		 */
-		const response = await novel.rpc.AuthSignup({ email, password, interval, intent, plan, invitation_code });
+		const response = await novel.rpc.AuthSignup({ email, password, interval, intent, plan, method, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();
