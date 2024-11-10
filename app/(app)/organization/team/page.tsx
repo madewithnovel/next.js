@@ -4,6 +4,7 @@ import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
 import Tabs from '../tabs';
+import MembersSection from './members';
 
 async function getPage () {
 	const response = await novel.rpc.OrganizationMembers();
@@ -41,10 +42,7 @@ export default async function Page () {
 					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Organization</h1>
 					<Tabs selected="team"/>
 				</header>
-				list manage invite
-				{members.map(member => (
-					<div key={member.id}>{member.email}</div>
-				))}
+				<MembersSection members={members} />
 			</div>
 		</main>
 	);

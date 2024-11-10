@@ -1,19 +1,9 @@
-friday
-- [x] org manage billing
-- [x] charges list
-- [x] org cancel subscription
-- [x] org change subscription
-
-saturday
-- [ ] member invite
-- [ ] member invitation list
-- [ ] member manage
-- [ ] member revoke
-
 sunday
+- [ ] organization activity list
 - [ ] account notifications
 - [ ] manage notifications
 - [ ] accept / reject invite
+- [ ] account activity list
 
 monday
 - [ ] overview page
@@ -28,8 +18,6 @@ tuesday
 - [ ] projects list
 
 wednesday
-- [ ] organization activity list
-- [ ] account activity list
 
 wednesday
 - [ ] task manage
@@ -107,6 +95,14 @@ UI
 - [x] organizations create modal
 - [x] organization subscription
 - [x] org view quotas
+- [x] org manage billing
+- [x] charges list
+- [x] org cancel subscription
+- [x] org change subscription
+- [x] member invite
+- [x] member manage
+- [x] member revoke
+- [x] change role
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
