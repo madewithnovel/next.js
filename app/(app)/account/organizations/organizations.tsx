@@ -134,7 +134,7 @@ export default function Organizations ({ organizations }) {
 								<td className="relative whitespace-nowrap py-2 pl-3 pr-4 text-right sm:pr-0">
 									<DropdownMenu>
 										<DropdownMenuTrigger asChild>
-											<button className="button secondary xs">
+											<button className="button outline xs">
 												<EllipsisIcon/>
 											</button>
 										</DropdownMenuTrigger>

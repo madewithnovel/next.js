@@ -65,7 +65,7 @@ export function OrgSwitcher () {
 								className="gap-2 p-2"
 							>
 								<div className="flex size-6 items-center justify-center rounded-sm text-xs border">
-									{activeTeam.name.split(' ').map(w => w[0]).join('').substring(0, 2)}
+									{team.name.split(' ').map(w => w[0]).join('').substring(0, 2)}
 								</div>
 								{team.name}
 							</DropdownMenuItem>

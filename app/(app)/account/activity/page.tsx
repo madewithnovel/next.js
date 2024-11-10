@@ -30,7 +30,7 @@ export default async function Page () {
 							</BreadcrumbItem>
 							<BreadcrumbSeparator className="hidden md:block"/>
 							<BreadcrumbItem>
-								<BreadcrumbPage>Manage</BreadcrumbPage>
+								<BreadcrumbPage>Activity</BreadcrumbPage>
 							</BreadcrumbItem>
 						</BreadcrumbList>
 					</Breadcrumb>

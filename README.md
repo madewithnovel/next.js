@@ -1,25 +1,19 @@
 sunday
-- [ ] organization activity list
-- [ ] account notifications
-- [ ] manage notifications
-- [ ] accept / reject invite
-- [ ] account activity list
+- [ ] pricing table page bug, USD not defined
+- [ ] fix the rpc undefined problem
 
 monday
+- [ ] login with mfa
+- [ ] organization activity list
+- [ ] account activity list
+
+tuesday
 - [ ] overview page
-- [ ] logout
-- [ ] add logout screen
 - [ ] manage api keys
 - [ ] api key access history
 
-tuesday
-- [ ] activity page / org events
-- [ ] switch organizations
+wednesday
 - [ ] projects list
-
-wednesday
-
-wednesday
 - [ ] task manage
 - [ ] projects create
 - [ ] projects update
@@ -27,13 +21,13 @@ wednesday
 - [ ] projects archive
 
 thursday
+
+friday
 - [ ] modify marketing to look like mintlify
 - [ ] BUG: collapsed sidebar has no link
 - [ ] clean up overwhelming code in forms
-- [ ] fix the rpc undefined problem
 - [ ] deactivate organization
 - [ ] deactivate account
-- [ ] login with mfa
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -103,6 +97,11 @@ UI
 - [x] member manage
 - [x] member revoke
 - [x] change role
+- [x] account notifications
+- [x] manage notifications
+- [x] accept / reject invite
+- [x] logout
+- [x] add logout screen
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
@@ -127,6 +126,7 @@ UI
 - [ ] try to build marketing with shadcn magic components
 - [ ] test dark mode for marketing
 - [ ] https://github.com/hashicorp/nextjs-bundle-analysis?
+- [ ] components/elements/Button does not work inside dropdowntrigger
 
 Devtools
 - [ ] request list client/server

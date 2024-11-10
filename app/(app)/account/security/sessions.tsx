@@ -50,7 +50,7 @@ export default function Sessions ({ sessions }) {
 									{!session.expired && (
 										<Dialog>
 											<DialogTrigger asChild>
-												<button className="button secondary xs">Revoke</button>
+												<button className="button outline xs">Revoke</button>
 											</DialogTrigger>
 											<DialogContent className="sm:max-w-[520px]">
 												<DialogHeader>
