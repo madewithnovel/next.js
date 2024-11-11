@@ -4,17 +4,17 @@ import { SidebarTrigger } from 'components/ui/sidebar';
 import * as novel from 'novel/sdk';
 
 import Tabs from '../tabs';
+import ListSection from './list';
 
 async function getPage () {
-	const response = await novel.rpc.AccountProfile();
+	const response = await novel.rpc.AccountEvents();
 	if (response.ok) {
-		const data = await response.json();
-		return data;
+		return response.json();
 	}
 }
 
 export default async function Page () {
-	const account = await getPage();
+	const { events } = await getPage();
 	return (
 		<main className="flex flex-1 flex-col gap-4 p-4 pt-0">
 			<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -25,7 +25,7 @@ export default async function Page () {
 						<BreadcrumbList>
 							<BreadcrumbItem className="hidden md:block">
 								<BreadcrumbLink href="/organization">
-									Account
+									Organization
 								</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator className="hidden md:block"/>
@@ -38,10 +38,10 @@ export default async function Page () {
 			</header>
 			<div className="p-4 flex flex-col gap-10 pb-20 container mx-auto">
 				<header>
-					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Account</h1>
+					<h1 className="text-xl md:text-2xl font-medium tracking-tight mb-5">Organization</h1>
 					<Tabs selected="activity"/>
 				</header>
-				- events
+				<ListSection events={events}/>
 			</div>
 		</main>
 	);

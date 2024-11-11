@@ -12,9 +12,13 @@ export default async function Page () {
 			>
 				<LibraryBigIcon size={42}/>
 				<div>
-					<div className="text-3xl font-medium">Enter your OTP</div>
+					<div className="text-3xl font-medium">OTP Verification</div>
+					<p className="text-muted-foreground">Enter the code from your registered authenticator.</p>
 				</div>
 				<Form/>
+				<div>
+					<div>If you have lost of registered authenticator. <Link href="/login/forget">Reset your account to gain access.</Link></div>
+				</div>
 			</div>
 		</div>
 	);

@@ -1,18 +1,12 @@
-sunday
-- [ ] pricing table page bug, USD not defined
-- [ ] fix the rpc undefined problem
-
 monday
-- [ ] login with mfa
-- [ ] organization activity list
-- [ ] account activity list
+- [x] login with mfa
+- [x] manage api keys
+- [x] api key access history
+- [x] organization activity list
+- [x] account activity list
+- [x] overview page
 
 tuesday
-- [ ] overview page
-- [ ] manage api keys
-- [ ] api key access history
-
-wednesday
 - [ ] projects list
 - [ ] task manage
 - [ ] projects create
@@ -20,14 +14,20 @@ wednesday
 - [ ] task detail
 - [ ] projects archive
 
-thursday
+wednesday
+- [ ] pricing table page bug, USD not defined
+- [ ] fix the rpc undefined problem
 
-friday
+thursday
 - [ ] modify marketing to look like mintlify
 - [ ] BUG: collapsed sidebar has no link
 - [ ] clean up overwhelming code in forms
 - [ ] deactivate organization
 - [ ] deactivate account
+
+friday
+- [ ] i18n support
+- [ ] convert text to t()
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -108,13 +108,11 @@ UI
 - [ ] 500
 - [ ] robots.txt get all routes from app/(marketing)
 - [ ] manifest.json
-- [ ] i18n support
 - [ ] sign in zod form validation
 - [ ] sign up zod form validation
 - [ ] reset zod form validation
 - [ ] forget zod form validation
 - [ ] magic link form validation
-- [ ] convert text to t()
 - [ ] localization test
 - [ ] deactivate account
 - [ ] translate to ES, CN, KR, JP

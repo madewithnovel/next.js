@@ -241,6 +241,12 @@
             "maxLength": 32,
             "nullable": true
           },
+          "org_id": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 16,
+            "nullable": true
+          },
           "account_id": {
             "type": "string",
             "field": "string",
@@ -277,6 +283,19 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/def-15"
+                }
+              }
+            ]
+          },
+          "organizations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-18"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-18"
                 }
               }
             ]
@@ -1362,6 +1381,12 @@
             "nullable": true,
             "unique": true
           },
+          "org_id": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 16,
+            "nullable": true
+          },
           "author_id": {
             "type": "string",
             "field": "string",
@@ -1415,6 +1440,19 @@
             "field": "timestamp",
             "nullable": true,
             "useTz": true
+          },
+          "organizations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-18"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-18"
+                }
+              }
+            ]
           },
           "accounts": {
             "oneOf": [
@@ -1752,6 +1790,32 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/def-5"
+                }
+              }
+            ]
+          },
+          "notifications": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-15"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-15"
+                }
+              }
+            ]
+          },
+          "account_inbox": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-3"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-3"
                 }
               }
             ]
@@ -2936,6 +3000,12 @@
             "maxLength": 32,
             "nullable": true
           },
+          "org_id": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 16,
+            "nullable": true
+          },
           "account_id": {
             "type": "string",
             "field": "string",
@@ -2972,6 +3042,19 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/def-15"
+                }
+              }
+            ]
+          },
+          "organizations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-18"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-18"
                 }
               }
             ]
@@ -4057,6 +4140,12 @@
             "nullable": true,
             "unique": true
           },
+          "org_id": {
+            "type": "string",
+            "field": "string",
+            "maxLength": 16,
+            "nullable": true
+          },
           "author_id": {
             "type": "string",
             "field": "string",
@@ -4110,6 +4199,19 @@
             "field": "timestamp",
             "nullable": true,
             "useTz": true
+          },
+          "organizations": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-18"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-18"
+                }
+              }
+            ]
           },
           "accounts": {
             "oneOf": [
@@ -4447,6 +4549,32 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/def-5"
+                }
+              }
+            ]
+          },
+          "notifications": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-15"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-15"
+                }
+              }
+            ]
+          },
+          "account_inbox": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/def-3"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/def-3"
                 }
               }
             ]
@@ -5905,6 +6033,21 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/api-keys/events": {
+      "get": {
+        "operationId": "getApiKeyAccess",
+        "summary": "ApiKeyAccess",
+        "tags": [
+          "app",
+          "api-keys"
+        ],
         "responses": {
           "200": {
             "description": "Default Response"

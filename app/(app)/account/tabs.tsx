@@ -7,8 +7,8 @@ const orgTabs = [
 	{ id: 'account', name: 'Account', href: '/account' },
 	{ id: 'security', name: 'Security', href: '/account/security' },
 	{ id: 'organizations', name: 'Organizations', href: '/account/organizations' },
-	{ id: 'notifications', name: 'Notifications', href: '/account/notifications' },
 	{ id: 'developer', name: 'Developer', href: '/account/developer' },
+	{ id: 'notifications', name: 'Notifications', href: '/account/notifications' },
 	{ id: 'activity', name: 'Activity', href: '/account/activity' },
 ];
 

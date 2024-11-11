@@ -1,12 +1,8 @@
 'use client';
 
 import cx from 'clsx';
-import AlertOk from 'components/elements/alerts/ok';
-import AlertWarning from 'components/elements/alerts/warning';
 import Button from 'components/elements/button';
-import Input from 'components/elements/input';
-import { GithubIcon, TriangleAlertIcon } from 'lucide-react';
-import Link from 'next/link';
+import { TriangleAlertIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import * as novel from 'novel/sdk';
 import { useState } from 'react';
@@ -22,28 +18,39 @@ export default function Form () {
 
 	async function submit (data) {
 		isWorking(true);
-		const { email, password } = data;
-		const response = await novel.rpc.postAuthStrategy('password', { email, password });
+		const response = await novel.rpc.AuthMfa(query.get('strategy'), { otp: data.otp });
 		if (response.ok) {
-			const data = await response.json();
-			if (data.redirect_to) {
-				const callback = await novel.request.get(data.redirect_to);
-				router.push(callback.url);
+			if (response.redirected === true) {
+				if (response.url.includes('MFA_OTP_INVALID')) {
+					isWorking(false);
+					setError('otp', { type: 'custom', message: ' The OTP provided is not a valid token based on the registered authenticator. Please try again.' });
+					return setFocus('otp');
+				}
+				return router.replace(response.url);
 			}
+			isWorking(false);
+			setError('otp', { type: 'custom', message: 'Something happened while trying to verify your OTP. Please try again.' });
+			setFocus('otp');
 		} else {
 			const data = await response.json();
-			setError('email', { type: 'custom', message: data.error.message });
-			setFocus('email');
+			isWorking(false);
+			setError('otp', { type: 'custom', message: data.error.message });
+			setFocus('otp');
 		}
-		isWorking(false);
 	}
 
 	return (
-		<form action={handleSubmit(submit)} className="flex flex-col gap-5">
-			<div>One Time Password</div>
-			<OTPInput className={cx({ error: errors.password })} {...register('token')} />
-			<Button working={working} variant="outline">Sign-out</Button>
-			<Button working={working} type="submit">Continue</Button>
+		<form action={handleSubmit(submit)}>
+			<div className="flex items-center gap-2">
+				<OTPInput className={cx({ error: errors.otp })} {...register('otp')} />
+				<Button working={working} type="submit">Continue</Button>
+			</div>
+			{errors.otp && (
+				<div className="mt-5 text-red-500 text-sm flex gap-2">
+					<TriangleAlertIcon className="shrink-0 mt-0.5" size={20}/>
+					{errors.otp.message}
+				</div>
+			)}
 		</form>
 	);
 }

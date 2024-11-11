@@ -39,11 +39,11 @@ export default function Current ({ current }) {
 									<h3 className="text-2xl font-medium">{current.subscription.name}</h3>
 									<p className="text-muted-foreground capitalize">{current.subscription.status}</p>
 								</div>
-								<Link href="/organization/subscribe" className="button xs">Change Plan</Link>
+								<Link href="/organization/subscribe" className="button">Change Plan</Link>
 								{current.subscription.status !== 'cancelled' && (
 									<Dialog>
 										<DialogTrigger asChild>
-											<button className="button outline xs">Cancel</button>
+											<button className="button outline">Cancel</button>
 										</DialogTrigger>
 										<DialogContent className="sm:max-w-[520px]">
 											<DialogHeader>
@@ -86,7 +86,7 @@ export default function Current ({ current }) {
 								<div className="flex-1">
 									<h3 className="text-2xl font-medium">No Subscription</h3>
 								</div>
-								<Link href="/organization/subscribe" className="button xs">Change Plan</Link>
+								<Link href="/organization/subscribe" className="button">Change Plan</Link>
 							</div>
 						</div>
 					</div>
