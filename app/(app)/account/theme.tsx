@@ -6,6 +6,7 @@ import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Select from 'components/elements/select';
 import * as novel from 'novel/sdk';
+import store from 'novel/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -24,6 +25,7 @@ export default function Theme ({ settings }) {
 			if (data[key] !== defaultValues[key]) {
 				working(true);
 				const response = await novel.rpc.AccountSettingsUpdate({ [key]: data[key] });
+				store.set(key, data[key]);
 				save(true);
 				working(false);
 				if (response.ok) {

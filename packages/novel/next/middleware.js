@@ -1,7 +1,15 @@
+import { ANALYTICS } from 'app/constants';
 import { NextResponse } from 'next/server';
 
 export default function middleware (middleware) {
 	return async function (request) {
+		const scriptDomains = [];
+		const connectDomains = [];
+		if (ANALYTICS.driver === 'ga4') {
+			scriptDomains.push('www.googletagmanager.com');
+			connectDomains.push('www.google-analytics.com');
+		}
+
 		// TODO: leaving this here until next.js fixes it's nonce
 		// script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
 		// style-src 'self' 'nonce-${nonce}';
@@ -9,9 +17,9 @@ export default function middleware (middleware) {
 		const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 		let cspHeader = `
 		    default-src 'self';
-            script-src 'self' 'nonce-${nonce}' 'unsafe-eval' js.stripe.com https: http: ${process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''};
+            script-src 'self' 'unsafe-inline' ${scriptDomains.join(' ')} js.stripe.com https: http: ${process.env.NODE_ENV === 'production' ? '' : '\'unsafe-eval\''};
 		    style-src 'self' 'unsafe-inline';
-		    connect-src 'self' *.r2.cloudflarestorage.com github.com ${process.env.NEXT_PUBLIC_API_HOST};
+		    connect-src 'self' *.r2.cloudflarestorage.com github.com ${connectDomains.join(' ')} ${process.env.NEXT_PUBLIC_API_HOST};
 		    frame-src js.stripe.com;
 		    img-src 'self' *.r2.dev blob: data:;
 		    font-src 'self';
@@ -50,6 +58,7 @@ export default function middleware (middleware) {
 			response = NextResponse.next({ request: { headers: requestHeaders } });
 			locale = defaultLocale;
 		}
+		response.headers.set('x-nonce', nonce);
 		response.headers.set('x-locale', locale);
 		response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
 

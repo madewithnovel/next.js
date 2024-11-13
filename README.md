@@ -1,12 +1,23 @@
-monday
-- [x] login with mfa
-- [x] manage api keys
-- [x] api key access history
-- [x] organization activity list
-- [x] account activity list
-- [x] overview page
-
 tuesday
+- [x] dashboard homepage too crammed
+- [x] password reset screen doesnt close
+- [x] payment upfront account is not verified
+- [x] pricing table page bug, USD not defined
+- [x] fix the rpc undefined problem
+- [x] google analytics
+- [x] apply settings theme on layout
+- [x] apply settings locale on layout
+
+wednesday
+- [ ] clean up overwhelming code in forms
+- [ ] deactivate organization
+- [ ] deactivate account
+- [ ] i18n support
+- [ ] convert text to t()
+- [ ] playwright
+
+thursday
+- [ ] BUG: collapsed sidebar has no link
 - [ ] projects list
 - [ ] task manage
 - [ ] projects create
@@ -14,20 +25,21 @@ tuesday
 - [ ] task detail
 - [ ] projects archive
 
-wednesday
-- [ ] pricing table page bug, USD not defined
-- [ ] fix the rpc undefined problem
+friday (Devtools)
+- [ ] request list client/server
+- [ ] request list waterfall
+- [ ] check if git is public or private
+- [ ] check first deployment by pinging home
+- [ ] installation app
+- [ ] job list
+- [ ] queries list
+- [ ] errors list
+- [ ] mails sent
+- [ ] auth/session info
+- [ ] utilization
 
-thursday
-- [ ] modify marketing to look like mintlify
-- [ ] BUG: collapsed sidebar has no link
-- [ ] clean up overwhelming code in forms
-- [ ] deactivate organization
-- [ ] deactivate account
-
-friday
-- [ ] i18n support
-- [ ] convert text to t()
+sunday
+- [ ] playwright tests for common flows
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun
@@ -102,6 +114,12 @@ UI
 - [x] accept / reject invite
 - [x] logout
 - [x] add logout screen
+- [x] login with mfa
+- [x] manage api keys
+- [x] api key access history
+- [x] organization activity list
+- [x] account activity list
+- [x] overview page
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
@@ -114,35 +132,22 @@ UI
 - [ ] forget zod form validation
 - [ ] magic link form validation
 - [ ] localization test
-- [ ] deactivate account
 - [ ] translate to ES, CN, KR, JP
 - [ ] test csp
-- [ ] analytics
-- [ ] playwright
 - [ ] customize the theme
 - [ ] create theme - typography, color rule, spacing, border, shadow on medusa
 - [ ] try to build marketing with shadcn magic components
 - [ ] test dark mode for marketing
 - [ ] https://github.com/hashicorp/nextjs-bundle-analysis?
 - [ ] components/elements/Button does not work inside dropdowntrigger
-
-Devtools
-- [ ] request list client/server
-- [ ] request list waterfall
-- [ ] check if git is public or private
-- [ ] check first deployment by pinging home
-- [ ] installation app
-- [ ] job list
-- [ ] queries list
-- [ ] errors list
-- [ ] mails sent
-- [ ] auth/session info
-- [ ] utilization
+- [ ] modify marketing to look like mintlify
 
 v1.1
 - [ ] contact page
 - [ ] newsletter subscription
 - [ ] more feature components
+- [ ] plausible analytics
+- [ ] usefathom analytics
 - [ ] infer rpc route types
 - [ ] new dynamic page, auto hook data/actions with server/api/web/* route
 - [ ] /login/confirm - resend confirmation email screen if not received
@@ -151,6 +156,7 @@ v1.1
 - [ ] standardize toggle to be ...registerable
 - [ ] leave organization
 - [ ] org add payment method
+- [ ] dark mode
 
 non react 19
 - @stripe/react-stripe-js
@@ -162,6 +168,7 @@ non react 19
 
 caveats
 - need to restart both server and client to get new schemas
+- you cannot add CSP and nonce on SSG pages force-static pages
 
 why
 - shadcn? need a design system that can build a foundation on, and shadcn has 

@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import AnnouncementSmall from '../announcement/small';
 import TestimonialLogos from '../testimonial/logos';
 
 export default function HeroCenterVariant () {
+	const t = useTranslations('general');
 	return (
 		<div className="py-10 md:py-20 bg-zinc-50 border-b border-zinc-200">
 			<div className="container px-5 md:px-20 mx-auto flex flex-col gap-5 items-start md:items-center text-left md:text-center">
@@ -30,7 +32,7 @@ export default function HeroCenterVariant () {
 						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 						<span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
 					</span>
-					Launching in December 2025
+					{t('Launching in December 2025')}
 				</div>
 				<div className="hidden md:block w-full bg-white border border-zinc-300 rounded-2xl mt-10" style={{ height: 520 }}></div>
 				<div className="block md:hidden w-full bg-white border border-zinc-300 rounded-2xl mt-10" style={{ height: 320 }}></div>

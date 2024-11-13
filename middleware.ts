@@ -3,7 +3,13 @@ import novelMiddleware from 'novel/next/middleware';
 
 export const config = {
 	matcher: [
-		'/((?!_next).*)',
+		{
+			source: '/((?!_next|manifest.webmanifest|favicon.ico|sw.js).*)',
+			missing: [
+				{ type: 'header', key: 'next-router-prefetch' },
+				{ type: 'header', key: 'purpose', value: 'prefetch' },
+			],
+		},
 	],
 };
 

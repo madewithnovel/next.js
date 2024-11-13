@@ -1,3 +1,4 @@
+import { LOCALES } from 'app/constants';
 import * as novel from 'novel/sdk';
 
 import CallToActionEnding from './components/call-to-action/ending';
@@ -44,6 +45,14 @@ async function getPage () {
 		const { plans } = await response.json();
 		return plans;
 	}
+}
+
+/**
+ * This is an example of adding custom localization for a specific route
+ * available as a statically generated page.
+ */
+export async function generateStaticParams () {
+	return LOCALES.locales.map((locale) => ({ locale }));
 }
 
 /**

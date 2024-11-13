@@ -20,6 +20,7 @@ const schema = postAccountUpdatePassword.extend({
 export default function Password () {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
+	const [passwordOpen, togglePasswordModal] = useState(false);
 	const { handleSubmit, register, setError, setFocus, formState: { errors }, reset } = useForm({ resolver: zodResolver(schema) });
 
 	async function submit (data) {
@@ -32,6 +33,7 @@ export default function Password () {
 			const response = await novel.rpc.AccountUpdatePassword(data);
 			working(false);
 			if (response.ok) {
+				togglePasswordModal(false);
 				save(true);
 				reset();
 			} else {
@@ -61,7 +63,7 @@ export default function Password () {
 					</div>
 					<div className="flex items-center gap-5">
 						<InlineNotify saved={saved} leave={() => save(false)} duration={6000}/>
-						<Dialog>
+						<Dialog open={passwordOpen} onOpenChange={togglePasswordModal}>
 							<DialogTrigger asChild>
 								<Button working={isWorking}>Change Password</Button>
 							</DialogTrigger>

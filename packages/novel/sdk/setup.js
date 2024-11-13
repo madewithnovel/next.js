@@ -19,10 +19,16 @@ export function loadOperations (exportedOutside) {
 }
 
 // can be ran in server/client
-export async function setup (exportedOutside) {
-	let operations = {};
-	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
-		// TODO: runs 3 times on dev server
+export async function setup () {
+	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined' && process.env.NEXT_PRIVATE_TRACE_ID) {
+		const fs = await import('fs');
+		if (fs.existsSync('.next/novel')) {
+			const traceId = fs.readFileSync('.next/novel', 'utf-8');
+			if (traceId === process.env.NEXT_PRIVATE_TRACE_ID) {
+				return;
+			}
+		}
+		fs.writeFileSync('.next/novel', process.env.NEXT_PRIVATE_TRACE_ID);
 		try {
 			const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + '/docs/openapi/json');
 			if (response.ok) {
@@ -63,16 +69,6 @@ export async function setup (exportedOutside) {
 								fs.writeFileSync(path.join(process.cwd(), 'app/api/requests', `${op.operationId.replace(/_/g, '-')}.ts`), compiledZod);
 							}
 						}
-						if (!url.includes('/webhook')) {
-							operations[op.operationId] = {
-								url,
-								method,
-								...op,
-							};
-							operations[op.operationId.toLowerCase()] = operations[op.operationId];
-							operations[op.operationId.replace(method, '')] = operations[op.operationId];
-							operations[op.operationId.replace(method, '').toLowerCase()] = operations[op.operationId];
-						}
 					}
 				}
 			} else {
@@ -82,8 +78,5 @@ export async function setup (exportedOutside) {
 			console.error('[DEVELOPMENT] Failed to fetch from Server. Please turn on the Novel server and try again. Else you will not be able to get the latest API operations from development.');
 			console.error(error);
 		}
-	} else {
-		operations = loadOperations(exportedOutside);
 	}
-	return operations;
 }

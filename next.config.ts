@@ -16,6 +16,10 @@ export default withNovelConfig({
 		title: 'Novel',
 		description: 'Delightful and Secure SaaS Starter Kit',
 	},
+	analytics: {
+		driver: 'ga4',
+		id: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
+	},
 	i18n,
 	eslint: {
 		/**

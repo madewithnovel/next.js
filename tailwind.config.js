@@ -3,7 +3,7 @@
 const withNovelTailwindDefaults = require('novel/next/tailwind.config');
 
 module.exports = withNovelTailwindDefaults({
-	darkMode: ['class'],
+	darkMode: ['selector'],
 	/**
 	  * Add your custom Tailwind configuration here.
 	  *

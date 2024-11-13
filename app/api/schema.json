@@ -344,6 +344,42 @@
             "maxLength": 64,
             "nullable": true
           },
+          "method": {
+            "type": "string",
+            "field": "enum",
+            "enum": [
+              "POST",
+              "GET",
+              "HEAD",
+              "DELETE",
+              "PATCH",
+              "PUT"
+            ],
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "status": {
+            "type": "number",
+            "unsigned": false,
+            "format": "int32",
+            "field": "bigInteger",
+            "nullable": true
+          },
+          "ip": {
+            "type": "string",
+            "format": "ipv4",
+            "field": "inet",
+            "nullable": true
+          },
           "timestamp": {
             "type": "string",
             "format": "date-time",
@@ -3101,6 +3137,42 @@
             "type": "string",
             "field": "string",
             "maxLength": 64,
+            "nullable": true
+          },
+          "method": {
+            "type": "string",
+            "field": "enum",
+            "enum": [
+              "POST",
+              "GET",
+              "HEAD",
+              "DELETE",
+              "PATCH",
+              "PUT"
+            ],
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "origin": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "status": {
+            "type": "number",
+            "unsigned": false,
+            "format": "int32",
+            "field": "bigInteger",
+            "nullable": true
+          },
+          "ip": {
+            "type": "string",
+            "format": "ipv4",
+            "field": "inet",
             "nullable": true
           },
           "timestamp": {

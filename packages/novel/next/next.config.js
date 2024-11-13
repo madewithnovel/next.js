@@ -1,8 +1,8 @@
 'use strict';
 
-// process.env.SENTRY_SUPPRESS_TURBOPACK_WARNING = 1;
-// const { withSentryConfig } = require('@sentry/nextjs');
-
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const { withSentryConfig } = require('@sentry/nextjs');
+const createNextIntlPlugin = require('next-intl/plugin');
 const path = require('path');
 const fs = require('fs');
 const merge = require('lodash.merge');
@@ -72,11 +72,15 @@ module.exports = (overrides) => {
 	if (process.env.NODE_ENV !== 'production') {
 		process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
 	}
-	const { novel, i18n, ...rest } = overrides;
+	const { novel, i18n, analytics, ...rest } = overrides;
 	// we want to pass novel and i18n into middleware
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
-	require('../sdk/setup').setup(require('app/api/schema.json')).then();
-	return merge(nextConfig, rest);
-	// return withSentryConfig({ ...rest, ...nextConfig }, SentryConfig);
+	process.env.NEXT_PUBLIC_ANALYTICS = JSON.stringify(analytics);
+	require('../sdk/setup').setup().then();
+	const withNextIntl = createNextIntlPlugin('./components/i18n/request.ts');
+	if (PHASE_DEVELOPMENT_SERVER) { // TODO: this is here until sentry fixes turbo support
+		return withNextIntl(merge(nextConfig, rest));
+	}
+	return withSentryConfig(withNextIntl(merge(nextConfig, rest)), SentryConfig);
 };
