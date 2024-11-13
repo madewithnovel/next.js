@@ -70,19 +70,29 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 		if (['/auth/password'].includes(path)) {
 			return response;
 		}
-		if (!isClient) {
-			if (response.headers.getSetCookie()?.join(';')?.includes('user=;')) {
+		if (response.headers.getSetCookie()?.join(';')?.includes('user=;')) {
+			if (!isClient) {
 				return redirect('/auth/logout');
 			}
+			window.location.href = '/auth/logout';
+			return;
 		}
-		return redirect('/login?session=0');
+		if (!isClient) {
+			return redirect('/login?error=NO_SESSION');
+		}
+		window.location.href = '/login?error=NO_SESSION';
+		return;
 	case 403: {
 		const clone = response.clone();
 		// TODO: forbidden, handle it from the caller and notify that they may not have the right permission
 		const data = await clone.json();
 		if (!isClient) {
 			if (data.error?.context?.permission) {
-				return redirect('/unauthorized?permission=' + data.error.context.permission);
+				if (!isClient) {
+					return redirect('/unauthorized?permission=' + data.error.context.permission);
+				}
+				window.location.href = '/unauthorized?permission=' + data.error.context.permission;
+				return;
 			}
 		} else {
 			if (data.error?.code === 'FST_CSRF_INVALID_TOKEN') {
