@@ -13,6 +13,7 @@ function applyTheme () {
 		theme = session.settings.theme === 'dark' ? 'dark' : 'light';
 	}
 	store.set('theme', theme);
+	// TODO: this warning shows up in the server console
 	document.documentElement.classList.add(theme);
 }
 

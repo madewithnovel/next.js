@@ -1,5 +1,5 @@
-{
-	"general": {
-		"Launching in December 2025": "Launching in December 2025"
-	}
-}
+export default {
+	general: {
+		'Launching in December 2025': 'Launching in December 2025',
+	},
+};

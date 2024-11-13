@@ -1,19 +1,7 @@
-tuesday
-- [x] dashboard homepage too crammed
-- [x] password reset screen doesnt close
-- [x] payment upfront account is not verified
-- [x] pricing table page bug, USD not defined
-- [x] fix the rpc undefined problem
-- [x] google analytics
-- [x] apply settings theme on layout
-- [x] apply settings locale on layout
-
 wednesday
+- [x] deactivate organization
+- [x] deactivate account
 - [ ] clean up overwhelming code in forms
-- [ ] deactivate organization
-- [ ] deactivate account
-- [ ] i18n support
-- [ ] convert text to t()
 - [ ] playwright
 
 thursday
@@ -28,9 +16,6 @@ thursday
 friday (Devtools)
 - [ ] request list client/server
 - [ ] request list waterfall
-- [ ] check if git is public or private
-- [ ] check first deployment by pinging home
-- [ ] installation app
 - [ ] job list
 - [ ] queries list
 - [ ] errors list
@@ -120,6 +105,15 @@ UI
 - [x] organization activity list
 - [x] account activity list
 - [x] overview page
+- [x] dashboard homepage too crammed
+- [x] password reset screen doesnt close
+- [x] payment upfront account is not verified
+- [x] pricing table page bug, USD not defined
+- [x] fix the rpc undefined problem
+- [x] google analytics
+- [x] apply settings theme on layout
+- [x] basic i18n support
+- [x] basic i18n t usage
 - [ ] responsive dashboard
 - [ ] dashboard 400 / 500
 - [ ] 404
@@ -157,6 +151,9 @@ v1.1
 - [ ] leave organization
 - [ ] org add payment method
 - [ ] dark mode
+- [ ] i18n support
+- [ ] convert text to t()
+- [ ] apply settings locale on layout
 
 non react 19
 - @stripe/react-stripe-js
@@ -171,5 +168,5 @@ caveats
 - you cannot add CSP and nonce on SSG pages force-static pages
 
 why
-- shadcn? need a design system that can build a foundation on, and shadcn has 
+- shadcn? need a design system that can build a foundation on, and shadcn has
   good enough DX to create that design system.
