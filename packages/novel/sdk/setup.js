@@ -30,7 +30,7 @@ export async function setup () {
 		}
 		fs.writeFileSync('.next/novel', process.env.NEXT_PRIVATE_TRACE_ID);
 		try {
-			const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + '/docs/openapi/json');
+			const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + '/openapi/json');
 			if (response.ok) {
 				const body = await response.json();
 				if (typeof window === 'undefined') {

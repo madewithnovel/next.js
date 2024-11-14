@@ -1,19 +1,21 @@
 wednesday
 - [x] deactivate organization
 - [x] deactivate account
-- [ ] clean up overwhelming code in forms
-- [ ] playwright
 
 thursday
-- [ ] BUG: collapsed sidebar has no link
-- [ ] projects list
-- [ ] task manage
-- [ ] projects create
-- [ ] projects update
-- [ ] task detail
-- [ ] projects archive
+- [x] do 6 server tasks
+- [x] BUG: the intent for this payment is malformed on upgrade
+- [x] test upfront payment
+- [ ] clean up overwhelming code in forms
+- [ ] make it clean
 
-friday (Devtools)
+friday
+- [ ] BUG: collapsed sidebar has no link
+- [ ] BUG: api key events list no empty state
+- [ ] marketing
+- [ ] pricing
+
+sunday (Devtools)
 - [ ] request list client/server
 - [ ] request list waterfall
 - [ ] job list
@@ -23,8 +25,20 @@ friday (Devtools)
 - [ ] auth/session info
 - [ ] utilization
 
-sunday
+monday
+- admin portal
+
+tuesday
 - [ ] playwright tests for common flows
+- [ ] projects list
+- [ ] task manage
+- [ ] projects create
+- [ ] projects update
+- [ ] task detail
+- [ ] projects archive
+
+monday
+- [ ] register notification, trigger when marketing emails is active and notification token is not available
 
 UI
 - [x] integrate shadcn workflow https://pro.magicui.design/?ref=shotgun

@@ -19,7 +19,7 @@ export default function List ({ events }) {
 								<th className="px-3 py-3.5 text-left text-sm font-medium">Date</th>
 							</tr>
 						</thead>
-						<tbody className="divide-y divide-border text-sm align-top">
+						<tbody className="divide-y divide-border align-top">
 							{events.map(event => (
 								<tr key={event.event_id}>
 									<td className="py-5 pl-4 pr-3 sm:pl-0">
