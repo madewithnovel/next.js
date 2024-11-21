@@ -28,7 +28,7 @@ export default async function Home () {
 				<FeatureIntegrations />
 				<PricingTable plans={plans} />
 				<TestimonialMasonry />
-				<FaqsAccordion/>
+				<FaqsAccordion/>s
 				<CallToActionEnding />
 			</main>
 			<Footer/>

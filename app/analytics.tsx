@@ -4,7 +4,7 @@
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from '@next/third-parties/google';
 import { ANALYTICS } from 'app/constants';
 
-// https://github.com/4lejandrito/next-plausible
+// https://github.com/4lejandrito/next-plausibles
 // https:// github.com/derrickreimer/fathom-client
 
 export function event (event, action, data) {

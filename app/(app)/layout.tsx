@@ -4,6 +4,7 @@ import Toaster from 'components/elements/toast';
 import getSession from 'components/hooks/get-session';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import Script from 'next/script';
 
 import Client from './client';
 import WithSidebarLayout from './layouts/with-sidebar';
@@ -22,7 +23,7 @@ export default async function Layout ({ children }) {
 				{session.subscribed === false && (
 					<div className="w-full bg-amber-400 text-amber-900 py-1 text-sm text-center z-50">You are not subscribed to a plan</div>
 				)}
-				{ children }
+				{children}
 			</WithSidebarLayout>
 			<Toaster position="bottom-right" reverseOrder={false} gutter={8} toastOptions={{ duration: 10000 }}/>
 		</>
