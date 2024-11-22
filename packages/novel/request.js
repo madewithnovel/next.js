@@ -31,8 +31,7 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 		const { headers: scopedHeaders, cookies } = require('next/headers');
 		setRequestContext({ headers: await scopedHeaders(), cookies: await cookies() });
 	}
-	history.push({ type: 'request', data: { url: process.env.NEXT_PUBLIC_API_HOST + path, method }, client: isClient });
-	const current = history.length - 1;
+	history.push({ type: 'request', action: 'start', data: { url: process.env.NEXT_PUBLIC_API_HOST + path, method }, client: isClient });
 	const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + path, {
 		credentials: 'include',
 		method,
@@ -50,18 +49,20 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 	});
 
 	if (process.env.NODE_ENV === 'development') {
-		// import { utils } from 'novel/devtools';
-		// TODO: should only be in dev
 		const clonedResponse = response.clone();
-		history[current].data = {
-			...history[current].data,
-			response: {
-				headers: clonedResponse.headers,
-				ok: clonedResponse.ok,
-				status: clonedResponse.status,
-				body: await clonedResponse.text(),
+		history.push({ type: 'request',
+			action: 'end',
+			data: { url: process.env.NEXT_PUBLIC_API_HOST + path,
+				method,
+				response: {
+					headers: clonedResponse.headers,
+					ok: clonedResponse.ok,
+					status: clonedResponse.status,
+					body: await clonedResponse.text(),
+				},
 			},
-		};
+			client: isClient,
+		});
 		// TODO: history.reverse().slice(0, HISTORY_LIMIT);
 	}
 
