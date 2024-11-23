@@ -4,10 +4,11 @@ import Toaster from 'components/elements/toast';
 import getSession from 'components/hooks/get-session';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import Script from 'next/script';
 
 import Client from './client';
 import WithSidebarLayout from './layouts/with-sidebar';
+
+export const dynamic = 'force-dynamic';
 
 export default async function Layout ({ children }) {
 	const cookiejar = await cookies();
