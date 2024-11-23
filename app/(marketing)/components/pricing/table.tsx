@@ -24,7 +24,7 @@ export default function PricingTable (props) {
 
 	return (
 		<>
-			{plans && (
+			{plans?.length > 0 && (
 				<div className="container mx-auto px-5 md:px-10">
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-1" style={{ minHeight: 583 }}>
 						<div className="bg-stone-100 rounded-xl md:rounded-none md:rounded-l-xl flex flex-col divide-y divide-stone-200">
