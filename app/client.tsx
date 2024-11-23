@@ -14,7 +14,9 @@ function applyTheme () {
 	}
 	store.set('theme', theme);
 	// TODO: this warning shows up in the server console
-	document.documentElement.classList.add(theme);
+	try {
+		document.documentElement.classList.add(theme);
+	} catch {}
 }
 
 applyTheme();
