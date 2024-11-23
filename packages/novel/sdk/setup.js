@@ -1,4 +1,4 @@
-export function loadOperations (exportedOutside) {
+exports.loadOperations = function (exportedOutside) {
 	const operations = {};
 	const { paths } = exportedOutside ?? {};
 	Object.entries(paths).forEach(([url, methods]) => {
@@ -16,12 +16,12 @@ export function loadOperations (exportedOutside) {
 		});
 	});
 	return operations;
-}
+};
 
 // can be ran in server/client
-export async function setup () {
+exports.setup = async function () {
 	if (process.env.NODE_ENV === 'development' && typeof window === 'undefined' && process.env.NEXT_PRIVATE_TRACE_ID) {
-		const fs = await import('fs');
+		const fs = require('fs');
 		if (fs.existsSync('.next/novel')) {
 			const traceId = fs.readFileSync('.next/novel', 'utf-8');
 			if (traceId === process.env.NEXT_PRIVATE_TRACE_ID) {
@@ -34,16 +34,16 @@ export async function setup () {
 			if (response.ok) {
 				const body = await response.json();
 				if (typeof window === 'undefined') {
-					const fs = await import('fs');
-					const path = await import('path');
+					const fs = require('fs');
+					const path = require('path');
 					fs.writeFileSync(path.join(process.cwd(), 'app/api/schema.json'), JSON.stringify(body, null, 2));
 				}
 				const { paths, components } = body;
 				if (typeof window === 'undefined') {
 					// sync into app/api
-					const fs = await import('fs');
-					const path = await import('path');
-					const { jsonSchemaToZod } = await import('json-schema-to-zod');
+					const fs = require('fs');
+					const path = require('path');
+					const { jsonSchemaToZod } = require('json-schema-to-zod');
 					Object.entries(components.schemas).forEach(([id, schema]) => {
 						if (!id.includes('def-')) {
 							Object.entries(schema.properties).forEach(([id, childSchema]) => {
@@ -62,9 +62,9 @@ export async function setup () {
 							const schema = op.requestBody.content['application/json'].schema;
 							if (typeof window === 'undefined') {
 								// sync into app/api
-								const fs = await import('fs');
-								const path = await import('path');
-								const { jsonSchemaToZod } = await import('json-schema-to-zod');
+								const fs = require('fs');
+								const path = require('path');
+								const { jsonSchemaToZod } = require('json-schema-to-zod');
 								const compiledZod = jsonSchemaToZod(schema, { name: op.operationId, module: 'esm', type: true });
 								fs.writeFileSync(path.join(process.cwd(), 'app/api/requests', `${op.operationId.replace(/_/g, '-')}.ts`), compiledZod);
 							}
@@ -79,4 +79,4 @@ export async function setup () {
 			console.error(error);
 		}
 	}
-}
+};
