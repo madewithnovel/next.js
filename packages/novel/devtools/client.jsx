@@ -1,7 +1,7 @@
 'use client';
 
 import cx from 'clsx';
-import { ArrowUpRightIcon, BanIcon, ChevronRightIcon, EllipsisIcon, EllipsisVerticalIcon, ExternalLinkIcon } from 'lucide-react';
+import { ArrowUpRightIcon, BanIcon, ChevronRightIcon, EllipsisIcon, EllipsisVerticalIcon, ExternalLinkIcon, XIcon } from 'lucide-react';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Manager } from 'socket.io-client';
@@ -20,7 +20,27 @@ const manager = new Manager(process.env.NEXT_PUBLIC_API_HOST, socketOptions);
 const defaultData = { request: {}, query: {} };
 let outsideEvents = store.get('events', defaultData);
 
-export default function Index ({ requests }) {
+export default function Wrapper ({ requests }) {
+	const [opened, open] = useState(false);
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+			if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+				event.preventDefault();
+				open(true);
+			}
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
+	return (
+		<>{opened && <Index requests={requests} onClose={open}/>}</>
+	);
+}
+
+function Index ({ requests, onClose }) {
+	const socket = useRef(null);
 	const [isOpen, open] = useState(true);
 	const [tab, setTab] = useState('request');
 	const [snapshot, setSnapshot] = useState({});
@@ -30,36 +50,48 @@ export default function Index ({ requests }) {
 	const initialized = useRef(false); // only in dev
 	const tableEndRef = useRef(null);
 
+	function processEvent (event) {
+		if (['request', 'query'].includes(event.type)) {
+			if (!outsideEvents[event.type]?.[event.id]) {
+				outsideEvents[event.type][event.id] = [];
+			}
+			outsideEvents[event.type][event.id].push(event);
+			store.set('events', outsideEvents);
+			setEvents(outsideEvents);
+			setSnapshot({ ...snapshot });
+			tableEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+		}
+		if (['metrics', 'account', 'session'].includes(event.type)) {
+			setSnapshot({ ...snapshot, [event.type]: event });
+			store.set('snapshot', { ...snapshot, [event.type]: event });
+		}
+	}
+
 	useEffect(() => {
+		tableEndRef.current?.scrollIntoView({ behavior: 'instant' });
 		if (!initialized.current) {
+			for (const request of requests) {
+				processEvent(request);
+			}
 			initialized.current = true;
-			// support locale
-			const socket = manager.socket('/devtools', {
+			socket.current = manager.socket('/devtools', {
 				retries: 12,
 			});
-			socket.on('connect', onConnect);
-			socket.on('disconnect', onDisconnect);
-			socket.on('system', (event) => {
-				if (['request', 'query'].includes(event.type)) {
-					if (!outsideEvents[event.type]?.[event.id]) {
-						outsideEvents[event.type][event.id] = [];
-					}
-					outsideEvents[event.type][event.id].push(event);
-					store.set('events', outsideEvents);
-					setEvents(outsideEvents);
-					setSnapshot({ ...snapshot });
-					tableEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-				}
-				if (['metrics', 'account', 'session'].includes(event.type)) {
-					setSnapshot({ ...snapshot, [event.type]: event });
-					store.set('snapshot', { ...snapshot, [event.type]: event });
-				}
+			socket.current.on('connect', onConnect);
+			socket.current.on('disconnect', onDisconnect);
+			socket.current.on('system', (event) => {
+				processEvent(event);
 			});
 			return () => {
-				socket.off('connect', onConnect);
+				socket.current.on('connect', onConnect);
 			};
 		}
 	}, []);
+
+	function close () {
+		socket.current.disconnect();
+		onClose(false);
+	}
 
 	function resetDb () {
 		outsideEvents = defaultData;
@@ -68,7 +100,7 @@ export default function Index ({ requests }) {
 		setSnapshot({});
 	}
 
-	async function onConnect (socket) {
+	async function onConnect () {
 		setConnected(true);
 	}
 
@@ -96,6 +128,9 @@ export default function Index ({ requests }) {
 				<div className="p-1">{snapshot.metrics ? (snapshot.metrics?.memory.heapUsed / 1000000).toFixed(0) : 0}MB</div>
 				<div className="p-1" onClick={() => resetDb()}>
 					<BanIcon size={14}/>
+				</div>
+				<div className="p-1" onClick={() => close()}>
+					<XIcon size={14}/>
 				</div>
 				<div className="p-1">
 					{connected && <div className="h-3 w-3 rounded-full bg-green-500"></div>}
@@ -161,7 +196,7 @@ function RequestList ({ events }) {
 						<div className="grid grid-cols-5 gap-5 odd:bg-zinc-100 py-2">
 							<div>Status</div>
 							<div className="col-span-4">
-								{current?.end ? (current.end?.data.headers['content-length'] ?? 0) + ' B' : 'Pending'}
+								{current?.end ? (current.end?.data.headers?.['content-length'] ?? 0) + ' B' : 'Pending'}
 							</div>
 						</div>
 						<div className="grid grid-cols-5 gap-5 odd:bg-zinc-100 py-2">
@@ -230,8 +265,8 @@ function RequestList ({ events }) {
 									{/* <td className="border-x border-zinc-600 p-1"></td> */}
 									{/* <td className="border-x border-zinc-600 p-1 whitespace-nowrap overflow-ellipsis">/!* 15s ago *!/</td> */}
 									<td className="border-x border-zinc-600 py-1 px-2 overflow-ellipsis whitespace-nowrap">{end ? end?.data.statusCode : 'Pending'}</td>
-									<td className="border-x border-zinc-600 py-1 px-2 text-right overflow-ellipsis whitespace-nowrap">{end ? (end?.data.headers['content-length'] ?? 0) + ' B' : 'Pending'}</td>
-									<td className="border-x border-zinc-600 py-1 px-2 text-right overflow-ellipsis whitespace-nowrap">{end ? end?.data.elapsedTime.toFixed(2) + ' ms' : 'Pending'}</td>
+									<td className="border-x border-zinc-600 py-1 px-2 text-right overflow-ellipsis whitespace-nowrap">{end ? (end?.data.headers?.['content-length'] ?? 0) + ' B' : 'Pending'}</td>
+									<td className="border-x border-zinc-600 py-1 px-2 text-right overflow-ellipsis whitespace-nowrap">{end ? end?.data.elapsedTime?.toFixed(2) + ' ms' : 'Pending'}</td>
 									<td className="border-x border-zinc-600 py-1 px-2">{end ? <EllipsisIcon size={18}/> : 'Pending'}</td>
 								</tr>
 							);
