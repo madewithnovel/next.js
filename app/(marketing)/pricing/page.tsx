@@ -27,10 +27,14 @@ export default async function Page () {
  * This is an example of adding a hydration function to the marketing page
  */
 async function getPage () {
-	const response = await novel.rpc.SubscriptionsPlans();
-	if (response.ok) {
-		const { plans } = await response.json();
-		return plans;
+	try {
+		const response = await novel.rpc.SubscriptionsPlans();
+		if (response.ok) {
+			const { plans } = await response.json();
+			return plans;
+		}
+	} catch {
+		return [];
 	}
 }
 

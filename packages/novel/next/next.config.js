@@ -1,6 +1,6 @@
 'use strict';
 
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants');
 const { withSentryConfig } = require('@sentry/nextjs');
 const createNextIntlPlugin = require('next-intl/plugin');
 const path = require('path');
@@ -77,7 +77,9 @@ module.exports = (overrides) => {
 	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
 	process.env.NEXT_PUBLIC_ANALYTICS = JSON.stringify(analytics);
-	require('../sdk/setup').setup().then();
+	if (!PHASE_PRODUCTION_BUILD) { // only for non build commands?
+		require('../sdk/setup').setup().then();
+	}
 	const withNextIntl = createNextIntlPlugin('./components/i18n/request.ts');
 	if (PHASE_DEVELOPMENT_SERVER) { // TODO: this is here until sentry fixes turbo support
 		return withNextIntl(merge(nextConfig, rest));

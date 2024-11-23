@@ -8,6 +8,9 @@ import { redirect } from 'next/navigation';
 import Client from './client';
 import WithSidebarLayout from './layouts/with-sidebar';
 
+/**
+ * This ensures that everything in the dashboard is dynamic.
+ */
 export const dynamic = 'force-dynamic';
 
 export default async function Layout ({ children }) {

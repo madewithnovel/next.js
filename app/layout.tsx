@@ -12,7 +12,6 @@ import 'components/elements/base.css';
 import { Analytics } from 'app/analytics';
 import { NOVEL } from 'app/constants';
 import { WebVitals } from 'app/vitals';
-import { cookies } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Devtools } from 'novel/devtools';
