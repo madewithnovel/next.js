@@ -1,0 +1,83 @@
+SOFTWARE LICENSE AGREEMENT
+November 2024
+
+TERMS AND CONDITIONS
+
+Anyone buying, using, or developing on Novel is subject to this software
+license agreement.
+
+NON-PERMISSIVE LICENSE
+
+This License Agreement (the "License") applies to The Novel Software (the
+"Software"), a Node.js and Next.js based framework incorporating open source
+libraries, designed to accelerate SaaS project development. The Software is
+available under the following licensing options:
+
+1. STANDARD LICENSE GRANT
+
+Subject to the terms of this License, Licensee is granted:
+a) The right to use the Software for multiple projects under one Top-Level
+  Domain (TLD)
+b) A non-transferable, non-exclusive right to use the Software
+c) The right to modify the Software for personal use within the specified TLD
+
+2. AGENCY LICENSE GRANT
+
+Subject to the terms of this License, Licensee is granted:
+a) The right to use the Software for an unlimited number of projects
+b) A non-transferable, non-exclusive right to use the Software
+c) The right to modify the Software for use across multiple projects
+d) Permission for company-wide usage of the Software
+
+3. RESTRICTIONS AND LIMITATIONS
+
+The following restrictions apply to all license types:
+
+a) NO REDISTRIBUTION: The Software, or any derivatives thereof, may not be
+  sold, redistributed, or shared in any form.
+
+b) NO TRANSFER: The License cannot be transferred to another party without
+  explicit written permission.
+
+c) NO SHARING: Licensees are prohibited from sharing the Software with
+  unauthorized parties.
+
+d) MODIFICATION LIMITS: While the Software may be modified for personal or
+  company use, such modifications do not grant any additional redistribution
+  rights.
+
+4. SALES AND TAXATION
+
+a) All sales are processed through Stripe
+b) Applicable taxes are collected at point of sale
+c) Taxes are determined based on purchaser's location
+d) Pricing is clearly stated for each license type
+
+5. REFUNDS AND DISPUTES
+
+a) Refund requests are evaluated individually
+b) Valid reason must be provided within the specified period
+c) Chargebacks result in temporary license suspension
+d) Disputes should be addressed through support before initiating chargebacks
+
+6. PROHIBITED USES
+
+The following uses are strictly prohibited:
+
+a) Sharing the Software with unauthorized parties
+b) Reusing across multiple TLDs under Standard License
+c) Reselling the Software in original or modified form
+d) Using the Software in a manner not explicitly authorized
+e) Redistributing the Software or derivative works
+
+7. TERMINATION
+
+This License automatically terminates if you fail to comply with any term
+herein. Upon termination, you must cease all use of the Software.
+
+8. ACCEPTANCE
+
+By purchasing and using the Software, you acknowledge and accept these terms
+and conditions.
+
+For additional information or inquiries, contact: hello@novel.dev

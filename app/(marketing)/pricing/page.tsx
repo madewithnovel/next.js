@@ -33,9 +33,8 @@ async function getPage () {
 			const { plans } = await response.json();
 			return plans;
 		}
-	} catch {
-		return [];
-	}
+	} catch {}
+	return [];
 }
 
 /**

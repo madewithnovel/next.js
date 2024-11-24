@@ -9,7 +9,7 @@ import { TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import * as novel from 'novel/sdk';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export default function Form ({ plans }) {
@@ -28,8 +28,17 @@ function FormSteps ({ plans }) {
 	const [submitted, isSubmitted] = useState(false);
 
 	// this is required for select to work
-	const form = useForm({ defaultValues: { plan: plans[0].id } });
+	const form = useForm({ defaultValues: { plan: plans?.[0].id } });
 	const { register, handleSubmit, setError, setFocus, formState: { errors } } = form;
+
+	useEffect(() => {
+		if (!plans?.length) {
+			novel.rpc.SubscriptionsPlans().then((response) => response.json()).then((data) => {
+				form.setValue('plan', data.plans[0].id);
+				plans;
+			});
+		}
+	}, []);
 
 	async function submit (data) {
 		isWorking(true);
