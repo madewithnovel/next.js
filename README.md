@@ -5,35 +5,13 @@
 
 ---
 
-Thank you for purchasing Novel. We hope you get as much value out of it as we have.
+**Thank you for purchasing Novel. We hope you get as much value out of it as we have.**
 
-This repository assumes that you have a basic understanding of the following:
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/)
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Stripe](https://stripe.com/)
-
-If you are new to any of these technologies, we recommend that you familiarize yourself
-with them before proceeding. Go to our guides at https://docs.novel.dev/guides for more information.
+Novel is a Node.js and Next.js project boilerplate specifically built to help create
+a software-as-a-service application. It is a solid, opinionated foundation that you can
+build upon to create your own unique application.
 
 Let's get you started if you have not done so already.
-
-## Getting Started (Novel Web inside web directory)
-
-1. ~~Clone this repository~~ You have done this part already if you are reading this README. Great job!
-2. Run the wizard to get your project set up.
-    ```bash
-    novel init
-    ```
-3. Go through the steps in the wizard to set up your credentials
-4. Start the development server
-    ```bash
-    novel dev
-    ```
-5. Open your browser and navigate to `http://localhost:7634`
 
 ## Getting Started (Novel Web Standalone)
 

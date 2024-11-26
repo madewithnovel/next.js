@@ -1,17 +1,17 @@
 {
-  "name": "novel",
   "version": "1.0.0",
+  "license": "see LICENSE",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "app"
-  ],
   "scripts": {
     "dev": "next dev --turbo -p 7630",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "workspaces": [
+    "app",
+    "packages/*"
+  ],
   "dependencies": {
     "@radix-ui/react-avatar": "1.1.1",
     "@radix-ui/react-checkbox": "1.1.2",
