@@ -1,7 +1,7 @@
 'use client';
 
 import cx from 'clsx';
-import { ArrowUpRightIcon, BanIcon, ChevronRightIcon, EllipsisIcon, EllipsisVerticalIcon, ExternalLinkIcon, XIcon } from 'lucide-react';
+import { ArrowUpRightIcon, BanIcon, EllipsisIcon, XIcon } from 'lucide-react';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { Manager } from 'socket.io-client';

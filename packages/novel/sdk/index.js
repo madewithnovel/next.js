@@ -1,9 +1,11 @@
 import schema from 'app/api/schema.json';
 
 import Request from '../request';
-import { loadOperations } from './setup';
+import { loadOperations, setup } from './setup';
 
 const operations = loadOperations(schema);
+
+setup().then(); // this is here for the side effects
 
 export * as request from '../request';
 

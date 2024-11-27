@@ -8,7 +8,6 @@ dist
 .novel
 .turbo
 .next
-package-lock.json
 .vercel
 *.tsbuildinfo
 next-env.d.ts

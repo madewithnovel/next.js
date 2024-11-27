@@ -21,3 +21,11 @@ self.addEventListener('notificationclick', function (event) {
 	event.notification.close();
 	event.waitUntil(clients.openWindow('http://localhost:7634'));
 });
+
+self.addEventListener('push', (event) => {
+	const data = event.data.json();
+	// you can debug this in chrome://gcm-internals/
+	self.registration.showNotification(data.title, {
+		body: data.body,
+	});
+});

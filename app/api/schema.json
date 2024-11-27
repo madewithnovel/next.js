@@ -554,7 +554,17 @@
             "nullable": true,
             "index": true
           },
-          "push_token": {
+          "endpoint": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "auth": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "key": {
             "type": "string",
             "field": "text",
             "nullable": true
@@ -3576,7 +3586,17 @@
             "nullable": true,
             "index": true
           },
-          "push_token": {
+          "endpoint": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "auth": {
+            "type": "string",
+            "field": "text",
+            "nullable": true
+          },
+          "key": {
             "type": "string",
             "field": "text",
             "nullable": true
@@ -6191,6 +6211,18 @@
       "post": {
         "operationId": "postNotificationsRegister",
         "summary": "NotificationsRegister",
+        "tags": [
+          "Notifications"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      },
+      "get": {
+        "operationId": "getNotificationsVapid",
+        "summary": "NotificationsVapid",
         "tags": [
           "Notifications"
         ],
