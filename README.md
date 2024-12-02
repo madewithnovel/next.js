@@ -1,9 +1,4 @@
-# Novel Web
-
-> [!IMPORTANT]  
-> It is advised to modify this README based on your project's requirements.
-
----
+# Novel
 
 **Thank you for purchasing Novel. We hope you get as much value out of it as we have.**
 

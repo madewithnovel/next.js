@@ -69,20 +69,25 @@ const SentryConfig = {
  * @returns {import('next').NextConfig}
  */
 module.exports = (overrides) => {
-	if (process.env.NODE_ENV !== 'production') {
-		process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
-	}
-	const { novel, i18n, analytics, ...rest } = overrides;
-	// we want to pass novel and i18n into middleware
-	process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
-	process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
-	process.env.NEXT_PUBLIC_ANALYTICS = JSON.stringify(analytics);
-	if (!PHASE_PRODUCTION_BUILD) { // only for non build commands?
-		require('../sdk/setup').setup().then();
-	}
-	const withNextIntl = createNextIntlPlugin('./components/i18n/request.ts');
-	if (PHASE_DEVELOPMENT_SERVER) { // TODO: this is here until sentry fixes turbo support
-		return withNextIntl(merge(nextConfig, rest));
-	}
-	return withSentryConfig(withNextIntl(merge(nextConfig, rest)), SentryConfig);
+	return async (phase) => {
+		if (process.env.NODE_ENV !== 'production') {
+			process.env.NEXT_PUBLIC_DEV_CWD = process.cwd();
+		}
+		const { novel, i18n, analytics, ...rest } = overrides;
+		// we want to pass novel and i18n into middleware
+		process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
+		process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
+		process.env.NEXT_PUBLIC_ANALYTICS = JSON.stringify(analytics);
+		if (phase === PHASE_PRODUCTION_BUILD) { // only for non build commands?
+			// TODO: if the api is not available, throw a warning
+			await require('../sdk/setup').setup();
+		}
+		const withNextIntl = createNextIntlPlugin('./components/i18n/request.ts');
+		if (phase === PHASE_DEVELOPMENT_SERVER) {
+			// TODO: this is here until sentry fixes turbo support
+			return withNextIntl(merge(nextConfig, rest));
+		} else {
+			return withSentryConfig(withNextIntl(merge(nextConfig, rest)), SentryConfig);
+		}
+	};
 };

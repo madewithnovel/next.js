@@ -27,10 +27,10 @@ export default function useSocket (namespace) {
 		if (!socket.current) {
 			const socketOptions = { withCredentials: true };
 			const manager = new Manager(process.env.NEXT_PUBLIC_API_HOST, socketOptions);
-			socket.current = manager.socket(namespace, { retries: 12 });
+			socket.current = manager.socket(namespace);
 			socket.current.on('connect', onConnect);
 			return () => {
-				socket.current.on('connect', onConnect);
+				socket.current.off('connect', onConnect);
 			};
 		}
 	}, []);

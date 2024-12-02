@@ -1,4 +1,5 @@
 import schema from 'app/api/schema.json';
+import * as f from 'next/constants';
 
 import Request from '../request';
 import { loadOperations, setup } from './setup';

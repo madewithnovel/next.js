@@ -11,6 +11,7 @@ dist
 .vercel
 *.tsbuildinfo
 next-env.d.ts
-
-# Sentry Config File
+app/api/schema.json
+app/api/entities/**/*
+app/api/requests/**/*
 .env.sentry-build-plugin

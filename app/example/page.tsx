@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 export default function Page () {
 	const notification = useNotification();
 	const socket = useSocket('/test');
-	const socket2 = useSocket('/test2');
 
 	const [time, setTime] = useState('');
 
@@ -15,11 +14,11 @@ export default function Page () {
 		socket.on('time', (time) => {
 			setTime(time);
 		});
-
-		setInterval(() => {
-			socket2.emit('timer', { test: +new Date() });
-		}, 1000);
 	}, []);
+
+	function emit () {
+		socket.emit('timer', { test: +new Date() });
+	}
 
 	return (
 		<div>
@@ -30,11 +29,15 @@ export default function Page () {
 			</div>
 
 			<div>
+				connected: {socket.current ? 'Yes' : 'No'}
+			</div>
+
+			<div>
 				Notification {notification.subscribed ? 'subscribed' : 'not subscribed'}
 			</div>
 
 			<div>
-				<button className="button" onClick={() => socket.emit('timer', { test: +new Date() })}>send time to socket server</button>
+				<button className="button" onClick={() => emit()}>send time to socket server</button>
 			</div>
 
 			<div>

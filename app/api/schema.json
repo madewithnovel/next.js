@@ -4984,217 +4984,12 @@
     }
   },
   "paths": {
-    "/api/v1/projects/{id}/access": {
-      "post": {
-        "operationId": "postProjectAccess",
-        "summary": "ProjectAccess",
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/api/v1/projects/{org_id}/{id}": {
-      "delete": {
-        "operationId": "deleteProjectArchive",
-        "summary": "ProjectArchive",
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "org_id",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "get": {
-        "operationId": "getProjectDetail",
-        "summary": "ProjectDetail",
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "org_id",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "patch": {
-        "operationId": "patchProjectUpdate",
-        "summary": "ProjectUpdate",
-        "tags": [
-          "Projects"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "org_id",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/api/v1/projects/{org_id}": {
-      "post": {
-        "operationId": "postProjectNew",
-        "summary": "ProjectNew",
-        "tags": [
-          "Projects"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "org_id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "get": {
-        "operationId": "getProjectSearch",
-        "summary": "ProjectSearch",
-        "tags": [
-          "Projects"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "org_id",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/api/webhooks/stripe": {
-      "post": {
-        "operationId": "postStripe",
-        "summary": "Stripe",
-        "tags": [
-          "App"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
     "/api/v1/account/deactivate": {
       "post": {
         "operationId": "postAccountDeactivate",
         "summary": "Deactivate Account",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Deactivate an active account.",
         "requestBody": {
@@ -5242,8 +5037,7 @@
         "operationId": "getAccountEvents",
         "summary": "Account Events",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Search list of events relate to user actions triggered by `logger.account` or a record in the `AccountEvents` model.",
         "security": [
@@ -5278,8 +5072,7 @@
         "operationId": "getAccountMfaGenerate",
         "summary": "Generate MFA Secret",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Generates a QR and a secret that can be used by the user to register an authenticator.",
         "security": [
@@ -5319,8 +5112,7 @@
         "operationId": "putAccountMfaRegister",
         "summary": "Register MFA Secret",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Attach a TOTP secret to a user for use with MFA during login.",
         "requestBody": {
@@ -5373,8 +5165,7 @@
         "operationId": "deleteAccountMfaRevoke",
         "summary": "Revoke MFA secret",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Revoke registered secret so a user can register a new one. It is possible to register and overwrite an existing mfa secret.",
         "requestBody": {
@@ -5422,8 +5213,7 @@
         "operationId": "getAccountProfile",
         "summary": "Account Profile",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Returns the available profile data for the currently logged in user.",
         "security": [
@@ -5484,8 +5274,7 @@
         "operationId": "patchAccountUpdate",
         "summary": "Update Account Profile",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Update the currently logged in account's profile.",
         "requestBody": {
@@ -5544,8 +5333,7 @@
         "operationId": "getAccountSecurity",
         "summary": "Account Security",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Returns the available security data for the currently logged in user.",
         "security": [
@@ -5610,8 +5398,7 @@
         "operationId": "getAccountSessions",
         "summary": "Account Sessions",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Returns the available sessions related to the currently logged in user.",
         "security": [
@@ -5645,8 +5432,7 @@
         "operationId": "deleteAccountSessionsRevoke",
         "summary": "Revoke Account Session",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Revoke a session related to the currently logged in user.",
         "requestBody": {
@@ -5687,8 +5473,7 @@
         "operationId": "getAccountSettings",
         "summary": "Account Settings",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Settings related to the currently logged in user.",
         "security": [
@@ -5719,8 +5504,7 @@
         "operationId": "patchAccountSettingsUpdate",
         "summary": "Update Account Settings",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Update the currently logged in account's settings.",
         "requestBody": {
@@ -5782,8 +5566,7 @@
         "operationId": "postAccountUpdatePassword",
         "summary": "Update Account Password",
         "tags": [
-          "Account",
-          "App"
+          "Account"
         ],
         "description": "Update the currently logged in account's password.",
         "requestBody": {
@@ -5840,13 +5623,60 @@
     "/api/v1/api-keys/events": {
       "get": {
         "operationId": "getApiKeyAccess",
-        "summary": "ApiKeyAccess",
+        "summary": "Key Events",
         "tags": [
-          "ApiKeys"
+          "Keys"
+        ],
+        "description": "List the events related to a key.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "request_id": {
+                            "type": "string"
+                          },
+                          "access_id": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "ip": {
+                            "type": "string"
+                          },
+                          "origin": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5854,37 +5684,192 @@
     "/api/v1/api-keys": {
       "post": {
         "operationId": "postApiKeyGenerate",
-        "summary": "ApiKeyGenerate",
+        "summary": "Generate Key",
         "tags": [
-          "ApiKeys"
+          "Keys"
+        ],
+        "description": "Generate an API key attached to the currently logged in user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "scope": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "expiry": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Key generated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Key generated successfully.",
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "object",
+                      "properties": {
+                        "access_id": {
+                          "type": "string"
+                        },
+                        "secret_key": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "scope": {
+                          "type": "string"
+                        },
+                        "expiry": {
+                          "type": "string"
+                        },
+                        "expired": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "expires_at": {
+                          "type": "string"
+                        },
+                        "last_used": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
       "get": {
         "operationId": "getApiKeyList",
-        "summary": "ApiKeyList",
+        "summary": "Key List",
         "tags": [
-          "ApiKeys"
+          "Keys"
+        ],
+        "description": "List the keys available to the currently logged in session.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_id": {
+                            "type": "string"
+                          },
+                          "secret_key": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "scope": {
+                            "type": "string"
+                          },
+                          "expiry": {
+                            "type": "string"
+                          },
+                          "expired": {
+                            "type": "boolean"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "expires_at": {
+                            "type": "string"
+                          },
+                          "last_used": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "operationId": "deleteApiKeyRevoke",
-        "summary": "ApiKeyRevoke",
+        "summary": "Revoke API Key",
         "tags": [
-          "ApiKeys"
+          "Keys"
+        ],
+        "description": "Revoke the api key related to the currently logged in user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_id": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "API key revoked successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "API key revoked successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -5892,13 +5877,30 @@
     "/api/v1/csrf": {
       "get": {
         "operationId": "getAppCsrf",
-        "summary": "AppCsrf",
+        "summary": "Current CSRF",
         "tags": [
-          "Csrf"
+          "Application"
         ],
+        "description": "Get the CSRF of the current session.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "csrf": {
+                      "type": "string",
+                      "transform": [
+                        "trim"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5906,10 +5908,11 @@
     "/auth/{strategy}/callback": {
       "get": {
         "operationId": "getAuthCallback",
-        "summary": "AuthCallback",
+        "summary": "Auth Callback",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Callback called by an authentication strategy available to the application.",
         "parameters": [
           {
             "schema": {
@@ -5920,9 +5923,17 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "301": {
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step..."
+                }
+              }
+            }
           }
         }
       }
@@ -5930,13 +5941,40 @@
     "/auth/forgot": {
       "post": {
         "operationId": "postAuthForgot",
-        "summary": "AuthForgot",
+        "summary": "Start Reset Password",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Start a reset password attempt.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Forget password attempt created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Forget password attempt created."
+                }
+              }
+            }
           }
         }
       }
@@ -5944,10 +5982,28 @@
     "/auth/{strategy}/mfa": {
       "post": {
         "operationId": "postAuthMfa",
-        "summary": "AuthMfa",
+        "summary": "Final MFA Step",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Proceed to the application after a successful MFA attempt.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "otp": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "schema": {
@@ -5958,9 +6014,17 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "301": {
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step..."
+                }
+              }
+            }
           }
         }
       }
@@ -5968,13 +6032,22 @@
     "/auth/passwordless/verify": {
       "get": {
         "operationId": "getAuthPasswordless",
-        "summary": "AuthPasswordless",
+        "summary": "Auth Passwordless",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Authenticate by passwordless strategy available to the application.",
+        "security": [],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "301": {
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step..."
+                }
+              }
+            }
           }
         }
       }
@@ -5982,13 +6055,33 @@
     "/signup/intent": {
       "post": {
         "operationId": "postAuthPaymentIntent",
-        "summary": "AuthPaymentIntent",
+        "summary": "Generate Payment Intent",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Create a payment intent to be used for upfront payment collection.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Payment intent creation successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Payment intent creation successful.",
+                  "type": "object",
+                  "properties": {
+                    "intent": {
+                      "type": "object",
+                      "properties": {
+                        "client_secret": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5996,13 +6089,64 @@
     "/auth/reset": {
       "post": {
         "operationId": "postAuthReset",
-        "summary": "AuthReset",
+        "summary": "Reset Password",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Final step in resetting a user's password.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password",
+                  "token"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "password": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "token": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "201": {
+            "description": "Reset successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Reset successful. Redirecting to next step...",
+                  "type": "object",
+                  "properties": {
+                    "redirect_to": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6010,10 +6154,11 @@
     "/signup": {
       "post": {
         "operationId": "postAuthSignup",
-        "summary": "AuthSignup",
+        "summary": "Sign Up",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Start the sign up process.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6026,25 +6171,43 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "format": "email"
+                    "format": "email",
+                    "transform": [
+                      "trim"
+                    ]
                   },
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
                   },
                   "intent": {
-                    "type": "string"
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
                   },
                   "interval": {
                     "enum": [
                       "month",
                       "year"
+                    ],
+                    "transform": [
+                      "trim"
                     ]
                   },
                   "plan": {
-                    "type": "string"
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
                   },
                   "invitation_code": {
-                    "type": "string"
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
                   }
                 }
               }
@@ -6052,9 +6215,23 @@
           },
           "required": true
         },
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Sign up successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Sign up successful. Redirecting to next step...",
+                  "type": "object",
+                  "properties": {
+                    "redirect_to": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6062,10 +6239,35 @@
     "/auth/{strategy}": {
       "post": {
         "operationId": "postAuthStrategy",
-        "summary": "AuthStrategy",
+        "summary": "Auth by Strategy",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Authenticate by strategy available to the application.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "password": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "schema": {
@@ -6076,18 +6278,43 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step...",
+                  "type": "object",
+                  "properties": {
+                    "redirect_to": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step..."
+                }
+              }
+            }
           }
         }
       },
       "get": {
         "operationId": "getAuthStrategy",
-        "summary": "AuthStrategy",
+        "summary": "Auth by Strategy",
         "tags": [
-          "App"
+          "Auth"
         ],
+        "description": "Authenticate by strategy available to the application.",
         "parameters": [
           {
             "schema": {
@@ -6098,23 +6325,33 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/mail/verify": {
-      "get": {
-        "operationId": "getAuthVerify",
-        "summary": "AuthVerify",
-        "tags": [
-          "App"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step...",
+                  "type": "object",
+                  "properties": {
+                    "redirect_to": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "301": {
+            "description": "Authentication successful. Redirecting to next step...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Authentication successful. Redirecting to next step..."
+                }
+              }
+            }
           }
         }
       }
@@ -6122,10 +6359,11 @@
     "/files/{key}": {
       "get": {
         "operationId": "getFilesFetch",
-        "summary": "FilesFetch",
+        "summary": "Fetch File",
         "tags": [
-          "App"
+          "Files"
         ],
+        "description": "If using local driver for file system. Fetch the file.",
         "parameters": [
           {
             "schema": {
@@ -6133,12 +6371,51 @@
             },
             "in": "path",
             "name": "key",
-            "required": true
+            "required": true,
+            "description": "File path"
+          }
+        ],
+        "security": [
+          {
+            "cookie": []
           }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "File is present.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "File is present.",
+                  "type": "string",
+                  "format": "binary",
+                  "contentEncoding": "binary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "description": "File is present.",
+                  "type": "string",
+                  "format": "binary",
+                  "contentEncoding": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "File does not exist.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "description": "File does not exist."
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "description": "File does not exist."
+                }
+              }
+            }
           }
         }
       }
@@ -6146,13 +6423,77 @@
     "/api/v1/files/presign": {
       "put": {
         "operationId": "putFilesPresign",
-        "summary": "FilesPresign",
+        "summary": "Presign Files",
         "tags": [
           "Files"
         ],
+        "description": "Presign the file to be used and return a signed url.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "key",
+                  "type"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Pre signed URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Pre signed URL",
+                  "type": "object",
+                  "properties": {
+                    "presigned_url": {
+                      "type": "string",
+                      "description": "The Pre signed URL that can be used for the operation"
+                    },
+                    "public": {
+                      "type": "boolean"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "original": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "asset_url": {
+                      "type": "string",
+                      "description": "The URL to the asset"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6160,9 +6501,26 @@
     "/files{*}": {
       "put": {
         "operationId": "putFilesUpload",
-        "summary": "FilesUpload",
+        "summary": "Upload Files",
         "tags": [
-          "App"
+          "Files"
+        ],
+        "description": "If using local driver for file system. Accept file uploads.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "string",
+                "format": "binary",
+                "contentEncoding": "binary"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "parameters": [
           {
@@ -6175,8 +6533,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "File has been uploaded successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "File has been uploaded successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6184,13 +6549,43 @@
     "/api/v1/notifications/archive": {
       "post": {
         "operationId": "postNotificationsArchive",
-        "summary": "NotificationsArchive",
+        "summary": "Mark as Archive",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "Mark notifications as archived.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "endpoint": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Notification archived successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Notification archived successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6198,37 +6593,127 @@
     "/api/v1/notifications/register": {
       "delete": {
         "operationId": "deleteNotificationsDeregister",
-        "summary": "NotificationsDeregister",
+        "summary": "Deregister Token",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "Deregister the push token related to the user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "endpoint": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Token deregistered successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Token deregistered successfully."
+                }
+              }
+            }
           }
         }
       },
       "post": {
         "operationId": "postNotificationsRegister",
-        "summary": "NotificationsRegister",
+        "summary": "Register Token",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "Register the push token related to the user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "endpoint": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "auth": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "key": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Push token registered successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Push token registered successfully."
+                }
+              }
+            }
           }
         }
       },
       "get": {
         "operationId": "getNotificationsVapid",
-        "summary": "NotificationsVapid",
+        "summary": "Get Vapid Key",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "Get the vapid key used for web push registration.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "vapid_key": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6236,13 +6721,95 @@
     "/api/v1/notifications": {
       "get": {
         "operationId": "getNotificationsList",
-        "summary": "NotificationsList",
+        "summary": "List Notifications",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "List all notifications available to the currently logged in user.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "notifications": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "author_id": {
+                            "type": "string"
+                          },
+                          "received_at": {
+                            "type": "string"
+                          },
+                          "read": {
+                            "type": "boolean"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "icon": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        }
+                      }
+                    },
+                    "invites": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "invitation_code": {
+                            "type": "string"
+                          },
+                          "organization": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "expires_at": {
+                            "type": "string"
+                          },
+                          "expired": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6250,13 +6817,43 @@
     "/api/v1/notifications/read": {
       "post": {
         "operationId": "postNotificationsRead",
-        "summary": "NotificationsRead",
+        "summary": "Mark as Read",
         "tags": [
-          "Notifications"
+          "Notification"
+        ],
+        "description": "Mark notifications as read.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "endpoint": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Notification marked as read successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Notification marked as read successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6264,10 +6861,11 @@
     "/api/v1/organization": {
       "post": {
         "operationId": "postOrganizationCreate",
-        "summary": "OrganizationCreate",
+        "summary": "Create Organization",
         "tags": [
           "Organization"
         ],
+        "description": "Create a new organization tied to the user making the request.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6280,10 +6878,7 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "minLength": 6,
-                    "transform": [
-                      "trim"
-                    ]
+                    "minLength": 6
                   },
                   "email": {
                     "type": "string",
@@ -6291,6 +6886,9 @@
                     "transform": [
                       "trim"
                     ]
+                  },
+                  "personal": {
+                    "type": "boolean"
                   }
                 }
               }
@@ -6298,48 +6896,145 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Organization has been created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Organization has been created."
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "operationId": "deleteOrganizationDeactivate",
-        "summary": "OrganizationDeactivate",
+        "summary": "Deactivate Organization",
         "tags": [
           "Organization"
         ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "get": {
-        "operationId": "getOrganizationDetail",
-        "summary": "OrganizationDetail",
-        "tags": [
-          "Organization"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "patch": {
-        "operationId": "patchOrganizationUpdate",
-        "summary": "OrganizationUpdate",
-        "tags": [
-          "Organization"
-        ],
+        "description": "Deactivate an organization tied to the currently logged in session.",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [],
+                "required": [
+                  "org_id"
+                ],
+                "properties": {
+                  "org_id": {
+                    "type": "string",
+                    "minLength": 6
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Organization has been deactivated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Organization has been deactivated."
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getOrganizationDetail",
+        "summary": "Organization Detail",
+        "tags": [
+          "Organization"
+        ],
+        "description": "Details of the organization.",
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "organization": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "type": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "quotas": {
+                          "type": "object",
+                          "additionalProperties": true
+                        },
+                        "settings": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patchOrganizationUpdate",
+        "summary": "Update Organization",
+        "tags": [
+          "Organization"
+        ],
+        "description": "Update the detail of the current organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string",
@@ -6360,9 +7055,21 @@
             }
           }
         },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Updated organization successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Updated organization successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6370,13 +7077,67 @@
     "/api/v1/organization/events": {
       "get": {
         "operationId": "getOrganizationEvents",
-        "summary": "OrganizationEvents",
+        "summary": "Organization Events",
         "tags": [
           "Organization"
         ],
+        "description": "Events that have happened within the organization.",
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "object",
+                      "properties": {
+                        "request_id": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "event_id": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "timestamp": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "action": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "message": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "context": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6384,25 +7145,104 @@
     "/api/v1/organization/invite": {
       "post": {
         "operationId": "postOrganizationInvite",
-        "summary": "OrganizationInvite",
+        "summary": "Invite to Organization",
         "tags": [
           "Organization"
         ],
+        "description": "Invite a particular user/email to the organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invites": {
+                    "type": "array",
+                    "description": "List of emails to invite.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        },
+                        "roles": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Invite sent successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invite sent successfully."
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "operationId": "deleteOrganizationInviteRevoke",
-        "summary": "OrganizationInviteRevoke",
+        "summary": "Revoke Organization Invitation",
         "tags": [
           "Organization"
         ],
+        "description": "Revoke the invitation sent by the currently logged in user from an organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invites": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "format": "email"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Invitations revoked successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invitations revoked successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6410,13 +7250,43 @@
     "/api/v1/organization/invite/accept": {
       "post": {
         "operationId": "postOrganizationInviteAccept",
-        "summary": "OrganizationInviteAccept",
+        "summary": "Accept Organization Invitation",
         "tags": [
           "Organization"
         ],
+        "description": "Accept an invitation coming from an organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invitation_code": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Invite accepted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invite accepted successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6424,13 +7294,43 @@
     "/api/v1/organization/invite/reject": {
       "delete": {
         "operationId": "deleteOrganizationInviteReject",
-        "summary": "OrganizationInviteReject",
+        "summary": "Reject Organization Invitation",
         "tags": [
           "Organization"
         ],
+        "description": "Reject an invitation coming from an organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invitation_code": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Invite rejected successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Invite rejected successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6438,13 +7338,61 @@
     "/api/v1/organizations": {
       "get": {
         "operationId": "getOrganizationList",
-        "summary": "OrganizationList",
+        "summary": "List of Organizations",
         "tags": [
-          "Organizations"
+          "Organization"
+        ],
+        "description": "List of organizations belonging to the currently logged in user.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "organizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "transform": [
+                              "trim"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6452,25 +7400,122 @@
     "/api/v1/organization/members": {
       "get": {
         "operationId": "getOrganizationMembers",
-        "summary": "OrganizationMembers",
+        "summary": "List Members of Organization",
         "tags": [
           "Organization"
         ],
+        "description": "List the members of the current organization in the session.",
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "display_name": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "picture": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "mfa": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "operationId": "deleteOrganizationMembersRemove",
-        "summary": "OrganizationMembersRemove",
+        "summary": "Remove Organization Member",
         "tags": [
           "Organization"
         ],
+        "description": "Remove a member of an organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account_id": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Member removed successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Member removed successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6478,13 +7523,52 @@
     "/api/v1/organization/promote": {
       "post": {
         "operationId": "postOrganizationMembersPromote",
-        "summary": "OrganizationMembersPromote",
+        "summary": "Promote Organization Member",
         "tags": [
           "Organization"
         ],
+        "description": "Promote a member of an organization.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "account_id": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "transform": [
+                        "trim"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Member promoted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Member promoted successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6492,25 +7576,27 @@
     "/api/v1/organization/settings": {
       "get": {
         "operationId": "getOrganizationSettings",
-        "summary": "OrganizationSettings",
+        "summary": "Organization Settings",
         "tags": [
           "Organization"
         ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
+        "description": "Settings of the organization.",
+        "security": [
+          {
+            "cookie": []
           }
-        }
-      },
-      "patch": {
-        "operationId": "patchOrganizationSettingsUpdate",
-        "summary": "OrganizationSettingsUpdate",
-        "tags": [
-          "Organization"
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
           }
         }
       }
@@ -6518,13 +7604,175 @@
     "/api/v1/session": {
       "get": {
         "operationId": "getSessionContext",
-        "summary": "SessionContext",
+        "summary": "Session Context",
         "tags": [
-          "Session"
+          "Application"
+        ],
+        "description": "Get the important details required when accessing an authenticated screen.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session": {
+                      "type": "object",
+                      "properties": {
+                        "live": {
+                          "type": "boolean"
+                        },
+                        "flags": {
+                          "type": "object",
+                          "additionalProperties": true
+                        },
+                        "organizations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "name": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "type": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "organization": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            }
+                          }
+                        },
+                        "subscribed": {
+                          "type": "boolean"
+                        },
+                        "subscription": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "status": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "subscription_id": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            }
+                          }
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "email": {
+                              "type": "string",
+                              "format": "email",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "display_name": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            },
+                            "picture": {
+                              "type": "string",
+                              "transform": [
+                                "trim"
+                              ]
+                            }
+                          }
+                        },
+                        "settings": {
+                          "type": "object",
+                          "additionalProperties": true
+                        },
+                        "role": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "permissions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "version": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "fetched": {
+                          "type": "string",
+                          "format": "date-time",
+                          "transform": [
+                            "trim"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6532,13 +7780,26 @@
     "/session/end": {
       "get": {
         "operationId": "getSessionEnd",
-        "summary": "SessionEnd",
+        "summary": "End Session",
         "tags": [
-          "App"
+          "Session"
+        ],
+        "description": "End the current session.",
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "301": {
+            "description": "Redirecting to the logout screen...",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Redirecting to the logout screen..."
+                }
+              }
+            }
           }
         }
       }
@@ -6546,13 +7807,43 @@
     "/api/v1/session/switch": {
       "post": {
         "operationId": "postSessionSwitch",
-        "summary": "SessionSwitch",
+        "summary": "Switch Organization",
         "tags": [
-          "Session"
+          "Application"
+        ],
+        "description": "Switch organization of the current session.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "org_id": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Switched organization successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Switched organization successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6560,13 +7851,231 @@
     "/api/v1/subscription": {
       "get": {
         "operationId": "getSubscriptionsCurrent",
-        "summary": "SubscriptionsCurrent",
+        "summary": "Current Subscription",
         "tags": [
           "Subscription"
         ],
+        "description": "Return the current subscription the organization has active at the time of request.",
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "subscribed": {
+                      "type": "boolean"
+                    },
+                    "organization": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "type": {
+                          "type": "string",
+                          "transform": [
+                            "trim"
+                          ]
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "transform": [
+                            "trim"
+                          ]
+                        }
+                      }
+                    },
+                    "subscription": {
+                      "status": {
+                        "type": "string",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "started_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "period_start": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "period_end": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "trial_start": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "trial_end": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      },
+                      "renews_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "transform": [
+                          "trim"
+                        ]
+                      }
+                    },
+                    "quotas": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "payment_methods": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "card": {
+                            "type": "object",
+                            "properties": {
+                              "brand": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "last4": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "expiry_month": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "expiry_year": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "charges": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "number": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "invoice": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "invoice_pdf": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "amount": {
+                            "type": "number"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "payment_method": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "paid_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "transform": [
+                              "trim"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6574,13 +8083,77 @@
     "/api/v1/subscription/cards": {
       "get": {
         "operationId": "getSubscriptionsMethods",
-        "summary": "SubscriptionsMethods",
+        "summary": "Current Payment Methods",
         "tags": [
           "Subscription"
         ],
+        "description": "Return the payment methods available to the organization has active at the time of request.",
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment_methods": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "card": {
+                            "type": "object",
+                            "properties": {
+                              "brand": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "last4": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "expiry_month": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              },
+                              "expiry_year": {
+                                "type": "string",
+                                "transform": [
+                                  "trim"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6588,25 +8161,100 @@
     "/api/v1/subscription/methods": {
       "post": {
         "operationId": "postSubscriptionsMethodsAdd",
-        "summary": "SubscriptionsMethodsAdd",
+        "summary": "Add Payment Method",
         "tags": [
           "Subscription"
         ],
+        "description": "Add the payment method related to a user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "payment_method",
+                  "setup_intent"
+                ],
+                "properties": {
+                  "payment_method": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "setup_intent": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Payment method added successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Payment method added successfully."
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "operationId": "deleteSubscriptionsMethodsRemove",
-        "summary": "SubscriptionsMethodsRemove",
+        "summary": "Remove Payment Method",
         "tags": [
           "Subscription"
         ],
+        "description": "Remove the payment method related to a user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "payment_method_id"
+                ],
+                "properties": {
+                  "payment_method_id": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Payment method removed successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Payment method removed successfully."
+                }
+              }
+            }
           }
         }
       }
@@ -6614,13 +8262,47 @@
     "/api/v1/plans": {
       "get": {
         "operationId": "getSubscriptionsPlans",
-        "summary": "SubscriptionsPlans",
+        "summary": "List Subscription Plans",
         "tags": [
-          "Plans"
+          "Application"
         ],
+        "description": "List the plans available to a user.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Default Response"
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "transform": [
+                        "trim"
+                      ]
+                    },
+                    "name": {
+                      "type": "string",
+                      "transform": [
+                        "trim"
+                      ]
+                    },
+                    "monthly": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "yearly": {
+                      "type": "string",
+                      "additionalProperties": true
+                    },
+                    "trial": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -6628,139 +8310,61 @@
     "/api/v1/subscription/upgrade": {
       "post": {
         "operationId": "postSubscriptionsSubscribe",
-        "summary": "SubscriptionsSubscribe",
+        "summary": "Subscribe to Subscription",
         "tags": [
           "Subscription"
         ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
+        "description": "Subscribe to an available plan.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plan": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "intent": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "method": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  },
+                  "interval": {
+                    "type": "string",
+                    "transform": [
+                      "trim"
+                    ]
+                  }
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    "/admin/v1/notifications": {
-      "post": {
-        "operationId": "postBroadcastNotification",
-        "summary": "BroadcastNotification",
-        "tags": [
-          "App"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/api/v1/files": {
-      "delete": {
-        "operationId": "deleteFilesDelete",
-        "summary": "FilesDelete",
-        "tags": [
-          "Files"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      },
-      "get": {
-        "operationId": "getFilesSearch",
-        "summary": "FilesSearch",
-        "tags": [
-          "Files"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/admin/v1/organizations": {
-      "get": {
-        "operationId": "getOrganizationNew",
-        "summary": "OrganizationNew",
-        "tags": [
-          "App"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/unstable_sql/v1/insert/{table}": {
-      "post": {
-        "operationId": "postInsert",
-        "summary": "Insert",
-        "tags": [
-          "App"
-        ],
-        "parameters": [
+        },
+        "security": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "table",
-            "required": true
+            "cookie": []
           }
         ],
         "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/unstable_sql/v1/mutate/{table}": {
-      "post": {
-        "operationId": "postMutate",
-        "summary": "Mutate",
-        "tags": [
-          "App"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "table",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
-          }
-        }
-      }
-    },
-    "/unstable_sql/v1/query/{table}": {
-      "post": {
-        "operationId": "postQuery",
-        "summary": "Query",
-        "tags": [
-          "App"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "table",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response"
+          "204": {
+            "description": "Subscription created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Subscription created successfully."
+                }
+              }
+            }
           }
         }
       }
