@@ -1,0 +1,17 @@
+node_modules
+*.env*
+*.log
+.DS_Store
+*.pem
+dist
+.idea
+.novel
+.turbo
+.next
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+app/api/schema.json
+app/api/entities/**/*
+app/api/requests/**/*
+.env.sentry-build-plugin
