@@ -5,6 +5,7 @@ node_modules
 *.pem
 dist
 .idea
+.idea/*
 .novel
 .turbo
 .next
