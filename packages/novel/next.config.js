@@ -17,7 +17,7 @@ if (fs.existsSync(path.resolve(process.cwd(), '.env'))) {
 const nextConfig = {
 	poweredByHeader: false,
 	trailingSlash: false,
-	transpilePackages: ['novel'],
+	transpilePackages: ['novel', '@novel/devtools'],
 	images: {
 		remotePatterns: [
 			{

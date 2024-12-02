@@ -1,4 +1,4 @@
-import withNovelConfig from 'novel/next/next.config';
+import withNovelConfig from '@novel/next/next.config';
 
 /**
  * This is novel's lightweight i18n implementation. Consult with the

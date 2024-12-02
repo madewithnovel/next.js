@@ -1,5 +1,6 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -8,7 +9,6 @@ import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 
 import { TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import * as novel from 'novel/sdk';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 

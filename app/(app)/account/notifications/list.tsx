@@ -1,11 +1,11 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { format } from 'date-fns/format';
 import { EllipsisIcon } from 'lucide-react';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 
 export default function List ({ notifications: hydratedNotifications }) {

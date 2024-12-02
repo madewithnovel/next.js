@@ -1,6 +1,6 @@
 'use strict';
 
-const withNovelPostCSSDefaults = require('novel/next/postcss.config');
+const withNovelPostCSSDefaults = require('@novel/next/postcss.config');
 
 module.exports = withNovelPostCSSDefaults({
 	/**

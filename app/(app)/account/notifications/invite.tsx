@@ -1,8 +1,8 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import Button from 'components/elements/button';
 import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 
 import AlertOk from '@/components/elements/alerts/ok';

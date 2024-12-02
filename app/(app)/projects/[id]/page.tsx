@@ -1,4 +1,4 @@
-import getSession from 'components/hooks/get-session';
+import getSession from '@novel/next/hooks/get-session';
 
 export default async function Page () {
 	const session = await getSession();

@@ -1,8 +1,8 @@
+import * as novel from '@novel/next/sdk';
 import PricingComparison from 'app/(marketing)/components/pricing/comparison';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
-import * as novel from 'novel/sdk';
 
 import PricingTable from './table';
 

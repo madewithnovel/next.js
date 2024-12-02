@@ -1,11 +1,11 @@
 'use client';
 
+import useSession from '@novel/next/hooks/use-session';
+import * as novel from '@novel/next/sdk';
 import Button from 'components/elements/button';
 import Toggle from 'components/elements/toggle';
-import useSession from 'components/hooks/use-session';
 import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/stripe/checkout';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
-import * as novel from 'novel/sdk';
 import { useEffect, useState } from 'react';
 
 const currency = 'USD';

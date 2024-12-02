@@ -1,7 +1,7 @@
 'use client';
 
-import getSession from 'components/hooks/get-session';
-import store from 'novel/store';
+import getSession from '@novel/next/hooks/get-session';
+import store from '@novel/next/store';
 
 export default function Client ({ session }) {
 	if (session) {

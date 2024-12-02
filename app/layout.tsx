@@ -9,12 +9,12 @@ import './globals.css';
  */
 import 'components/elements/base.css';
 
+import Devtools from '@novel/devtools';
 import { Analytics } from 'app/analytics';
 import { NOVEL } from 'app/constants';
 import { WebVitals } from 'app/vitals';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import Devtools from 'novel/devtools';
 
 import Client from './client';
 

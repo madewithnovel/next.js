@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Manager } from 'socket.io-client';
 import store2 from 'store2';
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../../../components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const store = store2.namespace('novel:devtool');
 

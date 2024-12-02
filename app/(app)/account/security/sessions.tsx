@@ -1,10 +1,10 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import Button from 'components/elements/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import { LaptopIcon, PhoneIcon } from 'lucide-react';
-import * as novel from 'novel/sdk';
 
 export default function Sessions ({ sessions }) {
 	async function logout (session_id) {

@@ -1,12 +1,12 @@
 'use client';
 
-import getSession from 'components/hooks/get-session';
-import useSession from 'components/hooks/use-session';
+import getSession from '@novel/next/hooks/get-session';
+import useSession from '@novel/next/hooks/use-session';
+import * as novel from '@novel/next/sdk';
+import store from '@novel/next/store';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from 'components/ui/sidebar';
 import { ChevronsUpDown, Plus } from 'lucide-react';
-import * as novel from 'novel/sdk';
-import store from 'novel/store';
 import { useState } from 'react';
 
 import { NewOrganization } from '../../account/organizations/organizations';

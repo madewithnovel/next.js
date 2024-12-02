@@ -1,10 +1,10 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import cx from 'classnames';
 import InlineNotify from 'components/elements/inline-notify';
 import Upload from 'components/elements/upload';
 import Image from 'next/image';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 
 export default function Picture ({ profile }) {

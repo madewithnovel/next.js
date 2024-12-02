@@ -1,9 +1,9 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import Toggle from 'components/elements/toggle';
 import { CheckIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
-import * as novel from 'novel/sdk';
 import { useEffect, useState } from 'react';
 
 export default function PricingTable (props) {

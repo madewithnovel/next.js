@@ -1,16 +1,16 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import getSession from '@novel/next/hooks/get-session';
+import * as novel from '@novel/next/sdk';
 import { postOrganizationCreate } from 'app/api/requests/postOrganizationCreate';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
-import getSession from 'components/hooks/get-session';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { Label } from 'components/ui/label';
 import { EllipsisIcon } from 'lucide-react';
-import * as novel from 'novel/sdk';
 import store from 'packages/novel/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

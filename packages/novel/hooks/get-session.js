@@ -1,5 +1,5 @@
+import * as novel from '@novel/next/sdk';
 import { redirect } from 'next/navigation';
-import * as novel from 'novel/sdk';
 
 export default async function getSession () {
 	try {

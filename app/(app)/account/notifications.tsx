@@ -1,10 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as novel from '@novel/next/sdk';
 import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
 import InlineNotify from 'components/elements/inline-notify';
 import Toggle from 'components/elements/toggle';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

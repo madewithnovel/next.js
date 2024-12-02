@@ -1,8 +1,8 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import { CardElement, Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js/pure';
-import * as novel from 'novel/sdk';
 
 export { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 

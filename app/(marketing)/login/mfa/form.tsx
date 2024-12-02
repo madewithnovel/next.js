@@ -1,10 +1,10 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import { TriangleAlertIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

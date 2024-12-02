@@ -1,5 +1,6 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import cx from 'clsx';
 import AlertOk from 'components/elements/alerts/ok';
 import AlertWarning from 'components/elements/alerts/warning';
@@ -8,7 +9,6 @@ import Input from 'components/elements/input';
 import { GithubIcon, TriangleAlertIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

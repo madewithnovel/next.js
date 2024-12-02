@@ -1,6 +1,6 @@
 'use client';
 
-import store from 'novel/store';
+import store from '@novel/next/store';
 import { useEffect, useState } from 'react';
 
 import getSession from './get-session';

@@ -1,7 +1,7 @@
 import './styles.css';
 
+import getSession from '@novel/next/hooks/get-session';
 import Toaster from 'components/elements/toast';
-import getSession from 'components/hooks/get-session';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 

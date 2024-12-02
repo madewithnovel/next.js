@@ -1,13 +1,13 @@
 'use client';
 
+import getSession from '@novel/next/hooks/get-session';
+import useSession from '@novel/next/hooks/use-session';
+import * as novel from '@novel/next/sdk';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
-import getSession from 'components/hooks/get-session';
-import useSession from 'components/hooks/use-session';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
-import * as novel from 'novel/sdk';
 import store from 'packages/novel/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

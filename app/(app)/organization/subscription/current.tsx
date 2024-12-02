@@ -1,11 +1,11 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import Button from 'components/elements/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import format from 'date-fns/format';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 
 import AlertOk from '@/components/elements/alerts/ok';

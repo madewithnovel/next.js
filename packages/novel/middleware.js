@@ -1,5 +1,6 @@
-import { ANALYTICS } from 'app/constants';
 import { NextResponse } from 'next/server';
+
+import { ANALYTICS } from './constants';
 
 export default function middleware (middleware) {
 	return async function (request) {

@@ -1,4 +1,4 @@
-import getSession from 'components/hooks/get-session';
+import getSession from '@novel/next/hooks/get-session';
 import { ArrowUpRightIcon } from 'lucide-react';
 import Link from 'next/link';
 

@@ -1,5 +1,5 @@
+import * as novel from '@novel/next/sdk';
 import { LOCALES } from 'app/constants';
-import * as novel from 'novel/sdk';
 
 import CallToActionEnding from './components/call-to-action/ending';
 import FaqsAccordion from './components/faqs/accordion';

@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as novel from '@novel/next/sdk';
 import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
 import cx from 'clsx';
 import Button from 'components/elements/button';
@@ -9,7 +10,6 @@ import OTPInput from 'components/elements/input/otp';
 import Toggle from 'components/elements/toggle';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

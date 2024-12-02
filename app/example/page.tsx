@@ -1,7 +1,7 @@
 'use client';
 
-import useNotification from 'novel/hooks/use-notification';
-import useSocket from 'novel/hooks/use-socket';
+import useNotification from '@novel/next/hooks/use-notification';
+import useSocket from '@novel/next/hooks/use-socket';
 import { useEffect, useState } from 'react';
 
 export default function Page () {

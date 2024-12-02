@@ -1,5 +1,5 @@
+import novelMiddleware from '@novel/next/middleware';
 import type { NextRequest, NextResponse } from 'next/server';
-import novelMiddleware from 'novel/next/middleware';
 
 export const config = {
 	matcher: [

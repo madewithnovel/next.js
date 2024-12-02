@@ -15,5 +15,5 @@ project. The constants are divided into different files based on their purpose.
 You can import the constants from the respective files like so:
 
 ```typescript
-import countries from 'novel/constants/countries.json';
+import countries from '@novel/next/constants/countries.json';
 ```

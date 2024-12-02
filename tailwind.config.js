@@ -1,6 +1,6 @@
 'use strict';
 
-const withNovelTailwindDefaults = require('novel/next/tailwind.config');
+const withNovelTailwindDefaults = require('@novel/next/tailwind.config');
 
 module.exports = withNovelTailwindDefaults({
 	darkMode: ['selector'],

@@ -1,6 +1,6 @@
 'use client';
 
-import useSession from 'components/hooks/use-session';
+import useSession from '@novel/next/hooks/use-session';
 import { Avatar, AvatarFallback, AvatarImage } from 'components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from 'components/ui/sidebar';

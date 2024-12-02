@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 
-const HISTORY_LIMIT = 20;
 const passthrough = { headers: {} };
 
 const isClient = typeof window !== 'undefined';
@@ -49,6 +48,7 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 	});
 
 	if (process.env.NODE_ENV === 'development') {
+		// const HISTORY_LIMIT = 20;
 		const clonedResponse = response.clone();
 		history.push({ type: 'request',
 			action: 'end',

@@ -1,6 +1,6 @@
 'use client';
 
-import store from 'novel/store';
+import store from '@novel/next/store';
 import { useEffect } from 'react';
 
 function applyTheme () {

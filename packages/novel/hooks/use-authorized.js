@@ -1,7 +1,7 @@
 'use client';
 
 import { AbilityBuilder, PureAbility } from '@casl/ability';
-import store from 'novel/store';
+import store from '@novel/next/store';
 
 export default function useAuthorized () {
 	const session = store.get('session');

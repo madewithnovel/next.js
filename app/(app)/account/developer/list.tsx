@@ -1,5 +1,6 @@
 'use client';
 
+import * as novel from '@novel/next/sdk';
 import Button from 'components/elements/button';
 import Copybox from 'components/elements/copybox';
 import Input from 'components/elements/input';
@@ -9,7 +10,6 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 import { format } from 'date-fns/format';
 import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import { EllipsisIcon, PlusIcon } from 'lucide-react';
-import * as novel from 'novel/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

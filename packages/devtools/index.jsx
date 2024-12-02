@@ -1,6 +1,7 @@
+import { getHistory } from '@novel/next/request';
 import dynamic from 'next/dynamic';
 
-import { getHistory } from '../request';
+export const history = [];
 
 const Client = process.env.NODE_ENV === 'development'
 	? dynamic(() => import('./client'))

@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from 'novel/sdk';
+import * as novel from '@novel/next/sdk';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useNotification () {
