@@ -1,4 +1,0 @@
-import { z } from "zod"
-
-export const project_tasks = z.object({ "id": z.string().max(16).nullable().optional(), "org_id": z.string().max(16).nullable().optional(), "account_id": z.string().max(24).nullable().optional(), "project_id": z.string().max(16).nullable().optional(), "summary": z.string().max(255).nullable().optional(), "description": z.string().nullable().optional(), "status": z.string().max(64).nullable().optional(), "reporter": z.string().max(24).nullable().optional(), "assignee": z.string().max(24).nullable().optional(), "created_at": z.string().datetime({ offset: true }).nullable().optional(), "updated_at": z.string().datetime({ offset: true }).nullable().optional(), "archived_at": z.string().datetime({ offset: true }).nullable().optional() }).strict()
-export type Project_tasks = z.infer<typeof project_tasks>

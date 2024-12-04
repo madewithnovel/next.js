@@ -1,4 +1,0 @@
-import { z } from "zod"
-
-export const sessions = z.object({ "id": z.number().int().nullable().optional(), "account_id": z.string().max(24).nullable().optional(), "impersonator_id": z.string().max(24).nullable().optional(), "session_id": z.string().nullable().optional(), "access_token": z.string().nullable().optional(), "refresh_token": z.string().nullable().optional(), "ip": z.string().ip({ version: "v4" }).nullable().optional(), "useragent": z.string().nullable().optional(), "country": z.string().max(3).nullable().optional(), "started_at": z.string().datetime({ offset: true }).nullable().optional(), "expires_at": z.string().datetime({ offset: true }).nullable().optional(), "revoked_at": z.string().datetime({ offset: true }).nullable().optional() }).strict()
-export type Sessions = z.infer<typeof sessions>

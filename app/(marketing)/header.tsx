@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronDownIcon, LibraryBigIcon, MenuIcon } from 'lucide-react';
+import { ChevronDownIcon, MenuIcon, SparkleIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -23,7 +23,7 @@ export default function Header () {
 				<div className="py-5 px-5 md:px-10 flex items-center justify-between">
 					<div>
 						<Link href="/" className="flex items-center gap-2 text-xl">
-							<LibraryBigIcon/>
+							<SparkleIcon/>
 							<span className="font-medium">Novel</span>
 						</Link>
 					</div>
@@ -76,7 +76,7 @@ export default function Header () {
 				<div className="container py-1 px-14 mx-auto flex items-center justify-between gap-10">
 					<div>
 						<Link href="/" className="flex items-center gap-2 text-xl">
-							<LibraryBigIcon/>
+							<SparkleIcon/>
 							<span className="font-medium">Novel</span>
 						</Link>
 					</div>

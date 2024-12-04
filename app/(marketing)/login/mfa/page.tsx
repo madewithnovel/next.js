@@ -1,4 +1,4 @@
-import { LibraryBigIcon } from 'lucide-react';
+import { SparkleIcon } from 'lucide-react';
 import Link from 'next/link';
 
 import Form from './form';
@@ -10,7 +10,7 @@ export default async function Page () {
 				className="flex flex-col justify-center mx-auto gap-5 p-10"
 				style={{ width: 500 }}
 			>
-				<LibraryBigIcon size={42}/>
+				<SparkleIcon size={42}/>
 				<div>
 					<div className="text-3xl font-medium">OTP Verification</div>
 					<p className="text-muted-foreground">Enter the code from your registered authenticator.</p>

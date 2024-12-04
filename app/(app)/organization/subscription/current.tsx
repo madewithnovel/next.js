@@ -25,7 +25,7 @@ export default function Current ({ current }) {
 		<>
 			{query.has('subscribed') && (
 				<div className="w-full md:w-2/3">
-					<AlertOk title="Subscription succesful">
+					<AlertOk title="Subscription successful">
 						You have successfully subscribed to a new plan. You may continue to use the features available to you with this new subscription.
 					</AlertOk>
 				</div>

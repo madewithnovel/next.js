@@ -1,6 +1,6 @@
 import schema from 'app/api/schema.json';
-import * as f from 'next/constants';
 
+// import { z } from 'zod';
 import Request from '../request';
 import { loadOperations, setup } from './setup';
 
@@ -78,6 +78,16 @@ async function rpcHandler (operationId, ...rest) {
 	}
 	console.warn(`RPC operation ${operationId} not found`);
 }
+
+// type Operations = typeof operations;
+//
+// type RPC = {
+// 	[K in keyof Operations]: (
+// 		...args: z.infer<Operations[K]['args']> extends any[]
+// 			? z.infer<Operations[K]['args']>
+// 			: [z.infer<Operations[K]['args']>]
+// 	) => Promise<z.infer<Operations[K]['returns']>>;
+// };
 
 export const rpc = new Proxy(rpcHandler, {
 	get: function (_, prop) {

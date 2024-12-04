@@ -7,7 +7,7 @@ export default async function robots () {
 			{
 				userAgent: '*',
 				allow: '/',
-				disallow: ['/dashboard/'],
+				disallow: ['/dashboard/', '/account/', '/organization/'],
 			},
 		],
 		sitemap: `${HOST}/sitemap.xml`,

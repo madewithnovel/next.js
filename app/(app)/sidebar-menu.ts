@@ -18,22 +18,6 @@ export default [
 		],
 	},
 	{
-		title: 'Projects',
-		url: '/projects',
-		icon: SquareKanbanIcon,
-		isActive: (pathname) => pathname.startsWith('/projects'),
-		items: [
-			{
-				title: 'Projects',
-				url: '/projects',
-			},
-			{
-				title: 'Archived',
-				url: '/projects/archived',
-			},
-		],
-	},
-	{
 		title: 'Organization',
 		url: '/organization',
 		icon: Building2Icon,

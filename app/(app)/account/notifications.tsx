@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import useNotification from '@novel/next/hooks/use-notification';
 import * as novel from '@novel/next/sdk';
 import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
 import InlineNotify from 'components/elements/inline-notify';
@@ -11,6 +12,7 @@ import { useForm } from 'react-hook-form';
 const schema = patchAccountSettingsUpdate.pick({ marketing: true, newsletter: true });
 
 export default function Notifications ({ settings }) {
+	const notification = useNotification();
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
 	const { handleSubmit } = useForm({ defaultValues: settings, resolver: zodResolver(schema) });
@@ -40,7 +42,16 @@ export default function Notifications ({ settings }) {
 						<Toggle
 							disabled={isWorking}
 							checked={settings.marketing === true}
-							onChange={(e) => handleSubmit(submit('marketing', e.target.value))}
+							onChange={(e) => {
+								function callback () {
+									handleSubmit(submit('marketing', e.target.value));
+								}
+								if (e.target.value) {
+									notification.request(callback);
+								} else {
+									notification.unsubscribe(callback);
+								}
+							}}
 						/>
 					</div>
 					<div className="py-5 flex items-center justify-between">

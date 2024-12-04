@@ -9,7 +9,7 @@ export default function useNotification () {
 	const [registration, setRegistration] = useState(null);
 	const [subscription, setSubscription] = useState(null);
 
-	async function subscribe () {
+	async function subscribe (callback) {
 		if (registration) {
 			const response = await novel.rpc.NotificationsVapid();
 			const { vapid_key } = await response.json();
@@ -21,10 +21,13 @@ export default function useNotification () {
 			const key = subscription.toJSON().keys.p256dh;
 			const auth = subscription.toJSON().keys.auth;
 			await novel.rpc.NotificationsRegister({ endpoint: subscription.endpoint, key, auth });
+			if (callback) {
+				callback();
+			}
 		}
 	}
 
-	async function unsubscribe () {
+	async function unsubscribe (callback) {
 		let sub = subscription;
 		if (!sub) {
 			sub = await registration.pushManager?.getSubscription();
@@ -32,6 +35,9 @@ export default function useNotification () {
 		if (sub) {
 			await sub.unsubscribe();
 			await novel.rpc.NotificationsDeregister({ endpoint: sub.endpoint });
+		}
+		if (callback) {
+			callback();
 		}
 		setSubscription(null);
 	}
@@ -68,16 +74,16 @@ export default function useNotification () {
 	}, []);
 
 	return {
-		request () {
+		request (callback) {
 			if (sw.current) {
-				subscribe();
+				subscribe(callback);
 			} else {
 				buffer.current.push('subscribe');
 			}
 		},
-		unsubscribe () {
+		unsubscribe (callback) {
 			if (sw.current) {
-				unsubscribe();
+				unsubscribe(callback);
 			} else {
 				buffer.current.push('unsubscribe');
 			}

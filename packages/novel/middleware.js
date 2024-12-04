@@ -43,7 +43,7 @@ export default function middleware (middleware) {
 		requestHeaders.set('x-nonce', nonce);
 		requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
 
-		const locales = process.env.NEXT_PUBLIC_LOCALES ? JSON.parse(process.env.NEXT_PUBLIC_LOCALES) : {};
+		const locales = process.env.NEXT_PUBLIC_LOCALES ? JSON.parse(process.env.NEXT_PUBLIC_LOCALES) : { locales: [] };
 		const { pathname } = request.nextUrl;
 		const defaultLocale = request.headers.get('x-locale') || locales?.defaultLocale || 'en';
 		const matched = pathname.match(new RegExp(`^/(${locales.locales.join('|')})(/.*)?$`));

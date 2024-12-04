@@ -1,4 +1,4 @@
-import { LibraryBigIcon } from 'lucide-react';
+import { SparkleIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer () {
@@ -7,7 +7,7 @@ export default function Footer () {
 			<div className="container flex gap-10 mx-auto px-10 md:px-20">
 				<div className="w-1/4 hidden md:block">
 					<Link href="/" className="flex items-center gap-2 text-xl font-medium">
-						<LibraryBigIcon/>
+						<SparkleIcon/>
 						Novel
 					</Link>
 					<p className="text-stone-600 mt-5">

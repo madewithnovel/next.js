@@ -16,3 +16,9 @@ app/api/schema.json
 app/api/entities/**/*
 app/api/requests/**/*
 .env.sentry-build-plugin
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+state.json

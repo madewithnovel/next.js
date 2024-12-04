@@ -10,7 +10,8 @@
   },
   "workspaces": [
     "app",
-    "packages/*"
+    "packages/*",
+    "test/*"
   ],
   "dependencies": {
     "@radix-ui/react-avatar": "1.1.1",
