@@ -1,0 +1,4 @@
+{
+	"respondsTo": ["GET", "/api/v1/plans"],
+	"payload": {"plans":[{"id":"standard-2024","name":"Standard","monthly":{"USD":29},"yearly":{"USD":290},"trial":30},{"id":"business-2024","name":"Business","monthly":{"USD":69},"yearly":{"USD":690},"trial":14},{"id":"enterprise-2024","name":"Enterprise","yearly":{"USD":12500}}]}
+}
