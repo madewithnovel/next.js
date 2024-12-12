@@ -2,5 +2,5 @@
 
 module.exports = {
 	root: true,
-	extends: ['./packages/novel/.eslintrc.cjs'],
+	extends: ['./packages/next/.eslintrc.cjs'],
 };

@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import Client from './client';
-import WithSidebarLayout from './layouts/with-sidebar';
+import WithSidebarLayout from '../layouts/with-sidebar';
 
 /**
  * This ensures that everything in the dashboard is dynamic.

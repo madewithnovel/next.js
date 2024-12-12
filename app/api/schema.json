@@ -11,15 +11,9 @@
         "name": "session",
         "in": "cookie"
       },
-      "accessId": {
-        "type": "apiKey",
-        "name": "header",
-        "in": "x-access-id"
-      },
-      "secretKey": {
-        "type": "apiKey",
-        "name": "header",
-        "in": "x-client-secret"
+      "api": {
+        "type": "http",
+        "name": "bearer"
       }
     },
     "schemas": {
@@ -5662,25 +5656,30 @@
                   "description": "Pre signed URL",
                   "type": "object",
                   "properties": {
-                    "presigned_url": {
-                      "type": "string",
-                      "description": "The Pre signed URL that can be used for the operation"
-                    },
-                    "public": {
-                      "type": "boolean"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "original": {
-                      "type": "string"
-                    },
-                    "key": {
-                      "type": "string"
-                    },
-                    "asset_url": {
-                      "type": "string",
-                      "description": "The URL to the asset"
+                    "file": {
+                      "type": "object",
+                      "properties": {
+                        "presigned_url": {
+                          "type": "string",
+                          "description": "The Pre signed URL that can be used for the operation"
+                        },
+                        "public": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "original": {
+                          "type": "string"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "asset_url": {
+                          "type": "string",
+                          "description": "The URL to the asset"
+                        }
+                      }
                     }
                   }
                 }

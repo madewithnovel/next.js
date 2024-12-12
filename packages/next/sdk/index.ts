@@ -1,6 +1,6 @@
 import schema from 'app/api/schema.json';
+import { z } from 'zod';
 
-// import { z } from 'zod';
 import Request from '../request';
 import { loadOperations, setup } from './setup';
 
@@ -66,6 +66,7 @@ async function rpcHandler (operationId, ...rest) {
 				method: method.toUpperCase(),
 				body,
 				...options,
+				headers: {},
 				next: {
 					...options?.next,
 					tags: [...(options?.next?.tags ?? []), ...(tags ?? [])],
@@ -79,17 +80,17 @@ async function rpcHandler (operationId, ...rest) {
 	console.warn(`RPC operation ${operationId} not found`);
 }
 
-// type Operations = typeof operations;
-//
-// type RPC = {
-// 	[K in keyof Operations]: (
-// 		...args: z.infer<Operations[K]['args']> extends any[]
-// 			? z.infer<Operations[K]['args']>
-// 			: [z.infer<Operations[K]['args']>]
-// 	) => Promise<z.infer<Operations[K]['returns']>>;
-// };
+type Operations = typeof operations;
 
-export const rpc = new Proxy(rpcHandler, {
+type RPC = {
+	[K in keyof Operations]: (
+		...args: z.infer<Operations[K]['args']> extends any[]
+			? z.infer<Operations[K]['args']>
+			: [z.infer<Operations[K]['args']>]
+	) => Promise<z.infer<Operations[K]['returns']>>;
+};
+
+export const rpc: RPC = new Proxy(rpcHandler, {
 	get: function (_, prop) {
 		// NOTE: this is used because we have shorthands for non method operationIds
 		const similar = operations ? Object.keys(operations).find((key) => key.includes(prop)) : null;

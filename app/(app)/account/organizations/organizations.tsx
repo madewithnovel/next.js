@@ -11,7 +11,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { Label } from 'components/ui/label';
 import { EllipsisIcon } from 'lucide-react';
-import store from 'packages/novel/store';
+import store from '@/packages/next/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 

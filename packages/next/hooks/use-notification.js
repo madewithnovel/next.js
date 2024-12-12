@@ -13,17 +13,19 @@ export default function useNotification () {
 		if (registration) {
 			const response = await novel.rpc.NotificationsVapid();
 			const { vapid_key } = await response.json();
-			const subscription = await registration.pushManager.subscribe({
-				userVisibleOnly: true,
-				applicationServerKey: vapid_key,
-			});
-			setSubscription(subscription);
-			const key = subscription.toJSON().keys.p256dh;
-			const auth = subscription.toJSON().keys.auth;
-			await novel.rpc.NotificationsRegister({ endpoint: subscription.endpoint, key, auth });
-			if (callback) {
-				callback();
+			if (vapid_key) {
+				const subscription = await registration.pushManager.subscribe({
+					userVisibleOnly: true,
+					applicationServerKey: vapid_key,
+				});
+				setSubscription(subscription);
+				const key = subscription.toJSON().keys.p256dh;
+				const auth = subscription.toJSON().keys.auth;
+				await novel.rpc.NotificationsRegister({ endpoint: subscription.endpoint, key, auth });
 			}
+		}
+		if (callback) {
+			callback();
 		}
 	}
 

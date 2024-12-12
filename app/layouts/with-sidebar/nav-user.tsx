@@ -22,11 +22,11 @@ export function NavUser () {
 							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 						>
 							<Avatar className="h-8 w-8 rounded-lg">
-								<AvatarImage src={user.picture} alt={user.display_name ?? user.email} />
-								<AvatarFallback className="rounded-lg uppercase">{(user.display_name ?? user.email).substring(0, 2)}</AvatarFallback>
+								<AvatarImage src={user.picture} alt={user.display_name?.length > 0 ? user.display_name : user.email} />
+								<AvatarFallback className="rounded-lg uppercase">{(user.display_name?.length > 0 ? user.display_name : user.email).substring(0, 2)}</AvatarFallback>
 							</Avatar>
 							<div className="grid flex-1 text-left leading-tight">
-								<span className="truncate font-medium">{user.display_name ?? user.email}</span>
+								<span className="truncate font-medium">{user.display_name?.length > 0 ? user.display_name : user.email}</span>
 								<span className="truncate text-xs">{user.email}</span>
 							</div>
 							<ChevronsUpDown className="ml-auto size-4" />

@@ -3,7 +3,7 @@
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, SidebarTrigger } from 'components/ui/sidebar';
 import * as React from 'react';
 
-import SidebarMenu from '../../sidebar-menu';
+import SidebarMenu from '../../(app)/sidebar-menu';
 import { NavMain } from './nav-main';
 import { NavUser } from './nav-user';
 import { OrgSwitcher } from './org-switcher';

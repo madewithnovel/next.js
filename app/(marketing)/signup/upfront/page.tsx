@@ -1,6 +1,6 @@
 import { SparkleIcon } from 'lucide-react';
 
-import * as novel from '@/packages/novel/sdk';
+import * as novel from '@/packages/next/sdk';
 
 import Form from './form';
 

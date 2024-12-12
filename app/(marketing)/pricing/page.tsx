@@ -1,4 +1,4 @@
-import * as novel from 'packages/novel/sdk';
+import * as novel from '@/packages/next/sdk';
 
 import CallToActionEnding from '../components/call-to-action/ending';
 import FaqsAccordion from '../components/faqs/accordion';

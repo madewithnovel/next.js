@@ -9,7 +9,7 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from 'com
 import { ChevronsUpDown, Plus } from 'lucide-react';
 import { useState } from 'react';
 
-import { NewOrganization } from '../../account/organizations/organizations';
+import { NewOrganization } from '../../(app)/account/organizations/organizations';
 
 export function OrgSwitcher () {
 	const [open, toggleModal] = useState(false);

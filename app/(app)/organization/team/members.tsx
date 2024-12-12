@@ -168,12 +168,12 @@ export default function Members ({ members: hydratedMemebrs }) {
 								<tr key={member.id} className={cx({ 'pointer-events-none opacity-50': isWorking })}>
 									<td className="w-14">
 										<Avatar className="h-10 w-10 rounded-lg">
-											<AvatarImage src={member.picture} alt={member.display_name ?? member.email}/>
-											<AvatarFallback className="rounded-lg uppercase">{(member.display_name ?? member.email).substring(0, 2)}</AvatarFallback>
+											<AvatarImage src={member.picture} alt={member.display_name?.length > 0 ? member.display_name : member.email}/>
+											<AvatarFallback className="rounded-lg uppercase">{(member.display_name?.length > 0 ? member.display_name : member.email).substring(0, 2)}</AvatarFallback>
 										</Avatar>
 									</td>
 									<td className="py-2 pl-4 pr-3 sm:pl-0">
-										<div className="font-medium">{member.display_name ?? member.email}</div>
+										<div className="font-medium">{member.display_name?.length > 0 ? member.display_name : member.email}</div>
 										<span className="text-muted-foreground">{member.email}</span>
 									</td>
 									<td className="whitespace-nowrap px-3 py-2 capitalize">

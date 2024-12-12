@@ -13,13 +13,11 @@ export default function Upload ({ children, options, onStart, onChange }) {
 		const type = acceptedFiles[0].type;
 		const response = await novel.rpc.FilesPresign({ operation: 'PUT', key: name, type });
 		const { file: { presigned_url, asset_url } } = await response.json();
-		const data = acceptedFiles[0];
+		const form = new FormData();
+		form.set('file', acceptedFiles[0]);
 		await fetch(presigned_url, {
 			method: 'PUT',
-			body: data,
-			headers: {
-				'content-type': type,
-			},
+			body: form,
 		});
 		if (onChange) {
 			await onChange(asset_url);

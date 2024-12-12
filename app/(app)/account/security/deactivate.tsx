@@ -5,7 +5,7 @@ import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
-import * as novel from 'packages/novel/sdk';
+import * as novel from '@/packages/next/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
