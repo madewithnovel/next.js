@@ -1,6 +1,6 @@
 'use client';
 
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, SidebarTrigger } from 'components/ui/sidebar';
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from 'components/ui/sidebar';
 import * as React from 'react';
 
 import SidebarMenu from '../../(app)/sidebar-menu';

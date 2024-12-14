@@ -1,11 +1,11 @@
 'use client';
 
+import postAccountDeactivateRequest from 'app/api/requests/postAccountDeactivate';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
-import * as novel from '@/packages/next/sdk';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -16,7 +16,7 @@ export default function Deactivate () {
 	async function deactivate (data) {
 		working(true);
 		try {
-			const deactivation = await novel.rpc.AccountDeactivate({ sudo_password: data.password });
+			const deactivation = await postAccountDeactivateRequest({ sudo_password: data.password });
 			if (!deactivation.ok) {
 				working(false);
 				const { error } = await deactivation.json();

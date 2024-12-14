@@ -1,4 +1,4 @@
-import * as novel from '@/packages/next/sdk';
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
 
 import CallToActionEnding from '../components/call-to-action/ending';
 import FaqsAccordion from '../components/faqs/accordion';
@@ -28,7 +28,7 @@ export default async function Page () {
  */
 async function getPage () {
 	try {
-		const response = await novel.rpc.SubscriptionsPlans();
+		const response = await getSubscriptionsPlansRequest();
 		if (response.ok) {
 			const { plans } = await response.json();
 			return plans;

@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import putFilesPresignRequest from 'app/api/requests/putFilesPresign';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
@@ -11,7 +11,7 @@ export default function Upload ({ children, options, onStart, onChange }) {
 		}
 		const name = acceptedFiles[0].name; // key is required because of the extension
 		const type = acceptedFiles[0].type;
-		const response = await novel.rpc.FilesPresign({ operation: 'PUT', key: name, type });
+		const response = await putFilesPresignRequest({ key: name, type });
 		const { file: { presigned_url, asset_url } } = await response.json();
 		const form = new FormData();
 		form.set('file', acceptedFiles[0]);

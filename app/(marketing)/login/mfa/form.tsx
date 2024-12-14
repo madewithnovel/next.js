@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import postAuthMfaRequest from 'app/api/requests/postAuthMfa';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import { TriangleAlertIcon } from 'lucide-react';
@@ -18,7 +18,7 @@ export default function Form () {
 
 	async function submit (data) {
 		isWorking(true);
-		const response = await novel.rpc.AuthMfa(query.get('strategy'), { otp: data.otp });
+		const response = await postAuthMfaRequest(query.get('strategy'), { otp: data.otp });
 		if (response.ok) {
 			if (response.redirected === true) {
 				if (response.url.includes('MFA_OTP_INVALID')) {

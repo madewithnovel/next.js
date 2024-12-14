@@ -1,8 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as novel from '@novel/next/sdk';
-import { patchAccountUpdate } from 'app/api/requests/patchAccountUpdate';
+import patchAccountUpdateRequest, { request } from 'app/api/requests/patchAccountUpdate';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Input from 'components/elements/input';
@@ -12,7 +11,7 @@ import * as z from 'zod';
 
 const key = 'url';
 
-const schema = patchAccountUpdate.pick({ [key]: true }).extend({
+const schema = request.pick({ [key]: true }).extend({
 	[key]: z.string().url('Please provide a proper URL for your website address.'),
 });
 
@@ -26,7 +25,7 @@ export default function Website ({ profile }) {
 			if (data[key] !== defaultValues[key]) {
 				working(true);
 				try {
-					const response = await novel.rpc.AccountUpdate({ [key]: data[key] });
+					const response = await patchAccountUpdateRequest({ [key]: data[key] });
 					if (response.ok) {
 						save(true);
 						reset(data);

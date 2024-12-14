@@ -67,8 +67,6 @@ const SentryConfig = {
 	automaticVercelMonitors: false,
 };
 
-// TODO: lodash merge
-
 /**
  * @param overrides {import('next').NextConfig}
  * @returns {import('next').NextConfig}
@@ -83,9 +81,9 @@ module.exports = (overrides) => {
 		process.env.NEXT_PUBLIC_LOCALES = JSON.stringify(i18n);
 		process.env.NEXT_PUBLIC_NOVEL_CONFIG = JSON.stringify(novel);
 		process.env.NEXT_PUBLIC_ANALYTICS = JSON.stringify(analytics);
-		if (phase === PHASE_PRODUCTION_BUILD) { // only for non build commands?
+		if (phase === PHASE_PRODUCTION_BUILD || phase === PHASE_DEVELOPMENT_SERVER) { // only for non build commands?
 			// TODO: if the api is not available, throw a warning
-			await require('../sdk/setup').setup();
+			await require('./sdk/setup').setup();
 		}
 		const withNextIntl = createNextIntlPlugin('./components/i18n/request.ts');
 		if (phase === PHASE_DEVELOPMENT_SERVER) {

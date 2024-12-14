@@ -15,6 +15,7 @@ import { NOVEL } from 'app/constants';
 import { WebVitals } from 'app/vitals';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { ThemeProvider } from 'next-themes';
 
 import Client from './client';
 
@@ -32,14 +33,16 @@ export default async function RootLayout ({ children }) {
 	 */
 	return (
 		<html lang={locale} suppressHydrationWarning>
-			<Client />
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 			</head>
 			<body className="min-w-full min-h-screen flex flex-col relative">
-				<NextIntlClientProvider messages={messages}>
-					{children}
-				</NextIntlClientProvider>
+				<ThemeProvider attribute="class">
+					<Client />
+					<NextIntlClientProvider messages={messages}>
+						{children}
+					</NextIntlClientProvider>
+				</ThemeProvider>
 				<Devtools />
 				<Analytics />
 				<WebVitals />

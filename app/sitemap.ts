@@ -1,13 +1,5 @@
-import { HOST } from 'app/constants';
+import sitemap from '@novel/next/sitemap';
 
-export default async function sitemap () {
-	// TODO: generate pages in marketing
-	return [
-		{
-			url: HOST,
-			lastModified: new Date(),
-			changeFrequency: 'yearly',
-			priority: 1,
-		},
-	];
-}
+export default sitemap(async function () {
+	return [];
+});

@@ -1,6 +1,7 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import deleteApiKeyRevokeRequest from 'app/api/requests/deleteApiKeyRevoke';
+import postApiKeyGenerateRequest from 'app/api/requests/postApiKeyGenerate';
 import Button from 'components/elements/button';
 import Copybox from 'components/elements/copybox';
 import Input from 'components/elements/input';
@@ -23,7 +24,7 @@ export default function List ({ keys: hydratedKeys }) {
 		working(true);
 		try {
 			data.expiry = (data.expiry > 90 || data.expiry <= 0 ? 30 : data.expiry) + 'd';
-			const response = await novel.rpc.ApiKeyGenerate(data);
+			const response = await postApiKeyGenerateRequest(data);
 			if (response.ok) {
 				const { key } = await response.json();
 				setKeys([key, ...keys]);
@@ -42,7 +43,7 @@ export default function List ({ keys: hydratedKeys }) {
 	async function revoke (key) {
 		working(true);
 		try {
-			const response = await novel.rpc.ApiKeyRevoke({ access_id: key.access_id });
+			const response = await deleteApiKeyRevokeRequest({ access_id: key.access_id });
 			if (response.ok) {
 				setKeys(keys.filter(k => k.access_id !== key.access_id));
 			} else {

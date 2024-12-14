@@ -1,6 +1,8 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import deleteOrganizationMembersRemoveRequest from 'app/api/requests/deleteOrganizationMembersRemove';
+import postOrganizationInviteRequest from 'app/api/requests/postOrganizationInvite';
+import postOrganizationMembersPromoteRequest from 'app/api/requests/postOrganizationMembersPromote';
 import cx from 'clsx';
 import AlertError from 'components/elements/alerts/error';
 import Button from 'components/elements/button';
@@ -29,7 +31,7 @@ export default function Members ({ members: hydratedMemebrs }) {
 	async function sendInvites () {
 		if (invite.role) {
 			working(true);
-			const response = await novel.rpc.OrganizationInvite({
+			const response = await postOrganizationInviteRequest({
 				invites: invite.emails.split(',').map(email => ({ email, roles: [invite.role] })),
 			});
 			working(false);
@@ -55,7 +57,7 @@ export default function Members ({ members: hydratedMemebrs }) {
 	async function forRevocation () {
 		if (focus) {
 			working(true);
-			const response = await novel.rpc.OrganizationMembersRemove({ account_id: focus.id });
+			const response = await deleteOrganizationMembersRemoveRequest({ account_id: focus.id });
 			working(false);
 			if (!response.ok) {
 				const { error } = await response.json();
@@ -72,7 +74,7 @@ export default function Members ({ members: hydratedMemebrs }) {
 		if (focus) {
 			if (hydratedMemebrs.find(member => member.id === focus.id).role !== focus.role) {
 				working(true);
-				const response = await novel.rpc.OrganizationMembersPromote({ account_id: focus.id, roles: [focus.role] });
+				const response = await postOrganizationMembersPromoteRequest({ account_id: focus.id, roles: [focus.role] });
 				working(false);
 				if (!response.ok) {
 					const { error } = await response.json();

@@ -1,4 +1,4 @@
-import * as novel from '@novel/next/sdk';
+import getNotificationsListRequest from 'app/api/requests/getNotificationsList';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
@@ -8,7 +8,7 @@ import InviteSection from './invite';
 import ListSection from './list';
 
 async function getPage () {
-	const response = await novel.rpc.NotificationsList();
+	const response = await getNotificationsListRequest();
 	if (response.ok) {
 		return response.json();
 	}

@@ -1,19 +1,16 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as novel from '@novel/next/sdk';
-import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
+import getAccountMfaGenerateRequest from 'app/api/requests/getAccountMfaGenerate';
+import putAccountMfaRegisterRequest from 'app/api/requests/putAccountMfaRegister';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import OTPInput from 'components/elements/input/otp';
 import Toggle from 'components/elements/toggle';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-const schema = patchAccountSettingsUpdate.pick({ marketing: true, newsletter: true });
 
 export default function MFA ({ mfa }) {
 	const [qr, setQr] = useState('');
@@ -22,13 +19,13 @@ export default function MFA ({ mfa }) {
 	const [opened, toggleDialog] = useState(false);
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { register, getValues, setError, setValue, formState: { errors }, reset } = useForm({ resolver: zodResolver(schema) });
+	const { register, getValues, setError, setValue, formState: { errors } } = useForm();
 
 	async function submit () {
 		const token = getValues('token');
 		working(true);
 		try {
-			const response = await novel.rpc.AccountMfaRegister({ token, secret });
+			const response = await putAccountMfaRegisterRequest({ token, secret });
 			working(false);
 			if (response.ok) {
 				save(true);
@@ -49,7 +46,7 @@ export default function MFA ({ mfa }) {
 		toggleDialog(state);
 		setValue('token', '');
 		if (state === true) {
-			const response = await novel.rpc.AccountMfaGenerate();
+			const response = await getAccountMfaGenerateRequest();
 			const { mfa } = await response.json();
 			setQr(mfa.qr);
 			setSecret(mfa.secret);

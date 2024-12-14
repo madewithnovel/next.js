@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
 import Toggle from 'components/elements/toggle';
 import { CheckIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ export default function PricingTable (props) {
 	useEffect(() => {
 		(async () => {
 			if (!plans) {
-				const response = await novel.rpc.SubscriptionsPlans();
+				const response = await getSubscriptionsPlansRequest();
 				const { plans } = await response.json();
 				setPlans(plans);
 			}

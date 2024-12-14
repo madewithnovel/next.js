@@ -1,9 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as novel from '@novel/next/sdk';
 import store from '@novel/next/store';
-import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
+import patchAccountSettingsUpdateRequest, { request } from 'app/api/requests/patchAccountSettingsUpdate';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Select from 'components/elements/select';
@@ -12,7 +11,7 @@ import { useForm } from 'react-hook-form';
 
 const key = 'theme';
 
-const schema = patchAccountSettingsUpdate.pick({ [key]: true });
+const schema = request.pick({ [key]: true });
 
 export default function Theme ({ settings }) {
 	const [saved, save] = useState(false);
@@ -24,7 +23,7 @@ export default function Theme ({ settings }) {
 		return async (data) => {
 			if (data[key] !== defaultValues[key]) {
 				working(true);
-				const response = await novel.rpc.AccountSettingsUpdate({ [key]: data[key] });
+				const response = await patchAccountSettingsUpdateRequest({ [key]: data[key] });
 				store.set(key, data[key]);
 				save(true);
 				working(false);
@@ -49,7 +48,7 @@ export default function Theme ({ settings }) {
 						className="w-full"
 						defaultValue={settings.theme}
 						options={[
-							{ value: 'auto', label: 'System Default' },
+							{ value: 'system', label: 'System Default' },
 							{ value: 'light', label: 'Light' },
 							{ value: 'dark', label: 'Dark' },
 						]}

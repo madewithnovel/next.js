@@ -2,14 +2,13 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import useNotification from '@novel/next/hooks/use-notification';
-import * as novel from '@novel/next/sdk';
-import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
+import patchAccountSettingsUpdateRequest, { request } from 'app/api/requests/patchAccountSettingsUpdate';
 import InlineNotify from 'components/elements/inline-notify';
 import Toggle from 'components/elements/toggle';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const schema = patchAccountSettingsUpdate.pick({ marketing: true, newsletter: true });
+const schema = request.pick({ marketing: true, newsletter: true });
 
 export default function Notifications ({ settings }) {
 	const notification = useNotification();
@@ -19,7 +18,7 @@ export default function Notifications ({ settings }) {
 
 	async function submit (key, checked) {
 		working(true);
-		await novel.rpc.AccountSettingsUpdate({ [key]: checked });
+		await patchAccountSettingsUpdateRequest({ [key]: checked });
 		save(true);
 		working(false);
 	}

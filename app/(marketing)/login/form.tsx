@@ -1,6 +1,7 @@
 'use client';
 
 import * as novel from '@novel/next/sdk';
+import postAuthStrategyRequest from 'app/api/requests/postAuthStrategy';
 import cx from 'clsx';
 import AlertOk from 'components/elements/alerts/ok';
 import AlertWarning from 'components/elements/alerts/warning';
@@ -21,7 +22,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email, password } = data;
-		const response = await novel.rpc.postAuthStrategy('password', { email, password });
+		const response = await postAuthStrategyRequest('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
 			if (data.redirect_to) {

@@ -1,0 +1,4 @@
+import { z } from "zod"
+
+export const accounts = z.object({ "id": z.string().max(24).nullable().optional(), "email": z.string().max(255).nullable().optional(), "password_hash": z.string().nullable().optional(), "url": z.string().nullable().optional(), "display_name": z.string().max(64).nullable().optional(), "picture": z.string().nullable().optional(), "metadata": z.record(z.any()).nullable().optional(), "settings": z.record(z.any()).nullable().optional(), "status": z.string().max(24).nullable().optional(), "created_at": z.string().datetime({ offset: true }).nullable().optional(), "updated_at": z.string().datetime({ offset: true }).nullable().optional(), "verified_at": z.string().datetime({ offset: true }).nullable().optional(), "blocked_at": z.string().datetime({ offset: true }).nullable().optional(), "revoked_at": z.string().datetime({ offset: true }).nullable().optional() }).strict()
+export type Accounts = z.infer<typeof accounts>

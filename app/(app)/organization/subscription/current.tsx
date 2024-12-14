@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import postSubscriptionsCancelRequest from 'app/api/requests/postSubscriptionsCancel';
 import Button from 'components/elements/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import format from 'date-fns/format';
@@ -17,7 +17,7 @@ export default function Current ({ current }) {
 
 	async function cancel () {
 		working(true);
-		await novel.rpc.SubscriptionsCancel();
+		await postSubscriptionsCancelRequest();
 		router.refresh();
 	}
 

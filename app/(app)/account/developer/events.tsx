@@ -14,6 +14,13 @@ export default function Events ({ events }) {
 					</tr>
 				</thead>
 				<tbody className="divide-y divide-border text-sm">
+					<tr>
+						<td colSpan={5}>
+							<div className="py-20 mt-5 text-center border-t border rounded-md">
+								No activity yet
+							</div>
+						</td>
+					</tr>
 					{events.map(event => (
 						<tr key={event.request_id}>
 							<td className="flex items-center justify-center py-2 pl-4 pr-3 sm:pl-0">

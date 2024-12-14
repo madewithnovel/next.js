@@ -1,4 +1,4 @@
-import * as novel from '@novel/next/sdk';
+import getSessionContextRequest from 'app/api/requests/getSessionContext';
 import { redirect } from 'next/navigation';
 
 export default async function getSession () {
@@ -6,7 +6,7 @@ export default async function getSession () {
 		/**
 		 * NOTE: This is only called once on each page load.
 		 */
-		const response = await novel.rpc.SessionContext();
+		const response = await getSessionContextRequest();
 		if (response.ok) {
 			const context = await response.json();
 			return context.session;

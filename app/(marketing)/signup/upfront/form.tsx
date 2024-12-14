@@ -1,6 +1,7 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
+import postAuthSignupRequest from 'app/api/requests/postAuthSignup';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -33,9 +34,8 @@ function FormSteps ({ plans }) {
 
 	useEffect(() => {
 		if (!plans?.length) {
-			novel.rpc.SubscriptionsPlans().then((response) => response.json()).then((data) => {
+			getSubscriptionsPlansRequest().then((response) => response.json()).then((data) => {
 				form.setValue('plan', data.plans[0].id);
-				plans;
 			});
 		}
 	}, []);
@@ -75,7 +75,7 @@ function FormSteps ({ plans }) {
 		/**
 		 * Send the request to the backend
 		 */
-		const response = await novel.rpc.AuthSignup({ email, password, interval, intent, plan, method, invitation_code });
+		const response = await postAuthSignupRequest({ email, password, interval, intent, plan, method, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();

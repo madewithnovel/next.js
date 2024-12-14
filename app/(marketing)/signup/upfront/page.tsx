@@ -1,6 +1,5 @@
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
 import { SparkleIcon } from 'lucide-react';
-
-import * as novel from '@/packages/next/sdk';
 
 import Form from './form';
 
@@ -27,7 +26,7 @@ export default async function Page () {
  * This is an example of adding a hydration function to the marketing page
  */
 async function getPage () {
-	const response = await novel.rpc.SubscriptionsPlans();
+	const response = await getSubscriptionsPlansRequest();
 	if (response.ok) {
 		const { plans } = await response.json();
 		return plans;

@@ -1,10 +1,14 @@
 import { SidebarInset, SidebarProvider } from 'components/ui/sidebar';
+import { cookies } from 'next/headers';
 
 import { AppSidebar } from './app-sidebar';
 
-export default function Layout (props) {
+export default async function Layout (props) {
+	const cookieStore = await cookies();
+	const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true';
+
 	return (
-		<SidebarProvider>
+		<SidebarProvider defaultOpen={defaultOpen}>
 			<AppSidebar/>
 			<SidebarInset>
 				{props.children}

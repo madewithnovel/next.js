@@ -2,8 +2,8 @@
 
 import getSession from '@novel/next/hooks/get-session';
 import useSession from '@novel/next/hooks/use-session';
-import * as novel from '@novel/next/sdk';
 import store from '@novel/next/store';
+import postSessionSwitchRequest from 'app/api/requests/postSessionSwitch';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from 'components/ui/sidebar';
 import { ChevronsUpDown, Plus } from 'lucide-react';
@@ -19,7 +19,7 @@ export function OrgSwitcher () {
 	const [activeTeam, setActiveTeam] = useState(session.organization);
 
 	async function switchTo (team) {
-		const response = await novel.rpc.SessionSwitch({ org_id: team.id });
+		const response = await postSessionSwitchRequest({ org_id: team.id });
 		if (response.ok) {
 			const session = await getSession();
 			store.set('session', session);

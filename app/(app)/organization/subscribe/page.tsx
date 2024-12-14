@@ -1,5 +1,6 @@
-import * as novel from '@novel/next/sdk';
 import PricingComparison from 'app/(marketing)/components/pricing/comparison';
+import getSubscriptionsCurrentRequest from 'app/api/requests/getSubscriptionsCurrent';
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
@@ -7,8 +8,8 @@ import { SidebarTrigger } from 'components/ui/sidebar';
 import PricingTable from './table';
 
 async function getPage () {
-	const plans = await novel.rpc.SubscriptionsPlans();
-	const subscriptions = await novel.rpc.SubscriptionsCurrent();
+	const plans = await getSubscriptionsPlansRequest();
+	const subscriptions = await getSubscriptionsCurrentRequest();
 	if (subscriptions.ok) {
 		const plansData = await plans.json();
 		const subscriptionsData = await subscriptions.json();

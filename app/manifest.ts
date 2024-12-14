@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
 
+import { NOVEL } from './constants';
+
 export default function manifest (): MetadataRoute.Manifest {
 	return {
-		name: 'Novel',
-		short_name: 'Novel',
-		description: 'Novel',
+		name: NOVEL.title,
+		short_name: NOVEL.title,
+		description: NOVEL.description,
 		start_url: '/',
 		display: 'standalone',
 		background_color: '#fff',

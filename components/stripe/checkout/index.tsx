@@ -1,8 +1,8 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
 import { CardElement, Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js/pure';
+import postAuthPaymentIntentRequest from 'app/api/requests/postAuthPaymentIntent';
 
 export { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
@@ -29,7 +29,7 @@ const cardStyle = {
 };
 
 export async function getCustomerIntent (plan, stripe, elements, org_id = null) {
-	const response = await novel.rpc.AuthPaymentIntent({ plan, org_id });
+	const response = await postAuthPaymentIntentRequest({ plan, org_id });
 	const setupIntent = await response.json();
 	const card = elements.getElement(CardElement);
 	try {

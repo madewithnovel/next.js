@@ -1,7 +1,8 @@
 'use client';
 
 import useSession from '@novel/next/hooks/use-session';
-import * as novel from '@novel/next/sdk';
+import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
+import postSubscriptionsSubscribeRequest from 'app/api/requests/postSubscriptionsSubscribe';
 import Button from 'components/elements/button';
 import Toggle from 'components/elements/toggle';
 import { Card, getCustomerIntent, StripeProvider, useElements, useStripe } from 'components/stripe/checkout';
@@ -37,7 +38,7 @@ function Payment ({ children, plan, yearly, paymentMethods }) {
 			if (!method && paymentMethods.length > 0 && newCard === false) {
 				method = paymentMethods[0].id;
 			}
-			const response = await novel.rpc.SubscriptionsSubscribe({ plan, interval: yearly ? 'year' : 'month', intent, method });
+			const response = await postSubscriptionsSubscribeRequest({ plan, interval: yearly ? 'year' : 'month', intent, method });
 			if (response.ok) {
 				window.location.href = `/organization/subscription?subscribed=${plan}`;
 			} else {
@@ -99,7 +100,7 @@ export default function PricingTable (props) {
 	useEffect(() => {
 		(async () => {
 			if (!plans) {
-				const response = await novel.rpc.SubscriptionsPlans();
+				const response = await getSubscriptionsPlansRequest();
 				const { plans } = await response.json();
 				setPlans(plans);
 			}

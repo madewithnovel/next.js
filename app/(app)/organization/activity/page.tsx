@@ -1,4 +1,4 @@
-import * as novel from '@novel/next/sdk';
+import getOrganizationEventsRequest from 'app/api/requests/getOrganizationEvents';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
@@ -7,7 +7,7 @@ import Tabs from '../tabs';
 import ListSection from './list';
 
 async function getPage () {
-	const response = await novel.rpc.OrganizationEvents();
+	const response = await getOrganizationEventsRequest();
 	if (response.ok) {
 		return response.json();
 	}

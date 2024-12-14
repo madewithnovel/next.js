@@ -1,11 +1,11 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import deleteOrganizationInviteRejectRequest from 'app/api/requests/deleteOrganizationInviteReject';
+import postOrganizationInviteAcceptRequest from 'app/api/requests/postOrganizationInviteAccept';
+import AlertOk from 'components/elements/alerts/ok';
 import Button from 'components/elements/button';
 import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
 import { useState } from 'react';
-
-import AlertOk from '@/components/elements/alerts/ok';
 
 export default function List ({ invites: hydratedInvites }) {
 	const [invites, setInvites] = useState(hydratedInvites);
@@ -14,7 +14,7 @@ export default function List ({ invites: hydratedInvites }) {
 
 	async function accept (invite) {
 		working(true);
-		await novel.rpc.OrganizationInviteAccept({ invitation_code: invite.invitation_code });
+		await postOrganizationInviteAcceptRequest({ invitation_code: invite.invitation_code });
 		setInvites(invites.filter((i) => i.invitation_code !== invite.invitation_code));
 		setAccepted(true);
 		working(false);
@@ -22,7 +22,7 @@ export default function List ({ invites: hydratedInvites }) {
 
 	async function reject (invite) {
 		working(true);
-		await novel.rpc.OrganizationInviteReject({ invitation_code: invite.invitation_code });
+		await deleteOrganizationInviteRejectRequest({ invitation_code: invite.invitation_code });
 		setInvites(invites.filter((i) => i.invitation_code !== invite.invitation_code));
 		working(false);
 	}

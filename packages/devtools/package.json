@@ -8,9 +8,6 @@
     "socket.io-client": "4.8.0",
     "store2": "2.14.3"
   },
-  "engines": {
-    "node": ">=22"
-  },
   "license": "see LICENSE",
   "private": true,
   "version": "1.0.0",

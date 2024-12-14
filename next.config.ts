@@ -7,7 +7,7 @@ import withNovelConfig from '@novel/next/next.config';
  * See https://novel.dev/docs/guides/i18n
  */
 export const i18n = {
-	locales: ['en', 'de'],
+	locales: ['en'],
 	defaultLocale: 'en',
 };
 

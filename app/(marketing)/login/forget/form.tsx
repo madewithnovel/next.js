@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import postAuthForgotRequest from 'app/api/requests/postAuthForgot';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -17,7 +17,7 @@ export default function Form () {
 	async function submit (data) {
 		isWorking(true);
 		const { email } = data;
-		const response = await novel.rpc.AuthForgot({ email });
+		const response = await postAuthForgotRequest({ email });
 		if (!response.ok) {
 			const data = await response.json();
 			setError('email', { type: 'custom', message: data.error.message });

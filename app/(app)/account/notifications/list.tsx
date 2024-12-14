@@ -1,6 +1,7 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import postNotificationsArchiveRequest from 'app/api/requests/postNotificationsArchive';
+import postNotificationsReadRequest from 'app/api/requests/postNotificationsRead';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
@@ -14,21 +15,21 @@ export default function List ({ notifications: hydratedNotifications }) {
 
 	async function markAllAsRead () {
 		working(true);
-		await novel.rpc.NotificationsRead({ items: hydratedNotifications.map(n => n.id) });
+		await postNotificationsReadRequest({ items: hydratedNotifications.map(n => n.id) });
 		setNotifications(notifications.map(n => ({ ...n, read: true })));
 		working(false);
 	}
 
 	async function markAsRead (notification) {
 		working(true);
-		await novel.rpc.NotificationsRead({ items: [notification.id] });
+		await postNotificationsReadRequest({ items: [notification.id] });
 		setNotifications(notifications.map(n => n.id === notification.id ? { ...n, read: true } : n));
 		working(false);
 	}
 
 	async function archive (notification) {
 		working(true);
-		await novel.rpc.NotificationsArchive({ items: [notification.id] });
+		await postNotificationsArchiveRequest({ items: [notification.id] });
 		setNotifications(notifications.filter(n => n.id !== notification.id));
 		working(false);
 	}

@@ -1,30 +1,22 @@
 'use client';
 
 import store from '@novel/next/store';
+import { useTheme } from 'next-themes';
 import { useEffect } from 'react';
 
-function applyTheme () {
-	let theme = store.get('theme');
-	if (!theme) {
-		theme = 'light';
+function getTheme (theme: string) {
+	const storedTheme = store.get('theme');
+	theme = theme === 'system' ? 'light' : theme;
+	if (storedTheme) {
+		theme = storedTheme === 'dark' ? 'dark' : 'light';
 	}
-	const session = store.get('session');
-	if (session?.settings?.theme) {
-		theme = session.settings.theme === 'dark' ? 'dark' : 'light';
-	}
-	store.set('theme', theme);
-	// TODO: this warning shows up in the server console
-	try {
-		document.documentElement.classList.add(theme);
-	} catch {}
+	return theme;
 }
 
-applyTheme();
-
 export default function Client () {
+	const { theme, setTheme } = useTheme();
 	useEffect(() => {
-		applyTheme();
+		setTheme(getTheme(theme));
 	}, []);
-
 	return <></>;
 }

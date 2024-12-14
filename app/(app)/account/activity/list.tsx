@@ -1,11 +1,9 @@
 import { format } from 'date-fns/format';
 
-import Button from '@/components/elements/button';
-
 export default function List ({ events }) {
 	return (
 		<section className="section">
-			{events.length === 0 && (
+			{(!events || events.length === 0) && (
 				<div className="py-20 text-center border-t border rounded-md">
 					No activity yet
 				</div>

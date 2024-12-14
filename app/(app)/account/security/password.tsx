@@ -1,8 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as novel from '@novel/next/sdk';
-import { postAccountUpdatePassword } from 'app/api/requests/postAccountUpdatePassword';
+import postAccountUpdatePasswordRequest, { request } from 'app/api/requests/postAccountUpdatePassword';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
@@ -13,7 +12,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const schema = postAccountUpdatePassword.extend({
+const schema = request.extend({
 	confirm_password: z.string(),
 });
 
@@ -30,7 +29,7 @@ export default function Password () {
 		}
 		working(true);
 		try {
-			const response = await novel.rpc.AccountUpdatePassword(data);
+			const response = await postAccountUpdatePasswordRequest(data);
 			working(false);
 			if (response.ok) {
 				togglePasswordModal(false);

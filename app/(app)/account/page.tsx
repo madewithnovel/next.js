@@ -1,4 +1,4 @@
-import * as novel from '@novel/next/sdk';
+import getAccountProfileRequest from 'app/api/requests/getAccountProfile';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
@@ -13,7 +13,7 @@ import TimezoneSection from './timezone';
 import WebsiteSection from './website';
 
 async function getPage () {
-	const response = await novel.rpc.AccountProfile();
+	const response = await getAccountProfileRequest();
 	if (response.ok) {
 		return response.json();
 	}
@@ -23,7 +23,6 @@ export default async function Page () {
 	const { profile, settings } = await getPage();
 	return (
 		<main className="flex flex-1 flex-col gap-4 p-4 pt-0">
-			{JSON.stringify(settings)}
 			<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
 				<div className="flex items-center gap-2 px-4 container mx-auto">
 					<SidebarTrigger className="-ml-1"/>

@@ -2,8 +2,9 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import getSession from '@novel/next/hooks/get-session';
-import * as novel from '@novel/next/sdk';
-import { postOrganizationCreate } from 'app/api/requests/postOrganizationCreate';
+import store from '@novel/next/store';
+import postOrganizationCreateRequest, { request } from 'app/api/requests/postOrganizationCreate';
+import postSessionSwitchRequest from 'app/api/requests/postSessionSwitch';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -11,14 +12,11 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from 'components/ui/dropdown-menu';
 import { Label } from 'components/ui/label';
 import { EllipsisIcon } from 'lucide-react';
-import store from '@/packages/next/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const schema = postOrganizationCreate;
-
 async function switchTo (org_id) {
-	const response = await novel.rpc.SessionSwitch({ org_id });
+	const response = await postSessionSwitchRequest({ org_id });
 	if (response.ok) {
 		const session = await getSession();
 		store.set('session', session);
@@ -29,12 +27,12 @@ async function switchTo (org_id) {
 export function NewOrganization (props) {
 	const { children, open, onOpenChange } = props;
 	const [isWorking, working] = useState(false);
-	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm({ resolver: zodResolver(schema) });
+	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm({ resolver: zodResolver(request) });
 
 	async function create (data) {
 		working(true);
 		try {
-			const response = await novel.rpc.OrganizationCreate(data);
+			const response = await postOrganizationCreateRequest(data);
 			working(false);
 			if (response.ok) {
 				const data = await response.json();

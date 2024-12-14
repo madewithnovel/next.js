@@ -1,4 +1,5 @@
-import * as novel from '@novel/next/sdk';
+import getApiKeyAccessRequest from 'app/api/requests/getApiKeyAccess';
+import getApiKeyListRequest from 'app/api/requests/getApiKeyList';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
@@ -8,8 +9,8 @@ import EventsSection from './events';
 import ListSection from './list';
 
 async function getPage () {
-	const list = await novel.rpc.ApiKeyList();
-	const events = await novel.rpc.ApiKeyAccess();
+	const list = await getApiKeyListRequest();
+	const events = await getApiKeyAccessRequest();
 	if (list.ok) {
 		return Promise.all([
 			list.json(),

@@ -1,12 +1,9 @@
 import schema from 'app/api/schema.json';
-import { z } from 'zod';
 
 import Request from '../request';
-import { loadOperations, setup } from './setup';
+import { loadOperations } from './setup';
 
 const operations = loadOperations(schema);
-
-setup().then(); // this is here for the side effects
 
 export * as request from '../request';
 
@@ -16,8 +13,8 @@ export function path (pathname = '/') {
 }
 
 async function rpcHandler (operationId, ...rest) {
-	let params = rest?.params ?? [];
-	let options = {};
+	let params;
+	let options = { next: { tags: [] } };
 	let body;
 	if (rest.length === 1) {
 		body = rest[0];
@@ -80,18 +77,8 @@ async function rpcHandler (operationId, ...rest) {
 	console.warn(`RPC operation ${operationId} not found`);
 }
 
-type Operations = typeof operations;
-
-type RPC = {
-	[K in keyof Operations]: (
-		...args: z.infer<Operations[K]['args']> extends any[]
-			? z.infer<Operations[K]['args']>
-			: [z.infer<Operations[K]['args']>]
-	) => Promise<z.infer<Operations[K]['returns']>>;
-};
-
-export const rpc: RPC = new Proxy(rpcHandler, {
-	get: function (_, prop) {
+export const rpc = new Proxy(rpcHandler, {
+	get: function (_, prop: string) {
 		// NOTE: this is used because we have shorthands for non method operationIds
 		const similar = operations ? Object.keys(operations).find((key) => key.includes(prop)) : null;
 		return (...params) => rpcHandler(similar, ...params);

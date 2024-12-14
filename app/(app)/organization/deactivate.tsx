@@ -2,13 +2,14 @@
 
 import getSession from '@novel/next/hooks/get-session';
 import useSession from '@novel/next/hooks/use-session';
-import * as novel from '@novel/next/sdk';
+import store from '@novel/next/store';
+import deleteOrganizationDeactivateRequest from 'app/api/requests/deleteOrganizationDeactivate';
+import postSessionSwitchRequest from 'app/api/requests/postSessionSwitch';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
 import { Label } from 'components/ui/label';
-import store from '@/packages/next/store';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -21,7 +22,7 @@ export default function Deactivate () {
 		working(true);
 		const current = session.organization.id;
 		try {
-			const deactivation = await novel.rpc.OrganizationDeactivate({ sudo_password: data.password });
+			const deactivation = await deleteOrganizationDeactivateRequest({ sudo_password: data.password });
 			if (!deactivation.ok) {
 				working(false);
 				const { error } = await deactivation.json();
@@ -29,7 +30,7 @@ export default function Deactivate () {
 				return setError('password', { type: 'manual', message: error.message });
 			}
 			const availableOrganizations = session.organizations.filter(org => org.id !== current);
-			const response = await novel.rpc.SessionSwitch({ org_id: availableOrganizations[0].id });
+			const response = await postSessionSwitchRequest({ org_id: availableOrganizations[0].id });
 			if (response.ok) {
 				const session = await getSession();
 				store.set('session', session);

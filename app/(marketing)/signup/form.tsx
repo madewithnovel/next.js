@@ -1,6 +1,7 @@
 'use client';
 
 import * as novel from '@novel/next/sdk';
+import postAuthSignupRequest from 'app/api/requests/postAuthSignup';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -24,7 +25,7 @@ export default function Form () {
 		 * You can customize the interval to be available in the front end as well.
 		 */
 		const plan = query.get('plan') ?? 'standard-2024';
-		const interval = query.get('interval') ?? 'month';
+		const interval = query.get('interval') === 'year' ? 'year' : 'month';
 
 		/**
 		 * Check the validity of the input, you can use zod here
@@ -40,7 +41,7 @@ export default function Form () {
 		/**
 		 * Send the request to the backend
 		 */
-		const response = await novel.rpc.AuthSignup({ email, password, plan, interval, invitation_code });
+		const response = await postAuthSignupRequest({ email, password, plan, interval, invitation_code });
 		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();

@@ -1,6 +1,8 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import deleteNotificationsDeregisterRequest from 'app/api/requests/deleteNotificationsDeregister';
+import getNotificationsVapidRequest from 'app/api/requests/getNotificationsVapid';
+import postNotificationsRegisterRequest from 'app/api/requests/postNotificationsRegister';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useNotification () {
@@ -11,7 +13,7 @@ export default function useNotification () {
 
 	async function subscribe (callback) {
 		if (registration) {
-			const response = await novel.rpc.NotificationsVapid();
+			const response = await getNotificationsVapidRequest();
 			const { vapid_key } = await response.json();
 			if (vapid_key) {
 				const subscription = await registration.pushManager.subscribe({
@@ -21,7 +23,7 @@ export default function useNotification () {
 				setSubscription(subscription);
 				const key = subscription.toJSON().keys.p256dh;
 				const auth = subscription.toJSON().keys.auth;
-				await novel.rpc.NotificationsRegister({ endpoint: subscription.endpoint, key, auth });
+				await postNotificationsRegisterRequest({ endpoint: subscription.endpoint, key, auth });
 			}
 		}
 		if (callback) {
@@ -36,7 +38,7 @@ export default function useNotification () {
 		}
 		if (sub) {
 			await sub.unsubscribe();
-			await novel.rpc.NotificationsDeregister({ endpoint: sub.endpoint });
+			await deleteNotificationsDeregisterRequest({ endpoint: sub.endpoint });
 		}
 		if (callback) {
 			callback();

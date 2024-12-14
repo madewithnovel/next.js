@@ -2,8 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import timezones from '@novel/next/constants/timezones.json';
-import * as novel from '@novel/next/sdk';
-import { patchAccountSettingsUpdate } from 'app/api/requests/patchAccountSettingsUpdate';
+import patchAccountSettingsUpdateRequest, { request } from 'app/api/requests/patchAccountSettingsUpdate';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Select from 'components/elements/select';
@@ -16,7 +15,7 @@ timezones.forEach(timezone => {
 	timezone.utc.forEach(utc => utcd.add(utc));
 });
 
-const schema = patchAccountSettingsUpdate.pick({ [key]: true });
+const schema = request.pick({ [key]: true });
 
 export default function Timezone ({ settings }) {
 	const [saved, save] = useState(false);
@@ -28,7 +27,7 @@ export default function Timezone ({ settings }) {
 		return async (data) => {
 			if (data[key] !== defaultValues[key]) {
 				working(true);
-				const response = await novel.rpc.AccountSettingsUpdate({ [key]: data[key] });
+				const response = await patchAccountSettingsUpdateRequest({ [key]: data[key] });
 				save(true);
 				working(false);
 				if (response.ok) {

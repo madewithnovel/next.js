@@ -1,11 +1,23 @@
-// https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps
+/**
+ * Service Worker
+ *
+ * This is a service worker that will be registered in the browser when the user visits the site.
+ *
+ * Implementation taken from: https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps
+ */
 self.addEventListener('push', function (event) {
+	// you can debug this in chrome://gcm-internals/
 	if (event.data) {
-		const data = event.data.json();
+		let data;
+		console.log(event.data);
+		try {
+			data = event.data.json();
+			data = data.body;
+		} catch {
+			data = event.data.text();
+		}
 		const options = {
-			body: data.body,
-			icon: data.icon || '/icon.png',
-			badge: '/badge.png',
+			body: data,
 			vibrate: [100, 50, 100],
 			data: {
 				dateOfArrival: Date.now(),
@@ -17,15 +29,5 @@ self.addEventListener('push', function (event) {
 });
 
 self.addEventListener('notificationclick', function (event) {
-	console.log('Notification click received.');
 	event.notification.close();
-	event.waitUntil(clients.openWindow('http://localhost:7634'));
-});
-
-self.addEventListener('push', (event) => {
-	const data = event.data.json();
-	// you can debug this in chrome://gcm-internals/
-	self.registration.showNotification(data.title, {
-		body: data.body,
-	});
 });

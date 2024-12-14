@@ -1,16 +1,15 @@
-import * as novel from '@novel/next/sdk';
+import Email from 'app/(app)/organization/email';
+import getSubscriptionsCurrentRequest from 'app/api/requests/getSubscriptionsCurrent';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from 'components/ui/breadcrumb';
 import { Separator } from 'components/ui/separator';
 import { SidebarTrigger } from 'components/ui/sidebar';
-
-import Email from '@/app/(app)/organization/email';
 
 import Tabs from '../tabs';
 import CurrentSection from './current';
 import InvoiceSection from './invoice';
 
 async function getPage () {
-	const response = await novel.rpc.SubscriptionsCurrent();
+	const response = await getSubscriptionsCurrentRequest();
 	if (response.ok) {
 		return response.json();
 	}

@@ -1,15 +1,5 @@
-import { HOST } from 'app/constants';
+import robots from '@novel/next/robots';
 
-export default async function robots () {
-	// TODO: generate pages in app
-	return {
-		rules: [
-			{
-				userAgent: '*',
-				allow: '/',
-				disallow: ['/dashboard/', '/account/', '/organization/'],
-			},
-		],
-		sitemap: `${HOST}/sitemap.xml`,
-	};
-}
+export default robots(async function () {
+	return {};
+});

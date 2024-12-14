@@ -1,6 +1,6 @@
 'use client';
 
-import * as novel from '@novel/next/sdk';
+import patchAccountUpdateRequest from 'app/api/requests/patchAccountUpdate';
 import cx from 'classnames';
 import InlineNotify from 'components/elements/inline-notify';
 import Upload from 'components/elements/upload';
@@ -17,7 +17,7 @@ export default function Picture ({ profile }) {
 		setPicture(picture);
 		working(true);
 		try {
-			const response = await novel.rpc.AccountUpdate({ picture });
+			const response = await patchAccountUpdateRequest({ picture });
 			if (response.ok) {
 				save(true);
 			} else {

@@ -4274,18 +4274,23 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "qr": {
-                      "type": "string"
-                    },
-                    "secret": {
-                      "type": "string"
-                    },
-                    "remaining": {
-                      "type": "integer"
-                    },
-                    "expires_at": {
-                      "type": "string",
-                      "format": "date-time"
+                    "mfa": {
+                      "type": "object",
+                      "properties": {
+                        "qr": {
+                          "type": "string"
+                        },
+                        "secret": {
+                          "type": "string"
+                        },
+                        "remaining": {
+                          "type": "integer"
+                        },
+                        "expires_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
                     }
                   }
                 }
@@ -5246,6 +5251,29 @@
           "Auth"
         ],
         "description": "Create a payment intent to be used for upfront payment collection.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plan": {
+                    "type": "string"
+                  },
+                  "org_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "amount",
+                  "currency",
+                  "payment_method_types"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
         "security": [],
         "responses": {
           "200": {
@@ -6287,41 +6315,44 @@
                   "type": "object",
                   "properties": {
                     "events": {
-                      "type": "object",
-                      "properties": {
-                        "request_id": {
-                          "type": "string",
-                          "transform": [
-                            "trim"
-                          ]
-                        },
-                        "event_id": {
-                          "type": "string",
-                          "transform": [
-                            "trim"
-                          ]
-                        },
-                        "timestamp": {
-                          "type": "string",
-                          "transform": [
-                            "trim"
-                          ]
-                        },
-                        "action": {
-                          "type": "string",
-                          "transform": [
-                            "trim"
-                          ]
-                        },
-                        "message": {
-                          "type": "string",
-                          "transform": [
-                            "trim"
-                          ]
-                        },
-                        "context": {
-                          "type": "object",
-                          "additionalProperties": true
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "request_id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "event_id": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "timestamp": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "action": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "message": {
+                            "type": "string",
+                            "transform": [
+                              "trim"
+                            ]
+                          },
+                          "context": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
                         }
                       }
                     }

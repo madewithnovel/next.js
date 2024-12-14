@@ -1,8 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as novel from '@novel/next/sdk';
-import { patchOrganizationUpdate } from 'app/api/requests/patchOrganizationUpdate';
+import patchOrganizationUpdateRequest, { request } from 'app/api/requests/patchOrganizationUpdate';
 import Button from 'components/elements/button';
 import InlineNotify from 'components/elements/inline-notify';
 import Input from 'components/elements/input';
@@ -12,7 +11,7 @@ import * as z from 'zod';
 
 const key = 'email';
 
-const schema = patchOrganizationUpdate.pick({ [key]: true }).extend({
+const schema = request.pick({ [key]: true }).extend({
 	[key]: z.string().email('Please provide a proper email address for this organization.'),
 });
 
@@ -26,7 +25,7 @@ export default function Email ({ org }) {
 			if (data[key] !== defaultValues[key]) {
 				working(true);
 				try {
-					const response = await novel.rpc.OrganizationUpdate({ [key]: data[key] });
+					const response = await patchOrganizationUpdateRequest({ [key]: data[key] });
 					if (response.ok) {
 						save(true);
 						reset(data);
