@@ -7,14 +7,16 @@ import InlineNotify from 'components/elements/inline-notify';
 import Toggle from 'components/elements/toggle';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 const schema = request.pick({ marketing: true, newsletter: true });
+type Schema = z.infer<typeof schema>
 
 export default function Notifications ({ settings }) {
 	const notification = useNotification();
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { handleSubmit } = useForm({ defaultValues: settings, resolver: zodResolver(schema) });
+	const { handleSubmit } = useForm<Schema>({ defaultValues: settings, resolver: zodResolver(schema) });
 
 	async function submit (key, checked) {
 		working(true);

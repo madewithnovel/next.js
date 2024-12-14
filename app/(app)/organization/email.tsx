@@ -14,11 +14,12 @@ const key = 'email';
 const schema = request.pick({ [key]: true }).extend({
 	[key]: z.string().email('Please provide a proper email address for this organization.'),
 });
+type Schema = z.infer<typeof schema>;
 
 export default function Email ({ org }) {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm({ defaultValues: org, resolver: zodResolver(schema) });
+	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm<Schema>({ defaultValues: org, resolver: zodResolver(schema) });
 
 	function submit (key) {
 		return async (data) => {

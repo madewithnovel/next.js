@@ -1,7 +1,7 @@
 'use client';
 
 import deleteApiKeyRevokeRequest from 'app/api/requests/deleteApiKeyRevoke';
-import postApiKeyGenerateRequest from 'app/api/requests/postApiKeyGenerate';
+import postApiKeyGenerateRequest, { Request } from 'app/api/requests/postApiKeyGenerate';
 import Button from 'components/elements/button';
 import Copybox from 'components/elements/copybox';
 import Input from 'components/elements/input';
@@ -18,7 +18,7 @@ export default function List ({ keys: hydratedKeys }) {
 	const [keys, setKeys] = useState(hydratedKeys);
 	const [createModal, toggleCreateModal] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm();
+	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm<Request>();
 
 	async function submit (data) {
 		working(true);

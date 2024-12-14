@@ -1,6 +1,5 @@
 // THIS FILE IS AUTO GENERATED. DO NOT MODIFY THIS FILE
 import * as client from '@novel/next/request';
-import { z } from 'zod';
 
 const operation = {
 	url: '/api/v1/subscription/cancel',

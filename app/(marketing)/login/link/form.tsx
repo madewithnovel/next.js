@@ -1,6 +1,6 @@
 'use client';
 
-import postAuthStrategyRequest from 'app/api/requests/postAuthStrategy';
+import postAuthStrategyRequest, { Request } from 'app/api/requests/postAuthStrategy';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 export default function Form () {
 	const [working, isWorking] = useState(false);
 	const [submitted, isSubmitted] = useState(false);
-	const { register, handleSubmit, watch, setError, setFocus, formState: { errors } } = useForm();
+	const { register, handleSubmit, watch, setError, setFocus, formState: { errors } } = useForm<Request>();
 
 	async function submit (data) {
 		isWorking(true);
@@ -35,7 +35,7 @@ export default function Form () {
 						<div className="text-3xl font-medium">Login with your Email Address</div>
 						<div className="text-lg">Enter your email address and we'll send you a link to login.</div>
 					</div>
-					<form action={handleSubmit(submit)} className="flex flex-col gap-5">
+					<form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
 						<div>Email</div>
 						<Input type="email" className={cx({ error: !!errors.email })} {...register('email', { required: true })} />
 						{errors.email && (

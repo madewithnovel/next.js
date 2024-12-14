@@ -2,7 +2,7 @@
 import * as client from '@novel/next/request';
 import { z } from 'zod';
 
-export const request = z.object({ endpoint: z.array(z.string()).optional() });
+export const request = z.object({ items: z.array(z.string()).optional() });
 export type Request = z.infer<typeof request>
 
 const operation = {

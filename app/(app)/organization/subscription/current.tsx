@@ -3,7 +3,7 @@
 import postSubscriptionsCancelRequest from 'app/api/requests/postSubscriptionsCancel';
 import Button from 'components/elements/button';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from 'components/ui/dialog';
-import format from 'date-fns/format';
+import { format } from 'date-fns/format';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';

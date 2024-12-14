@@ -3,7 +3,7 @@
 import getSession from '@novel/next/hooks/get-session';
 import useSession from '@novel/next/hooks/use-session';
 import store from '@novel/next/store';
-import deleteOrganizationDeactivateRequest from 'app/api/requests/deleteOrganizationDeactivate';
+import deleteOrganizationDeactivateRequest, { Request } from 'app/api/requests/deleteOrganizationDeactivate';
 import postSessionSwitchRequest from 'app/api/requests/postSessionSwitch';
 import cx from 'clsx';
 import Button from 'components/elements/button';
@@ -16,18 +16,18 @@ import { useForm } from 'react-hook-form';
 export default function Deactivate () {
 	const session = useSession();
 	const [isWorking, working] = useState(false);
-	const { handleSubmit, register, setError, setFocus, formState: { errors } } = useForm();
+	const { handleSubmit, register, setError, setFocus, formState: { errors } } = useForm<Request>();
 
 	async function deactivate (data) {
 		working(true);
 		const current = session.organization.id;
 		try {
-			const deactivation = await deleteOrganizationDeactivateRequest({ sudo_password: data.password });
+			const deactivation = await deleteOrganizationDeactivateRequest({ sudo_password: data.sudo_password });
 			if (!deactivation.ok) {
 				working(false);
 				const { error } = await deactivation.json();
-				setFocus('password');
-				return setError('password', { type: 'manual', message: error.message });
+				setFocus('sudo_password');
+				return setError('sudo_password', { type: 'manual', message: error.message });
 			}
 			const availableOrganizations = session.organizations.filter(org => org.id !== current);
 			const response = await postSessionSwitchRequest({ org_id: availableOrganizations[0].id });
@@ -37,7 +37,7 @@ export default function Deactivate () {
 				window.location.href = '/dashboard';
 			}
 		} catch (error) {
-			setError('password', { type: 'manual', message: error.message });
+			setError('sudo_password', { type: 'manual', message: error.message });
 		}
 		working(false);
 	}
@@ -67,14 +67,14 @@ export default function Deactivate () {
 								</Label>
 								<Input
 									type="password"
-									className={cx('col-span-3', { error: errors.password })}
-									{...register('password')}
+									className={cx('col-span-3', { error: errors.sudo_password })}
+									{...register('sudo_password')}
 								/>
 							</div>
-							{errors.password && (
+							{errors.sudo_password && (
 								<div className="grid grid-cols-4 items-center gap-4">
 									<div></div>
-									<div className="col-span-3 text-destructive">{errors.password.message}</div>
+									<div className="col-span-3 text-destructive">{errors.sudo_password.message}</div>
 								</div>
 							)}
 						</div>

@@ -1,7 +1,7 @@
 'use client';
 
 import getSubscriptionsPlansRequest from 'app/api/requests/getSubscriptionsPlans';
-import postAuthSignupRequest from 'app/api/requests/postAuthSignup';
+import postAuthSignupRequest, { Request } from 'app/api/requests/postAuthSignup';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -29,7 +29,7 @@ function FormSteps ({ plans }) {
 	const [submitted, isSubmitted] = useState(false);
 
 	// this is required for select to work
-	const form = useForm({ defaultValues: { plan: plans?.[0].id } });
+	const form = useForm<Request>({ defaultValues: { plan: plans?.[0].id } });
 	const { register, handleSubmit, setError, setFocus, formState: { errors } } = form;
 
 	useEffect(() => {
@@ -100,7 +100,7 @@ function FormSteps ({ plans }) {
 						</p>
 					</div>
 					<div>
-						<form action={handleSubmit(submit)} className="flex flex-col gap-5">
+						<form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
 							<div>Email</div>
 							<Input type="text" className={cx({ error: !!errors.email || !!errors.password })} {...register('email', { required: true })} />
 							<div>Password</div>

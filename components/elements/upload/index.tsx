@@ -4,7 +4,7 @@ import putFilesPresignRequest from 'app/api/requests/putFilesPresign';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-export default function Upload ({ children, options, onStart, onChange }) {
+export default function Upload ({ children, disabled, options, onStart, onChange }) {
 	const onDrop = useCallback(async (acceptedFiles) => {
 		if (onStart) {
 			await onStart();
@@ -23,7 +23,7 @@ export default function Upload ({ children, options, onStart, onChange }) {
 			await onChange(asset_url);
 		}
 	}, []);
-	const { getRootProps, getInputProps } = useDropzone({ onDrop, ...options });
+	const { getRootProps, getInputProps } = useDropzone({ onDrop, disabled, ...options });
 
 	return (
 		<div {...getRootProps()}>

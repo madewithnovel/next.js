@@ -5,7 +5,13 @@ import cx from 'classnames';
 import { CheckCircle2Icon } from 'lucide-react';
 import { forwardRef, Fragment, useEffect } from 'react';
 
-export default forwardRef(function InlineNotify (props, ref) {
+type Props = {
+	saved: boolean;
+	leave: (value: boolean) => void;
+	duration?: number;
+}
+
+export default forwardRef(function InlineNotify (props: Props, ref) {
 	const { saved, leave, duration } = props;
 	useEffect(() => {
 		let timeout;

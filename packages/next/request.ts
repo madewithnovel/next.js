@@ -1,4 +1,3 @@
-import type { ReadonlyHeaders } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 interface ErrorResponse {
@@ -14,7 +13,7 @@ interface TypedResponse<T> extends Response {
 }
 
 type RequestContext = {
-	headers: ReadonlyHeaders;
+	headers: Record<string, unknown>;
 }
 
 const passthrough: RequestContext = { headers: {} };

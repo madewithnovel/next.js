@@ -14,11 +14,12 @@ const key = 'url';
 const schema = request.pick({ [key]: true }).extend({
 	[key]: z.string().url('Please provide a proper URL for your website address.'),
 });
+type Schema = z.infer<typeof schema>
 
 export default function Website ({ profile }) {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm({ defaultValues: profile, resolver: zodResolver(schema) });
+	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm<Schema>({ defaultValues: profile, resolver: zodResolver(schema) });
 
 	function submit (key) {
 		return async (data) => {

@@ -43,9 +43,9 @@ exports.setup = async function () {
 				console.error('[DEVELOPMENT] Failed to fetch from Server. Please turn on the Novel server and try again. Else you will not be able to get the latest API operations from development.');
 				body = require('app/api/schema.json');
 			}
-		} catch (error) {
+		} catch {
 			console.error('[DEVELOPMENT] Failed to fetch from Server. Please turn on the Novel server and try again. Else you will not be able to get the latest API operations from development.');
-			console.error(error);
+			body = require('app/api/schema.json');
 		}
 
 		const { paths, components } = body;

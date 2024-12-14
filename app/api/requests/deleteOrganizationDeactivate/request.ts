@@ -2,7 +2,7 @@
 import * as client from '@novel/next/request';
 import { z } from 'zod';
 
-export const request = z.object({ org_id: z.string().min(6) });
+export const request = z.object({ sudo_password: z.string(), org_id: z.string().min(6) });
 export type Request = z.infer<typeof request>
 
 const operation = {

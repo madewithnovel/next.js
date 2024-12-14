@@ -1,7 +1,7 @@
 'use client';
 
 import * as novel from '@novel/next/sdk';
-import postAuthSignupRequest from 'app/api/requests/postAuthSignup';
+import postAuthSignupRequest, { Request } from 'app/api/requests/postAuthSignup';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -15,7 +15,7 @@ export default function Form () {
 	const query = useSearchParams();
 	const [working, isWorking] = useState(false);
 	const [submitted, isSubmitted] = useState(false);
-	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm();
+	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm<Request>();
 
 	async function submit (data) {
 		isWorking(true);
@@ -66,7 +66,7 @@ export default function Form () {
 						</p>
 					</div>
 					<div>
-						<form action={handleSubmit(submit)} className="flex flex-col gap-5">
+						<form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
 							<div>Email</div>
 							<Input type="text" className={cx({ error: !!errors.email || !!errors.password })} {...register('email', { required: true })} />
 							<div>Password</div>
@@ -87,7 +87,6 @@ export default function Form () {
 							<div>
 								<Link
 									href={novel.path('/auth/github')}
-									disabled={working}
 									className="button secondary w-full"
 								>
 									<GithubIcon size={20}/>

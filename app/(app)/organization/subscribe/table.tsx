@@ -14,7 +14,7 @@ const currency = 'USD';
 function Payment ({ children, plan, yearly, paymentMethods }) {
 	const [error, setError] = useState(null);
 	const [isWorking, working] = useState(false);
-	const [newCard, useNewCard] = useState(paymentMethods?.length === 0);
+	const [newCard, setNewCard] = useState(paymentMethods?.length === 0);
 	const session = useSession();
 	const stripe = useStripe();
 	const elements = useElements();
@@ -70,7 +70,7 @@ function Payment ({ children, plan, yearly, paymentMethods }) {
 							<div className="font-medium"><span className="text-4xl">&middot;&middot;&middot;&middot;{' '}&middot;&middot;&middot;&middot;{' '}&middot;&middot;&middot;&middot;{' '}</span>{paymentMethods[0].card.last4}</div>
 							<div className="text-sm">{paymentMethods[0].card.expiry_month} / {paymentMethods[0].card.expiry_year}</div>
 						</div>
-						<Button variant="outline" size="sm" onClick={() => useNewCard(true)}>Use a different card</Button>
+						<Button variant="outline" size="sm" onClick={() => setNewCard(true)}>Use a different card</Button>
 					</div>
 				)}
 				{newCard && (

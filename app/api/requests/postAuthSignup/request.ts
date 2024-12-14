@@ -2,7 +2,7 @@
 import * as client from '@novel/next/request';
 import { z } from 'zod';
 
-export const request = z.object({ email: z.string().email(), password: z.string(), intent: z.string().optional(), interval: z.enum(['month', 'year']).optional(), plan: z.string().optional(), invitation_code: z.string().optional() });
+export const request = z.object({ email: z.string().email(), password: z.string(), intent: z.string().optional(), interval: z.enum(['month', 'year']).optional(), plan: z.string().optional(), method: z.string().optional(), invitation_code: z.string().optional() });
 export type Request = z.infer<typeof request>
 
 export const response = z.object({ redirect_to: z.string().optional() }).describe('Sign up successful. Redirecting to next step...');

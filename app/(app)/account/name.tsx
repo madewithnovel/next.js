@@ -7,15 +7,17 @@ import InlineNotify from 'components/elements/inline-notify';
 import Input from 'components/elements/input';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 const key = 'display_name';
 
 const schema = request.pick({ [key]: true });
+type Schema = z.infer<typeof schema>
 
 export default function Name ({ profile }) {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm({ defaultValues: profile, resolver: zodResolver(schema) });
+	const { reset, register, handleSubmit, setError, formState: { errors, defaultValues, dirtyFields } } = useForm<Schema>({ defaultValues: profile, resolver: zodResolver(schema) });
 
 	function submit (key) {
 		return async (data) => {

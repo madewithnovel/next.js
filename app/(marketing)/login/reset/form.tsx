@@ -1,6 +1,7 @@
 'use client';
 
-import postAuthResetRequest from 'app/api/requests/postAuthReset';
+import { zodResolver } from '@hookform/resolvers/zod';
+import postAuthResetRequest, { request } from 'app/api/requests/postAuthReset';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import Input from 'components/elements/input';
@@ -8,12 +9,19 @@ import { TriangleAlertIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+const schema = request.extend({
+	password_confirm: z.string(),
+});
+
+type Schema = z.infer<typeof schema>;
 
 export default function Form () {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [working, isWorking] = useState(false);
-	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm();
+	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm<Schema>({ resolver: zodResolver(schema) });
 
 	async function submit (data) {
 		isWorking(true);
@@ -46,7 +54,7 @@ export default function Form () {
 
 	return (
 		<div>
-			<form action={handleSubmit(submit)} className="flex flex-col gap-5">
+			<form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
 				<div>Email</div>
 				<Input type="email" className={cx({ error: !!errors.email || !!errors.password_confirm })} {...register('email', { required: true })} />
 				<div>New Password</div>

@@ -1,6 +1,6 @@
 'use client';
 
-import postAuthMfaRequest from 'app/api/requests/postAuthMfa';
+import postAuthMfaRequest, { Request } from 'app/api/requests/postAuthMfa';
 import cx from 'clsx';
 import Button from 'components/elements/button';
 import { TriangleAlertIcon } from 'lucide-react';
@@ -14,7 +14,7 @@ export default function Form () {
 	const query = useSearchParams();
 	const router = useRouter();
 	const [working, isWorking] = useState(false);
-	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm();
+	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm<Request>();
 
 	async function submit (data) {
 		isWorking(true);
@@ -40,7 +40,7 @@ export default function Form () {
 	}
 
 	return (
-		<form action={handleSubmit(submit)}>
+		<form onSubmit={handleSubmit(submit)}>
 			<div className="flex items-center gap-2">
 				<OTPInput className={cx({ error: errors.otp })} {...register('otp')} />
 				<Button working={working} type="submit">Continue</Button>

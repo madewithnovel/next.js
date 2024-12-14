@@ -1,7 +1,7 @@
 'use client';
 
 import * as novel from '@novel/next/sdk';
-import postAuthStrategyRequest from 'app/api/requests/postAuthStrategy';
+import postAuthStrategyRequest, { Request } from 'app/api/requests/postAuthStrategy';
 import cx from 'clsx';
 import AlertOk from 'components/elements/alerts/ok';
 import AlertWarning from 'components/elements/alerts/warning';
@@ -17,7 +17,7 @@ export default function Form () {
 	const query = useSearchParams();
 	const router = useRouter();
 	const [working, isWorking] = useState(false);
-	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm();
+	const { register, handleSubmit, setError, setFocus, formState: { errors } } = useForm<Request>();
 
 	async function submit (data) {
 		isWorking(true);
@@ -38,7 +38,7 @@ export default function Form () {
 	}
 
 	return (
-		<form action={handleSubmit(submit)} className="flex flex-col gap-5">
+		<form onSubmit={handleSubmit(submit)} className="flex flex-col gap-5">
 			{query.has('reset') && (
 				<AlertOk title="Password has been reset">
 					Account has been reset to have the new password. Please Log in again.

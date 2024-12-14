@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import getSession from '@novel/next/hooks/get-session';
 import store from '@novel/next/store';
-import postOrganizationCreateRequest, { request } from 'app/api/requests/postOrganizationCreate';
+import postOrganizationCreateRequest, { Request, request } from 'app/api/requests/postOrganizationCreate';
 import postSessionSwitchRequest from 'app/api/requests/postSessionSwitch';
 import cx from 'clsx';
 import Button from 'components/elements/button';
@@ -27,7 +27,7 @@ async function switchTo (org_id) {
 export function NewOrganization (props) {
 	const { children, open, onOpenChange } = props;
 	const [isWorking, working] = useState(false);
-	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm({ resolver: zodResolver(request) });
+	const { handleSubmit, register, setError, formState: { errors }, reset } = useForm<Request>({ resolver: zodResolver(request) });
 
 	async function create (data) {
 		working(true);

@@ -8,15 +8,17 @@ import InlineNotify from 'components/elements/inline-notify';
 import Select from 'components/elements/select';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
 const key = 'theme';
 
 const schema = request.pick({ [key]: true });
+type Schema = z.infer<typeof schema>
 
 export default function Theme ({ settings }) {
 	const [saved, save] = useState(false);
 	const [isWorking, working] = useState(false);
-	const form = useForm({ defaultValues: settings, resolver: zodResolver(schema) });
+	const form = useForm<Schema>({ defaultValues: settings, resolver: zodResolver(schema) });
 	const { reset, register, handleSubmit, formState: { errors, defaultValues, dirtyFields } } = form;
 
 	function submit (key) {
