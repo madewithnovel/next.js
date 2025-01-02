@@ -69,6 +69,7 @@ async function request (path, { method = 'GET', headers, body, next, ...override
 	const response = await fetch(process.env.NEXT_PUBLIC_API_HOST + path, {
 		credentials: 'include',
 		method,
+		mode: process.env.NEXT_PUBLIC_API_HOST === process.env.NEXT_PUBLIC_HOST ? 'same-origin' : 'cors',
 		headers: {
 			...passthrough.headers,
 			'Content-Type': 'application/json',
