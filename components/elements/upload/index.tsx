@@ -13,11 +13,11 @@ export default function Upload ({ children, disabled, options, onStart, onChange
 		const type = acceptedFiles[0].type;
 		const response = await putFilesPresignRequest({ key: name, type });
 		const { file: { presigned_url, asset_url } } = await response.json();
-		const form = new FormData();
-		form.set('file', acceptedFiles[0]);
+		// const form = new FormData();
+		// form.set('file', acceptedFiles[0]);
 		await fetch(presigned_url, {
 			method: 'PUT',
-			body: form,
+			body: acceptedFiles[0],
 		});
 		if (onChange) {
 			await onChange(asset_url);
