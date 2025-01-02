@@ -22,6 +22,16 @@ const isClient = typeof window !== 'undefined';
 
 const history = [];
 
+// const batch = []; // TODO: use for batching requests
+/**
+ * await Promise.all([
+ *     request.get(),
+ *     request.get(),
+ * ])
+ *
+ * would send the request to api/v1/unstable_batch in one request
+ */
+
 export function getHistory () {
 	if (process.env.NODE_ENV === 'production') {
 		return [];

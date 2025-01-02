@@ -33,8 +33,6 @@ For more information on how to use Novel, go to our documentation at https://doc
 
 - [🏠 Website](https://novel.dev)
 - [📚 Documentation](https://docs.novel.dev)
-- [🚀 Get Started](https://docs.novel.dev/getting-started)
+- [🚀 Get Started](https://docs.novel.dev/start)
 - [📣 Updates](https://novel.dev/changelog)
-- [🤝 Community](https://novel.dev/community)
-- [🐞 Issue Tracker](https://novel.dev/issues)
 - [📧 Support](mailto:hello@novel.dev)

@@ -59,6 +59,8 @@ if (process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_API_HOST?.i
 }
 
 const SentryConfig = {
+	org: process.env.SENTRY_ORG,
+	project: process.env.SENTRY_PROJECT,
 	silent: !process.env.CI,
 	widenClientFileUpload: true,
 	// tunnelRoute: "/monitoring",
