@@ -26,7 +26,9 @@ export default function Form () {
 		if (response.ok) {
 			const data = await response.json();
 			if (data.redirect_to) {
-				const callback = await novel.request.get(data.redirect_to);
+				const callback = await novel.request.get(data.redirect_to, {
+					mode: 'no-cors',
+				});
 				router.push(callback.url);
 			}
 		} else {
