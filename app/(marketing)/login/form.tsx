@@ -25,15 +25,13 @@ export default function Form () {
 		const response = await postAuthStrategyRequest('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
-			if (data.redirect_to) {
-				router.push(data.redirect_to);
-			}
+			window.location.href = data.redirect_to;
 		} else {
+			isWorking(false);
 			const data = await response.json();
 			setError('email', { type: 'custom', message: data.error.message });
 			setFocus('email');
 		}
-		isWorking(false);
 	}
 
 	return (
