@@ -25,7 +25,10 @@ export default function Form () {
 		const response = await postAuthStrategyRequest('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
-			window.location.href = data.redirect_to;
+			console.log(data);
+			const callback = await novel.request.get(data.redirect_to);
+			console.log(callback);
+			router.push(callback.url);
 		} else {
 			isWorking(false);
 			const data = await response.json();
