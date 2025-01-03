@@ -1,3 +1,5 @@
-export default async function Route () {
-	return Response.redirect(process.env.NEXT_PUBLIC_API_HOST + '/session/end');
+import * as novel from '@novel/next/sdk';
+
+export async function GET () {
+	return Response.redirect(novel.path('/session/end'));
 }

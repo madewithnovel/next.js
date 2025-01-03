@@ -18,13 +18,13 @@ export default async function Page () {
 							<div className="text-xl font-medium">Join the Novel Community</div>
 							<p className="mt-2 mb-5">Connect with fellow solopreneurs and bootstrappers and share insight and findings with the community.</p>
 							<div>
-								<a href="https://novel.dev/dashboard" className="button">Join Community</a>
+								<a href="https://discord.gg/6wGMWzsBsB" target="_blank" className="button">Join Community</a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<h4 className="font-medium">Going to Production</h4>
-				<Link href="https://novel.dev/guides/preparing-to-go-to-production" className="bg-white border border-zinc-200 rounded-md">
+				<Link href="https://docs.novel.dev/guides/production-checklist" className="bg-white border border-zinc-200 rounded-md">
 					<div className="flex gap-10">
 						<div className="flex-1 p-6 flex flex-col gap-1">
 							<div className="text-xl font-medium">Preparing to go to Production</div>
@@ -36,7 +36,7 @@ export default async function Page () {
 						</div>
 					</div>
 				</Link>
-				<Link href="https://novel.dev/guides/getting-your-project-in-front-of-people" target="_blank" className="border border-zinc-200 rounded-md">
+				<Link href="https://docs.novel.dev/guides/shipping-fast/marketing-and-distribution" target="_blank" className="border border-zinc-200 rounded-md">
 					<div className="flex gap-10">
 						<div className="flex-1 p-6 flex flex-col gap-1">
 							<div className="text-xl font-medium">Getting your Project in front of People</div>
@@ -48,10 +48,10 @@ export default async function Page () {
 						</div>
 					</div>
 				</Link>
-				<Link href="https://novel.dev/guides/pricing-your-saas" className="block bg-white border border-zinc-200 rounded-md">
+				<Link href="https://docs.novel.dev/guides/shipping-fast/pricing" className="block bg-white border border-zinc-200 rounded-md">
 					<div className="flex gap-10">
 						<div className="flex-1 p-6 flex flex-col gap-1">
-							<div className="text-xl font-medium">Pricing your SaaS 101</div>
+							<div className="text-xl font-medium">Pricing your SaaS</div>
 							<p className="flex-1">Don't know how to price your project? Learn more about the common practices successful SaaS use to price their offerings.</p>
 							<div className="text-zinc-500 flex gap-1 items-center">3 mins read <ArrowUpRightIcon size={18}/></div>
 						</div>

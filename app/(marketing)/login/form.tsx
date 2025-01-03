@@ -25,7 +25,7 @@ export default function Form () {
 		const response = await postAuthStrategyRequest('password', { email, password });
 		if (response.ok) {
 			const data = await response.json();
-			router.push(process.env.NEXT_PUBLIC_API_HOST + data.redirect_to);
+			router.push(novel.path(data.redirect_to));
 		} else {
 			isWorking(false);
 			const data = await response.json();
