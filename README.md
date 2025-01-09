@@ -1,12 +1,12 @@
 # Novel
 
-**Thank you for purchasing Novel. We hope you get as much value out of it as we have.**
+This repository is the open-source front-end for Novel.
 
 Novel is a Node.js project boilerplate specifically built to help create
 a software-as-a-service application. It is a solid, opinionated foundation that you can
 build upon to create your own unique application.
 
-Let's get you started if you have not done so already.
+This repository requires a paid license of Novel. Purchase on at [novel.dev](https://novel.dev).
 
 ## Getting Started
 

@@ -17,7 +17,7 @@ export default async function Page () {
 				</div>
 				<Form/>
 				<div>
-					<div>If you have lost of registered authenticator. <Link href="/login/forget">Reset your account to gain access.</Link></div>
+					<div>If you have lost your registered authenticator. <Link href="/login/forget">Reset your account to gain access.</Link></div>
 				</div>
 			</div>
 		</div>
