@@ -23,11 +23,11 @@ export default function Form () {
 		isWorking(true);
 		const { email, password } = data;
 		const response = await postAuthStrategyRequest('password', { email, password });
+		isWorking(false);
 		if (response.ok) {
 			const data = await response.json();
 			router.push(novel.path(data.redirect_to));
 		} else {
-			isWorking(false);
 			const data = await response.json();
 			setError('email', { type: 'custom', message: data.error.message });
 			setFocus('email');
@@ -54,6 +54,8 @@ export default function Form () {
 							return 'You need to have a registered account before you can login with your external social profile.';
 						case 'NO_SESSION':
 							return 'There was something wrong with your authorization so we have logged you out. Please log in again to continue.';
+						case 'USER_BLOCKED':
+							return 'Cannot log you in because your account has been blocked. Please contact support for more information.';
 						case 'AUTH_ATTEMPT_EXPIRED':
 							return 'Something went wrong while trying to log you in. Please try again.';
 						}
