@@ -9,7 +9,7 @@ export default async function Page () {
 			<div className="p-4 flex flex-col gap-10 pb-20 container mx-auto">
 				<div className="pt-10">
 					<h1 className="text-3xl font-medium">Welcome back, {session.user.display_name ?? session.user.email}</h1>
-					<p className="text-muted-foreground text-xl">Browse our <a href="https://novel.dev/docs" target="_blank" className="underline decoration-muted-foreground underline-offset-2">documentation</a> to start using Novel.</p>
+					<p className="text-muted-foreground text-xl">Browse our <a href="https://docs.novel.dev" target="_blank" className="underline decoration-muted-foreground underline-offset-2">documentation</a> to start using Novel.</p>
 				</div>
 				<h4 className="font-medium">Next Steps</h4>
 				<div className="bg-white border border-zinc-200 rounded-md">

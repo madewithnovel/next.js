@@ -20,15 +20,14 @@ export default function Form () {
 		isWorking(true);
 		const response = await postAuthMfaRequest(query.get('strategy'), { otp: data.otp });
 		if (response.ok) {
+			isWorking(false);
 			if (response.redirected === true) {
 				if (response.url.includes('MFA_OTP_INVALID')) {
-					isWorking(false);
 					setError('otp', { type: 'custom', message: ' The OTP provided is not a valid token based on the registered authenticator. Please try again.' });
 					return setFocus('otp');
 				}
 				return router.replace(response.url);
 			}
-			isWorking(false);
 			setError('otp', { type: 'custom', message: 'Something happened while trying to verify your OTP. Please try again.' });
 			setFocus('otp');
 		} else {
